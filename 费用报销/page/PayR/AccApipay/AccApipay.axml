@@ -1,0 +1,15 @@
+<view class="pageBody">
+  <form onSubmit="onSubmit">
+    <view class="form-item">
+      <view class="form-item-title">账户名称</view>
+      <input class="form-item-val" placeholder="请输入支付宝名称" value="{{name}}" onBlur="GetName"/>
+    </view>
+    <view class="form-item">
+      <view class="form-item-title">账户账号</view>
+      <input class="form-item-val" placeholder="请输入支付账号" value="{{account}}" onBlur="GetAccount"/>
+    </view>
+    <view class="form-btns">
+      <button class="submit" hover-class="none" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

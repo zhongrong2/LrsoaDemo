@@ -1,0 +1,178 @@
+/* 间隔样式 */
+.box{
+  padding-top: 110rpx;
+}
+.boxBottom{
+  padding-top: 100rpx;
+}
+/* 部门样式 */
+.department-body{
+  background-color: white;
+}
+.depart{
+  height: 90rpx;
+  padding-left: 4.27%;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: #576A95;
+  text-align: left;
+  line-height: 90rpx;
+  border-bottom: 10rpx solid #F7F7F7;
+}
+.depart-list-class{
+  padding: 0 4.67%;
+}
+.depart-list-item{
+  font-size: 30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  height: 110rpx;
+  border-bottom: 2rpx solid #F7F7F7;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.depart-item-title{
+  color: #191F25;
+}
+.depart-item-numPer{
+  color: #3296FA;
+  flex: 1;
+  text-align: left;
+}
+.depart-item-right{
+  width: 20rpx;
+  height: 36rpx;
+}
+/* 成员样式 */
+.member-body{
+  background-color: white;
+  padding-bottom: 80rpx;
+}
+.member-list-item{
+  height: 110rpx;
+  padding: 0 6.8% 0 4%;
+  border-bottom: 2rpx solid #F7F7F7;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  line-height: 110rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.cir{
+  width: 40rpx;
+  height: 40rpx;
+}
+.member-item-title{
+  color: #191F25;
+  margin: 0 2.93%;
+}
+.member-item-class{
+  flex: 1;
+  text-align: left;
+  font-size: 24rpx;
+  color: #9EA0A3;
+}
+.member-item-position{
+  width: 24%;
+  margin-left: 3.33%;
+  color: #3296FA;
+  text-align: center;
+}
+.position-border{
+  padding: 0 1rpx;
+  height: 60rpx;
+  background-color: #E6E6E7!important;
+}
+/* 搜索结果样式 */
+.searchRes-body{
+  background-color: white;
+}
+.searchRes-title{
+  height: 50rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #9EA0A3;
+  line-height: 50rpx;
+  padding-left: 4.13%;
+  border-bottom: 2rpx solid #F2F2F2;
+}
+.searchRes-item{
+  height: 144rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  padding: 0 4%;
+  border-bottom: 2rpx solid #F2F2F2;
+  display: flex;
+  align-items: center;
+}
+.searchRes-head{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin: 0 4%
+}
+.searchRes-info{
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.searchRes-info-petname{
+  font-size: 32rpx;
+  color: #191F25;
+}
+.searchRes-info-name{
+  font-size: 24rpx;
+  color: #7A7D81;
+  margin-top: 0.67%;
+}
+.searchRes-info-position{
+  font-size: 22rpx;
+  color: #B9BBBC;
+  margin-top: 0.67%;
+}
+/* 未搜索到结果样式 */
+.searchNoRes-por{
+  margin-top: 5.17%;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 500;
+  color: #7A7D81;
+}
+/* 总计样式 */
+.count-body{
+  width: 89.33%;
+  height: 100rpx;
+  background-color: white;
+  padding: 0 5.33%;
+  position: fixed;
+  bottom: 0;
+  border-top: 2rpx solid #F7F7F7;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.count-per{
+  font-size: 28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: #191F25;
+}
+.count-btn{
+  width: 21.33%;
+  height: 60rpx;
+  font-size: 30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: white;
+  line-height: 60rpx;
+}

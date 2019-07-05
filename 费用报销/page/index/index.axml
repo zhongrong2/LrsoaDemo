@@ -1,0 +1,7 @@
+<import src="/component/grid/grid.axml"/>
+
+<view class="container" key="container">
+  <view class="Title">财务</view>
+  <template is="grid" data="{{...grid}}"></template>
+</view>
+

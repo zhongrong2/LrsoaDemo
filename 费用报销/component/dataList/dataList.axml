@@ -1,0 +1,21 @@
+<template name="DataList">
+  <scroll-view onScrollToLower="onReachBottom">
+    <view class="DataList">
+      <view class="list-item" a:for="{{List}}" key="index" data-index="{{index}}" data-id="{{item.id}}" onTap="InfoTap">
+        <image class="list-img" mode="scaleToFill" src="{{type=='copytome'?item.read_img:item.index_img}}"/>
+        <view class="list-item-info">
+          <view class="item-info-floater">{{item.username}}提交的{{item.flow_type}}</view>
+          <view class="item-info-number">审批编号：{{item.sno}}</view>
+          <view class="item-info-reason">申请事由：{{item.title}}</view>
+          <view class="item-info-class">所在部门：{{item.department_id}}</view>
+          <view class="item-info-PayTime">付款时间：{{item.pay_time}}</view>
+        </view>
+        <view class="list-item-state">
+          <view class="item-state-InitTime">{{item.updated_at}}</view>
+          <view class="item-state-state {{item.status==1?'state1':(item.status==2?'state2':(item.status==3?'state3':(item.status==4?'state4':(item.status==5?'state5':(item.status==6?'state6':'')))))}}">{{item.sponsor_text}}</view>
+          <view a:if="{{item.status==1?true:(item.status==2?true:false)}}" class="item-state-urgency {{item.level=='一般'?'level1':(item.level=='紧急'?'level2':(item.level=='非常紧急'?'level3':''))}}">{{item.level}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</template>

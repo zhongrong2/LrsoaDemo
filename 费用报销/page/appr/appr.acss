@@ -1,0 +1,6 @@
+@import "/component/nav/nav.acss";
+@import "/component/dataList/dataList.acss";
+
+.page{
+  background-color: white;
+}

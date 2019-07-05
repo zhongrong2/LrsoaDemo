@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "page/index/index",
+    "page/PayR/PayR",
+    "page/PayR/ChoseCopier/ChoseCopier",
+    "page/PayR/Copiers/Copiers",
+    "page/PayR/AccApipay/AccApipay",
+    "page/PayR/ChoseAccount/ChoseAccount",
+    "page/PayR/AccPersonal/AccPersonal",
+    "page/PayR/AccPublic/AccPublic",
+    "page/PayR/ChoseArea/ChoseArea",
+    "page/appr/appr",
+    "page/appr/DetailPendAppr/DetailPendAppr",
+    "page/init/init",
+    "page/init/DetailPendAppr/DetailPendAppr",
+    "page/init/DetailReject/DetailReject",
+    "page/init/DetailCompleted/DetailCompleted",
+    "page/init/DetailWithdrawn/DetailWithdrawn",
+    "page/init/DetailCancel/DetailCancel",
+    "page/CC/CC",
+    "page/CC/DetailInfo/DetailInfo",
+    "component/grid/grid",
+    "component/select/select",
+    "component/nav/nav",
+    "component/dataList/dataList",
+    "component/dataInfo/apprInfo/apprInfo",
+    "component/dataInfo/apprExam/apprExam",
+    "component/dataInfo/CC/CC",
+    "page/PayR/ChoseBank/ChoseBank",
+    "component/dataInfo/headInfo/headInfo",
+    "page/PayR/ChoseBankSub/ChoseBankSub"
+  ],
+  "window": {
+    "enableWK": "YES",
+    "enableDSL": "YES",
+    "defaultTitle": "审批申请",
+    "titleBarColor": "#ffffff",
+    "backgroundColor": "#ffffff",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES"
+  },
+  "tabBar": {
+    "textColor": "#7A7D81",
+    "selectedColor": "#3296FA",
+    "backgroundColor": "#FFFFFF",
+    "items": [
+      {
+        "pagePath": "page/index/index",
+        "icon": "image/icon_new.png",
+        "activeIcon": "image/icon_new_HL.png",
+        "name": "新申请"
+      },
+      {
+        "pagePath": "page/appr/appr",
+        "icon": "image/icon_appr.png",
+        "activeIcon": "image/icon_appr_HL.png",
+        "name": "我审批"
+      },
+      {
+        "pagePath": "page/init/init",
+        "icon": "image/icon_init.png",
+        "activeIcon": "image/icon_init_HL.png",
+        "name": "我发起"
+      },
+      {
+        "pagePath": "page/CC/CC",
+        "icon": "image/icon_CC.png",
+        "activeIcon": "image/icon_CC_HL.png",
+        "name": "抄送我"
+      }
+    ]
+  },
+  "debug": true
+}

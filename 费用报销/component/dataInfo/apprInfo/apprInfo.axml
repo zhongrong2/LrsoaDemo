@@ -1,0 +1,71 @@
+<template name="apprInfo">
+  <view class="apprInfo">
+    <image class="Info-icon {{Top}}" mode="scaleToFill" src="{{Info.bill_info.detail_img}}"/>
+    <!-- 订单信息开始 -->
+    <view class="order">
+      <view class="list">
+        <view class="list-item">
+          <view class="list-title">审批编号</view>
+          <view class="list-value">{{Info.bill_info.sno}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">所在部门</view>
+          <view class="list-value">{{Info.bill_info.department_id}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">申请类型</view>
+          <view class="list-value">{{Info.bill_info.flow_type}}</view>
+        </view>
+      </view>
+      <view class="list">
+        <view class="list-item">
+          <view class="list-title">付款时间</view>
+          <view class="list-value">{{Info.bill_info.pay_time}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">付款金额</view>
+          <view class="list-value">{{Info.bill_info.money}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">申请事由</view>
+          <view class="list-value">{{Info.bill_info.title}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">支付对象</view>
+          <view class="list-value">{{Info.bill_info.payment}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">发票类型</view>
+          <view class="list-value">{{Info.bill_info.invoice_type}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 订单信息结束 -->
+    <!-- 付款账号开始 -->
+    <view class="pay">
+      <view class="pay-title">付款账号</view>
+      <view class="pay-type">{{Info.account_info.type}}</view>
+      <view class="list">
+        <view class="list-item">
+          <view class="list-title">收款人</view>
+          <view class="list-value">{{Info.account_info.name}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">账号</view>
+          <view class="list-value">{{Info.account_info.account}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">备注</view>
+          <view class="list-value">{{Info.account_info.content}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">图片</view>
+          <view class="list-value">
+            <image class="list-img" a:for="{{Info.account_info.pic}}" mode="scaleToFill" src="{{item}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 付款账号结束 -->
+  </view>
+</template>>

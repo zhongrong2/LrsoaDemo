@@ -1,0 +1,9 @@
+@import "/component/grid/grid.acss";
+
+.container{
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+.Title{
+  margin: 30rpx 0rpx 38rpx 30rpx;
+}

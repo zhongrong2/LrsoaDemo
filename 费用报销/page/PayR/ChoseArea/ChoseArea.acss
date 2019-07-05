@@ -1,0 +1,52 @@
+.area,.area-item,.area-item-list{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.area-scroll{
+  width: 100%;
+  height: 1100rpx;
+}
+.area-item-letter{
+  width: 100%;
+  height: 80rpx;
+  background-color: #F6F6F6;
+  font-size:24rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color: #79797A;
+  text-align: left;
+  line-height: 80rpx;
+  padding-left: 7.47%;
+}
+.area-item-list{
+   width: 100%;
+}
+.area-item-areas{
+  width: 100%;
+  height: 90rpx;
+  background-color: #FFFFFF;
+  font-size:36rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:500;
+  color: #333333;
+  text-align: left;
+  line-height: 90rpx;
+  padding-left: 7.6%;
+  box-shadow:0rpx 2rpx 2rpx 0rpx rgba(224,224,224,1);
+}
+.letter{
+  position: fixed;
+  top: 110rpx;
+  right: 3.67%;
+  z-index: 100;
+}
+.letter-item{
+  font-size:26rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color: #B3B3B3;
+  margin: 12rpx 0;
+  text-align: center;
+}

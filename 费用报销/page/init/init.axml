@@ -1,0 +1,20 @@
+<import src="/component/nav/nav.axml"/>
+<import src="/component/dataList/dataList.axml"/>
+
+<view class="page">
+  <!-- 搜索框开始 -->
+  <view class="search-body">
+    <view class="searchBox">
+      <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
+      <input type="search" class="search-input" placeholder="请输入标题编号/申请事由" value="{{searchVal}}" onConfirm="Search"/>
+    </view>
+  </view>
+  <!-- 搜索框结束 -->
+  <view class="box"></view>
+  <!-- 导航栏开始 -->
+  <template is="nav" data="{{...navItem}}"></template>
+  <!-- 导航栏结束 -->
+  <!-- 数据列表开始 -->
+  <template is="DataList" data="{{List}}"></template>
+  <!-- 数据列表结束 -->
+</view>

@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page-titel">抄送人{{CopMemNum}}人</view>
+  <view class="page-member">
+    <view class="page-member-item" a:for="{{CopMem}}" key="{{index}}">
+      <view class="member-itemL">
+        <image class="imgCC-cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelCopier" data-index="{{index}}"/>
+        <image class="imgCC-all-img" mode="widthFix" src="/image/imgCC_all.png"/>
+        <view class="imgCC-all-title">{{item.title}}</view>
+      </view>
+      <view class="member-itemR">+</view>
+    </view>
+    <image class="addCC" mode="scaleToFill" src="/image/addCC.png" onTap="ChoseCopier"/>
+  </view>
+</view>

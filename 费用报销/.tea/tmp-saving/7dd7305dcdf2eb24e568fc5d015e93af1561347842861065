@@ -1,0 +1,34 @@
+let app = getApp();
+
+Page({
+  data: {
+    navItem:{
+      nav:[
+        {title:'待审批',num:'2'},
+        {title:'已驳回',num:'0'},
+        {title:'已通过',num:'11'},
+      ],
+      navIndex:0,
+      NavTap:'NavTap',
+      List:[
+        {floater:'某某某提交的申请',number:'201906213020001',reason:'办公用品',class:'科技部',PayTime:'2019-06-30',InitTime:'6-30 12:09',state:'申请待审批',urgency:'一般'},
+        {floater:'某某某提交的申请',number:'201906213020001',reason:'办公用品',class:'科技部',PayTime:'2019-06-30',InitTime:'6-30 12:09',state:'申请待审批',urgency:'紧急'},
+        {floater:'某某某提交的申请',number:'201906213020001',reason:'办公用品',class:'科技部',PayTime:'2019-06-30',InitTime:'6-30 12:09',state:'申请待审批',urgency:'非常紧急'},
+      ],
+    },
+  },
+  onLoad() {
+    app.addTag(this.data);
+    app.InfoShow(this);
+  },
+  // 选择状态导航栏
+  NavTap(e){
+    app.NavTap(e,this);
+  },
+  //跳转页面
+  InfoTap(){
+    dd.navigateTo({
+      url:'/page/appr/DetailPendAppr/DetailPendAppr.axml'
+    })
+  }
+});

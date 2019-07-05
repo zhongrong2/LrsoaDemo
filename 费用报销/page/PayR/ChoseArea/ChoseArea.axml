@@ -1,0 +1,40 @@
+<view class="pageBody">
+  <!-- 搜索框开始 -->
+  <view class="search-body">
+    <view class="searchBox">
+      <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
+      <input type="search" class="search-input" placeholder="请输入省市" />
+    </view>
+  </view>
+  <!-- 搜索框结束 -->
+  <view class="box"></view>
+  <!-- 省份开始 -->
+  <view class="area" a:if="{{AreaShow}}">
+    <scroll-view scroll-y="true" class="area-scroll" scroll-into-view="{{letterItem}}">
+      <view class="area-item" id="{{item.letter}}" a:for="{{areaList}}" key="{{index}}" data-index="{{item.letter}}">
+        <view class="area-item-letter">{{item.letter}}</view>
+        <view class="area-item-list">
+          <view class="area-item-areas" a:for="{{item.areas}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ChoseArea">{{item.name}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 省份结束 -->
+  <!-- 市开始 -->
+  <view class="city" a:if="{{CityShow}}">
+    <scroll-view scroll-y="true" class="area-scroll" scroll-into-view="{{letterItem}}">
+      <view class="area-item" id="{{item.letter}}" a:for="{{cityList}}" key="{{index}}" data-index="{{item.letter}}">
+        <view class="area-item-letter">{{item.letter}}</view>
+        <view class="area-item-list">
+          <view class="area-item-areas" a:for="{{item.areas}}" key="{{index}}" onTap="ChoseCity" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 市结束 -->
+  <!-- 右侧字母开始 -->
+  <view class="letter">
+    <view class="letter-item" a:for="{{letter}}" key="{{index}}" data-item="{{item}}" onTap="LetterTap">{{item}}</view>
+  </view>
+  <!-- 右侧字母结束 -->
+</view>

@@ -1,0 +1,22 @@
+<template name="apprExam">
+  <view class="apprExam">
+    <view class="apprExam-title">审批记录</view>
+    <view class="apprExam-list">
+      <view class="apprExam-item" a:for="{{apprExam}}" key="{{index}}">
+        <view class="apprExam-item-Info">
+          <image a:if="{{item.head_img==''?false:true}}" class="apprExam-item-head" mode="scaleToFill" src="{{item.head_img}}"/>
+          <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.username}}</view>
+          <view class="apprExam-item-pers">
+            <view class="item-per-post">{{item.title}}</view>
+            <view class="item-per-name">{{item.username}}
+              <view a:if="{{item.audit_status==''?false:true}}">({{item.audit_status}})</view>
+            </view>
+          </view>
+          <view class="apprExam-item-time">{{item.bl_time}}</view>
+        </view>
+        <view a:if="{{item.content==''?false:true}}" class="appr-des">备注说明：{{item.content}}</view>
+        <view class="apprExam-border"></view>
+      </view>
+    </view>
+  </view>
+</template>

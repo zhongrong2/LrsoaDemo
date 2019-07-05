@@ -1,0 +1,36 @@
+@import "/component/select/select.acss";
+
+.item-select{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 10rpx solid #F6F6F6;
+}
+.form-select-img{
+  width: 20rpx;
+  height: 12rpx;
+  margin-left: 1.87%;
+}
+.form-btns{
+  margin-top: 140rpx;
+}
+.form-content{
+  height: 100rpx;
+  flex: 1;
+}
+.input{
+  width: 100%;
+  text-align: right;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: #575b60;
+  font-weight: 500;
+}
+.contentR{
+  padding: 0rem 20rpx;
+}
+.form-right{
+  width: 14rpx;
+  height: 28rpx;
+}

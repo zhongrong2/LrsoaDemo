@@ -1,0 +1,26 @@
+<import src="/component/select/select.axml"/>
+
+<view class="pageBody">
+  <form onSubmit="onSubmit">
+    <view class="item-select">
+      <view class="form-item" onTap="ShowSelect">
+        <view class="form-item-title">银行</view>
+        <view class="form-content contentR" onTap="ChoseBank">
+          <input class="input" type="text" placeholder="请选择银行" disabled="true" value="{{bankName}}"/>
+        </view>
+        <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseBank"/>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="form-item-title">户主名称</view>
+      <input class="form-item-val" placeholder="请输入银行卡户主名称" value="{{name}}" onBlur="GetName"/>
+    </view>
+    <view class="form-item">
+      <view class="form-item-title">银行卡号</view>
+      <input class="form-item-val" placeholder="请输入银行卡号" value="{{account}}" onBlur="GetAccount"/>
+    </view>
+    <view class="form-btns">
+      <button class="submit" hover-class="none" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,26 @@
+<import src="/component/dataInfo/apprInfo/apprInfo.axml"/>
+<import src="/component/dataInfo/headInfo/headInfo.axml"/>
+<import src="/component/dataInfo/apprExam/apprExam.axml"/>
+
+<view class="page">
+  <!-- 个人信息 -->
+  <template is="headInfo" data="{{Info,level:level}}"></template>
+  <!-- 订单信息 -->
+  <template is="apprInfo" data="{{Info}}"></template>
+  <!-- 审批记录 -->
+  <template is="apprExam" data="{{apprExam}}"></template>
+  <!-- 按钮显示 -->
+  <view class="btns" a:if="{{status==1?true:false}}">
+    <button class="btn reject" type="primary" plain="true" hover-class="none" onTap="Back">驳回</button>
+    <button class="btn" type="primary" hover-class="none" onTap="Pass">同意</button>
+  </view>
+  <!-- 遮罩 -->
+  <view class="shade" a:if="{{ReasonShow}}"></view>
+  <!-- 输入备注信息开始 -->
+  <view class="apprReason" a:if="{{ReasonShow}}">
+    <image class="close" mode="scaleToFill" src="/image/close.png" onTap="CloseReason"/>
+    <textarea class="reason-textarea" placeholder="请输入备注信息" maxlength="300" onBlur="GetContent"></textarea>
+    <button class="btn" type="primary" hover-class="none" onTap="Submit">确认</button>
+  </view>
+  <!-- 输入备注信息结束 -->
+</view>

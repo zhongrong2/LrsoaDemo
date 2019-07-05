@@ -1,0 +1,41 @@
+<view class="pageBody">
+  <!-- 没有收款账户开始 -->
+  <view a:if="{{Account.length <= 0 ? true : false}}" class="NoAccount">
+    <image class="NoAccount-add" mode="scaleToFill" src="/image/add_account.png" onTap="AddAccount"/>
+    <view class="NoAccount-title">添加收款账户</view>
+  </view>
+  <!-- 没有收款账户结束 -->
+  <!-- 有收款账户开始 -->
+  <view a:if="{{Account.length > 0 ? true : false}}" class="YesAccount">
+    <view class="YesAccount-add" onTap="AddAccount">
+      <image class="YesAccount-add-img" mode="scaleToFill" src="/image/add_account.png"/>
+      <view class="YesAccount-title">添加收款账户</view>
+    </view>
+    <scroll-view onScrollToLower="onReachBottom">
+      <view class="YesAccountList">
+        <view class="YesAccountList-item" a:for="{{Account}}" key="{{item.id}}" data-index="{{id}}">
+          <view class="YesAccountList-itemBox" data-index="{{item.id}}" data-account="{{item.account}}" onTap="ChoseAccountList">
+            <image class="Account-info-img" mode="scaleToFill" src="{{item.img}}"/>
+            <view class="YesAccountList-item-info">
+              <view class="Account-name">{{item.name}}</view>
+              <view class="Account-num">{{item.name}}账号：{{item.account}}</view>
+            </view>
+          </view>
+          <view class="posit" style="{{item.txtStyle}}">
+            <view class="Del" data-index="{{item.id}}" onTap="DelAccount">删除</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    
+  </view>
+  <!-- 有收款账户结束 -->
+  <!-- 选择收款账户开始 -->
+  <view a:if="{{AccountListShow}}" class="AccountList">
+    <view class="AccountList-item" a:for="{{AccountList}}" key="{{index}}" onTap="ChoseAccount" data-index="{{index}}">
+      <image class="AccountList-item-img" mode="scaleToFill" src="{{item.img}}"/>
+      <view class="AccountList-item-title">{{item.name}}</view>
+    </view>
+  </view>
+  <!-- 选择收款账户结束 -->
+</view>

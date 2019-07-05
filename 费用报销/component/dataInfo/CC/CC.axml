@@ -1,0 +1,11 @@
+<template name="CC">
+  <view class="CC">
+    <view class="CC-title">抄送人</view>
+    <view class="CC-list">
+      <view class="CC-list-item" a:for="{{CC}}" key="{{index}}">
+        <view class="name">{{item.name}}</view>
+        <view class="name-title">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</template>

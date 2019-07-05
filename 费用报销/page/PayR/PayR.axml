@@ -1,0 +1,118 @@
+<import src="/component/select/select.axml"/>
+
+<view class="page">
+  <form class="form" onSubmit="onSubmit">
+    <view class="pay-reason">
+      <view class="pay-reason-title">
+        <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+        <view class="form-label">付款事由</view>
+      </view>
+      <view class="form-content content-textaarea">
+        <textarea class="textarea" placeholder="请输入申请事由" maxlength="30" value="{{reason}}" onBlur="GetReason"></textarea>
+      </view>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">金额</view>
+      <view class="form-content">
+        <input class="input" type="text" placeholder="请输入付款金额" value="{{money}}" onBlur="GetMoneny"/>
+      </view>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">付款日期</view>
+      <view class="form-content contentR" onTap="ChoseData">
+        <input class="input" type="text" placeholder="请选择支付时间" disabled="true" value="{{dateVal}}"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseData"/>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">发票信息</view>
+      <view class="form-content contentR" onTap="ShowSelect">
+        <input class="input" type="text" placeholder="请选择发票信息" disabled="true" value="{{selectVal}}"/>
+      </view>
+      <image class="form-right-select" mode="scaleToFill" src="/image/select.png"/ onTap="ShowSelect">
+    </view>
+    <view class="page-select" a:if="{{showSelect}}">
+      <template is="select" data="{{select}}"></template>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">支付对象</view>
+      <view class="form-content">
+        <input class="input" type="text" placeholder="请输入支付对象名称/单位" value="{{payment}}" onBlur="GetPayment"/>
+      </view>
+      
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">收款账号</view>
+      <view class="form-content contentR" onTap="ChoseAccount">
+        <input class="input" type="text" placeholder="请填写收款账号" disabled="true" value="{{account}}"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
+    </view>
+    <view class="page-des">
+      <view class="form-title">备注</view>
+      <view class="form-content content-des-textaarea">
+        <textarea class="textarea-des" placeholder="请输入备注信息" maxlength="200" value="{{content}}" onBlur="GetContent"></textarea>
+      </view>
+    </view>
+    <view class="page-imgs">
+      <view class="form-title form-title-img">图片</view>
+      <view class="form-content form-content-img">
+        <view class="addImages" a:for="{{images}}" key="{{index}}">
+          <image data-index="{{index}}" class="add-image"  mode="aspectFill" src="{{item}}" onTap="previewImage"/>
+          <image class="cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelImg" data-index="{{index}}"/>
+        </view>
+        <image mode="scaleToFill" src="/image/add.png" class="add" onTap="AddImg"/>
+      </view>
+    </view>
+    <view class="page-list">
+      <view class="page-item">
+        <view class="page-item-titles">
+          <view class="page-titles-title">抄送人</view>
+          <view class="page-titles-por">{{CopMem.length < 0 ? '请选择抄送人' : '抄送'+CopMem.length+'人'}}</view>
+        </view>
+        <view class="page-item-imgCC">
+            <view class="imgCC-all" a:if="{{CopMem.length > 3 ? true : false}}" onTap="ShowCopAll">
+              <view class="imgCC-allL">
+                <image class="imgCC-all-img" mode="scaleToFill" src="/image/imgCC_all.png"/>
+                <view class="imgCC-all-title">查看全部</view>
+              </view>
+              <view class="imgCC-allR">+</view>
+            </view>
+            <view class="imgCC-items">
+              <view class="imgCC-item" a:for="{{CopMem.length > 3 ? newCopMem : CopMem}}" key="{{index}}">
+                <view class="imgCC-allL">
+                  <image class="imgCC-cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelCopier" data-index="{{index}}" data-id="{{item.id}}"/>
+                  <image a:if="{{item.head_img==''?false:true}}" class="imgCC-all-img" mode="widthFix" src="{{item.head_img}}"/>
+                  <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
+                  <view class="imgCC-all-title">{{item.name}}</view>
+                </view>
+                <view class="imgCC-allR">+</view>
+              </view>
+            </view>
+        </view>
+        <view class="page-item-img">
+          <image mode="scaleToFill" src="/image/addCC.png" class="addCC" onTap="ChoseCopier"/>
+        </view>
+      </view>
+      <view class="page-state">
+        <view class="page-state-title">紧急程度：</view>
+        <view class="page-state-content">
+          <radio-group class="radio-group" onChange="GetLevel" name="lib">
+            <label class="radio" a:for="{{states}}" key="{{index}}">
+              <radio value="{{item.id}}" checked="{{item.checked}}" />
+              <text class="radio-text">{{item.value}}</text>
+            </label>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="page-submit">
+      <button class="submit" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

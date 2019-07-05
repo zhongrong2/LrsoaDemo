@@ -1,0 +1,13 @@
+@import "/component/nav/nav.acss";
+@import "/component/dataList/dataList.acss";
+
+.page{
+  background-color: white;
+}
+.nav-item-num{
+  right: 0%;
+}
+.border{
+  width: 80%;
+  margin-left: -40%;
+}

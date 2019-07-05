@@ -1,0 +1,28 @@
+.apprInfo{
+  background-color: white;
+  position: relative;
+}
+.order{
+  border-bottom: 8rpx solid #F7F7F7;
+}
+.Info-icon{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -10%;
+  right: 13.33%;
+  z-index: 50;
+}
+.level1{
+  background-color: #15BC83;
+}
+.level2{
+  background-color: #FF943E;
+}
+.level3{
+  background-color: #F25643;
+}
+.level4{
+  background-color: #CACCCC;
+}

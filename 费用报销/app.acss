@@ -1,0 +1,181 @@
+page {
+  flex: 1;
+  display: flex;
+  background: #f7f7f7;
+  box-sizing: border-box;
+}
+.page{
+  flex: 1;
+}
+.pageBody{
+  flex: 1;
+  background-color: white;
+}
+input{
+  margin: 0;
+  padding: 0;
+}
+textarea{
+  resize: none;
+}
+/* 搜索框样式 */
+.search-body{
+  width: 92%;
+  background-color: white;
+  padding: 20rpx 4%;
+  position: fixed;
+  top: 0;
+}
+.searchBox{
+  height: 70rpx;
+  background-color: #F2F2F2;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1000;
+}
+.search-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin:0 1.87% 0 3.48%;
+}
+.search-input{
+  background-color: #F2F2F2;
+  font-size: 30rpx;
+  font-family:PingFang-SC-Regular;
+  font-weight:400;
+  flex: 1;
+}
+/* 间隔样式 */
+.box{
+  padding-top: 110rpx;
+}
+/* 订单详情样式 */
+.Info{
+  padding: 25rpx 5.33% 25rpx 6.67%;
+  border-bottom: 2rpx solid #F7F7F7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+}
+.Info-name{
+  font-size: 30rpx;
+  color: #191F25;
+}
+.Info-haed{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.Infos{
+  flex: 1;
+  margin-left: 2.67%;
+  line-height: 32rpx;
+}
+.Info-name{
+  font-size: 30rpx;
+  color: #191F25;
+}
+.Info-state{
+  font-size: 24rpx;
+  color: #FF943E;
+}
+.Info-Urg{
+  width: 14%;
+  height: 40rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 40rpx;
+  color: white;
+  border-radius: 4rpx;
+}
+.list{
+  padding: 40rpx 6.93%;
+  border-bottom: 2rpx solid #F7F7F7;
+}
+.list-item{
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  line-height: 46rpx;
+}
+.list-title{
+  color: #7A7D81;
+}
+.list-value{
+  flex: 1;
+  margin-left: 4.13%;
+  color: #191F25;
+}
+.list-img{
+  width: 90rpx;
+  height: 90rpx;
+  margin: 10rpx;
+}
+/* 付款账号样式 */
+.pay{
+  padding: 40rpx 0rpx;
+  border-bottom: 8rpx solid #F7F7F7;
+}
+.pay-title{
+  padding-left: 4%;
+  font-size: 30rpx;
+  color: #191F25;
+}
+.pay-type{
+  padding-left: 6.93%;
+  font-size: 28rpx;
+  color: #191F25;
+  padding-top: 17rpx;
+}
+.pay .list{
+  padding: 0rpx 6.93%;;
+  border-bottom: 0rpx;
+}
+.pay .list-title{
+  width: 16%;
+  text-align: left;
+}
+/* 选择账户样式 */
+.form-item{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #F6F6F6;
+  padding: 0 4% 0 5.2%;
+}
+.form-item-title{
+  font-size: 32rpx;
+  color: #000000;
+}
+.form-item input{
+  margin: 0;
+  padding: 0;
+}
+.form-item-val{
+  height: 98rpx;
+  font-size: 32rpx;
+  color: #575b60;
+  flex: 1;
+  text-align: right;
+}
+.form-btns{
+  margin: 200rpx 6.67% 0 6.67%;
+  font-size:34px;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: white;
+}
+.submit{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}

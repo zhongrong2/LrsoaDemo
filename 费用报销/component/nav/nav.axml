@@ -1,0 +1,9 @@
+<template name="nav">
+  <view class="nav">
+    <view class="nav-item" a:for="{{nav}}" key="{{index}}" data-index="{{index}}" onTap="NavTap">
+      <view class="nav-item-num" a:if="{{item.numShow}}">{{item.count}}</view>
+      <view class="nav-item-title {{index == navIndex ? 'active' : ''}}">{{item.title}}</view>
+      <view class="{{index == navIndex ? 'border' : ''}}"></view>
+    </view>
+  </view>
+</template>

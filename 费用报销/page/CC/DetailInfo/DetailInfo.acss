@@ -1,0 +1,75 @@
+@import '/component/dataInfo/apprExam/apprExam.acss';
+@import '/component/dataInfo/CC/CC.acss';
+
+.apprInfo{
+  background-color: white;
+  position: relative;
+}
+.level1{
+  background-color: #15BC83;
+}
+.level2{
+  background-color: #FF943E;
+}
+.level3{
+  background-color: #F25643;
+}
+.level4{
+  background-color: #CACCCC;
+}
+.order{
+  border-bottom: 8rpx solid #F7F7F7;
+}
+.Info-icon{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 1.1%;
+  right: 13.33%;
+  z-index: 100;
+}
+.Info{
+  flex-direction: column;
+  align-items:flex-start;
+  font-family:PingFang-SC-Regular;
+  font-weight:500;
+}
+.Reject-Infos{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.Info-item{
+  flex: 1;
+  text-align: left;
+  margin-left: 3.83%;
+  line-height: 32rpx;
+}
+.Infos-time{
+  font-size: 24rpx;
+  color: #575B60;
+}
+.Infos-name{
+  font-size: 30rpx;
+  color: #191F25;
+}
+.Des{
+  width: 65%;
+  font-size: 28rpx;
+  color: #575B60;
+  margin-top: 28rpx;
+  line-height: 30rpx;
+}
+.headName{
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 22rpx;
+  background-color: #399EFA;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius: 50%;
+}

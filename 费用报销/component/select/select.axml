@@ -1,0 +1,5 @@
+<template name="select">
+  <view class="select" key="select">
+    <view class="select-item" a:for="{{select}}" key="{{index}}" data-index="{{index}}" data-id="{{index}}" data-text="{{item}}" onTap="SelectItem">{{item}}</view>
+  </view>
+</template>

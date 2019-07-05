@@ -1,0 +1,10 @@
+<template name="grid">
+  <view class="grid" key="grid">
+    <view a:for="{{arr}}" key="{{index}}" class="grid-item" data-index="{{index}}" onTap="GridItem">
+      <view class="grid-item-wrapper">
+        <image class="grid-icon" src="{{item.icon}}"/>
+        <text class="grid-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+</template>

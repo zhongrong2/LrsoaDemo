@@ -1,0 +1,85 @@
+.DataList{
+  padding-top: 100rpx;
+}
+.list-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 192rpx;
+  border-bottom: 10rpx solid #F7F7F7;
+  padding: 40rpx 4%;
+}
+.list-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.list-item-info{
+  flex: 1;
+  text-align: left;
+  font-size: 24rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:400;
+  color: #7A7D81;
+  line-height: 34rpx;
+  margin-left: 3%;
+}
+.item-info-floater{
+  font-size: 32rpx;
+  font-weight:500;
+  color: #191F25;
+  padding-bottom: 27rpx;
+}
+.list-item-state{
+  font-size: 24rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:400;
+  line-height: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+}
+.item-state-InitTime{
+  color: #7A7D81;
+  padding-bottom: 19rpx;
+}
+.item-state-state{
+  flex: 1;
+}
+.state1{
+  color: #FF8D28;
+}
+.state2{
+  color: #FF8D28;
+}
+.state3{
+  color: #F25643;
+}
+.state4{
+  color: #15BC83;
+}
+.state5{
+  color: #576A95;
+}
+.state6{
+  color: #F25643;
+}
+.item-state-urgency{
+  width: 80%;
+  height: 40rpx;
+  font-size: 20rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:400;
+  line-height: 40rpx;
+  color: white;
+  text-align: center;
+  border-radius: 4rpx;
+}
+.level1{
+  background-color: #15BC83;
+}
+.level2{
+  background-color: #FF943E;
+}
+.level3{
+  background-color: #F25643;
+}

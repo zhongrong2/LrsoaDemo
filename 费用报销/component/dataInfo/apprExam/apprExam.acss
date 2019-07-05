@@ -1,0 +1,63 @@
+.apprExam{
+  padding: 40rpx 4.13% 100rpx 4.27%;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+}
+.apprExam-title{
+  font-size: 30rpx;
+  color: #191F25;
+  margin-bottom: 40rpx;
+}
+.apprExam-item{
+  padding-left: 2.4%;
+}
+.apprExam-item-head{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.apprExam-item-Info{
+  display: flex;
+  flex-direction: row;
+}
+.apprExam-item-pers{
+  flex: 1;
+  text-align: left;
+  padding-left: 2.67%;
+  font-size: 28rpx;
+  color: #191F25;
+  line-height: 40rpx;
+}
+.apprExam-item-time{
+  font-size: 24rpx;
+  color: #191F25;
+}
+.apprExam-border{
+  width: 4rpx;
+  height: 40rpx;
+  background-color: #E6E6E7;
+  margin:  20rpx 0rpx 20rpx 35rpx;
+}
+.apprExam-item:last-child .apprExam-border{
+  width: 0rpx;
+}
+.appr-des{
+  font-size: 28rpx;
+  color: #9Ea0A3;
+  line-height: 32rpx;
+  margin-left: 80rpx;
+}
+.item-per-name{
+  display: flex;
+  flex-direction: row;
+}
+.headName{
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 22rpx;
+  background-color: #399EFA;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius: 50%;
+}

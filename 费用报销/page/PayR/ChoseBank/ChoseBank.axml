@@ -1,0 +1,6 @@
+<view class="pageBody">
+  <view class="border"></view>
+  <view class="backList">
+    <view class="back-item" a:for="{{bankList}}" key="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ChoseBank">{{item.name}}</view>
+  </view>
+</view>

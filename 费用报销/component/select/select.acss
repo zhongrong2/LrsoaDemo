@@ -1,0 +1,20 @@
+.select{
+  display: flex;
+  flex-direction:column;
+  background-color: white;
+  align-content: center;
+}
+.select-item{
+  height: 90rpx;
+  padding: 0 5.6%;
+  border-bottom: 2rpx solid #F8F8F8;
+  text-align: left;
+  line-height: 90rpx;
+  font-size:32rpx;
+  font-family:PingFang-SC-Regular;
+  font-weight:400;
+  color: #7A7D81;
+}
+.select-item:last-child{
+  border-bottom: 0;
+}
