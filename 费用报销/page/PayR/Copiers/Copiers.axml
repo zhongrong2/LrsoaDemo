@@ -1,11 +1,12 @@
 <view class="page">
-  <view class="page-titel">抄送人{{CopMemNum}}人</view>
+  <view class="page-titel">抄送人{{count.length}}人</view>
   <view class="page-member">
     <view class="page-member-item" a:for="{{CopMem}}" key="{{index}}">
       <view class="member-itemL">
-        <image class="imgCC-cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelCopier" data-index="{{index}}"/>
-        <image class="imgCC-all-img" mode="widthFix" src="/image/imgCC_all.png"/>
-        <view class="imgCC-all-title">{{item.title}}</view>
+        <image class="imgCC-cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelCopier" data-index="{{index}}" data-id="{{item.id}}"/>
+        <image a:if="{{item.head_img==''?false:true}}" class="imgCC-all-img" mode="widthFix" src="{{item.head_img}}"/>
+        <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
+        <view class="imgCC-all-title">{{item.name}}</view>
       </view>
       <view class="member-itemR">+</view>
     </view>

@@ -23,17 +23,22 @@ Page({
   onLoad(options) {
     this.setData({
       userInfo:app.globalData.userInfo,
-      // id:options.id,
+      id:options.id,
+    })    
+    console.log(options.id);
+    if(options.id!=undefined){
+      this.GetInfo();
+      this.CopAllShow();
+    }
+  },
+  onShow(){
+    var that = this;
+    if(that.data.hasOnshow){
+      that.CopAllShow();
+    }
+    that.setData({
+      hasOnshow:true,
     })
-    console.log(options);
-    // if(this.data.id==undefined){
-    //   this.CopAllShow();
-    // }
-    // else{
-    //   this.GetInfo();
-      
-    // }
-    this.CopAllShow();
   },
   //选择时间
   ChoseData(){
@@ -153,7 +158,7 @@ Page({
     console.log(this.data.count);
     this.data.count.splice(index,1);
     const NewDelCount = this.data.count;
-    // console.log(this.data.CopMem,NewDelCop,this.data.count,NewDelCount);
+    console.log(index,this.data.CopMem,NewDelCop);
     this.setData({
       CopMem:NewDelCop
     });
@@ -161,8 +166,11 @@ Page({
   },
   // 超过3个抄送跳转页面
   ShowCopAll(){
+    var count = JSON.stringify(this.data.count);
+    var CopMem = JSON.stringify(this.data.CopMem);
+    console.log(count);
     dd.navigateTo({
-      url:'/page/PayR/Copiers/Copiers'
+      url:'/page/PayR/Copiers/Copiers?count='+count+'&CopMem='+CopMem
     })
   },
   //选择收款账户
@@ -203,7 +211,9 @@ Page({
   },
   // 提交数据
   onSubmit(){
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pic = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
+    // console.log(this.data.reason);
+    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
+    console.log(pic);
     if(reason == '' || reason == undefined){
       dd.showToast({
         content:'请输入申请事由',
@@ -246,11 +256,8 @@ Page({
       });
       return false;
     }
-    if(arr){
-      var cc_uids = arr.join(',');
-      return false;
-    }
-    console.log(uid,departId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
+    var cc_uids = arr.toString(),pic = JSON.stringify(pics);
+    // console.log(uid,departId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
@@ -263,12 +270,12 @@ Page({
         invoice_type:selectId,
         payment:payment,
         account_id:accountId,
-        pic:pic,
+        pic: pic,
         cc_uids:cc_uids,
         level:level,
         content:content,
       },
-      // dataType:'json',
+      dataType:'json',
       success(res){
         console.log(res.data);
         if(res.data.code == 0){
@@ -276,9 +283,27 @@ Page({
             content:res.data.data,
             duration:3000,
           });
-          that.onLoad();
-          dd.navigateTo({
+          dd.switchTab({
             url:'/page/init/init'
+          })
+          that.setData({
+            reason:'',
+            money:'',
+            dateVal:'',//日期
+            showSelect:false,//下拉框发票信息展示
+            selectId:'',//选择发票信息的id
+            selectVal:'',//选择发票信息值
+            payment:'',
+            accountId:'',//选择收款账户id
+            account:'',//收款账户
+            content:'',
+            images:[],//图片
+            count:'',//抄送人id
+            CopMem:[],//抄送人信息
+            level:'3',//默认紧急程度
+            'states[0].checked':false,
+            'states[1].checked':false,
+            'states[2].checked':true,
           })
         }
         else{
@@ -300,7 +325,7 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     });
-    console.log(id)
+    // console.log(id)
     var uid=that.data.userInfo.id;
     dd.httpRequest({
       url:URL+'/payapply/detail',
@@ -348,8 +373,10 @@ Page({
           money:Info.bill_info.money,
           dateVal:Info.bill_info.pay_time,
           selectVal:Info.bill_info.invoice_type,
+          selectId:Info.bill_info.invoice_id,
           payment:Info.bill_info.payment,
           account:Info.account_info.account,
+          accountId:Info.bill_info.id,
           content:Info.account_info.content,
           images:Info.account_info.pic,
           count:arr,

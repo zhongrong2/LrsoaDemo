@@ -58,7 +58,7 @@
   font-size: 30rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
-  line-height: 110rpx;
+  /* line-height: 110rpx; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -175,4 +175,27 @@
   font-weight:500;
   color: white;
   line-height: 60rpx;
+}
+.headName{
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 22rpx;
+  background-color: #399EFA;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius: 50%;
+  margin: 0 4%;
+}
+.searchRes-title{
+  height: 90rpx;
+  padding-left: 4.27%;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: #576A95;
+  text-align: left;
+  line-height: 90rpx;
+  border-bottom: 10rpx solid #F7F7F7;
+  background-color: white;
 }

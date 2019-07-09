@@ -7,7 +7,7 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        // console.log(code);
+        console.log(code);
         dd.httpRequest({
           url:that.globalData.http+'/ding/index',
           method:'POST',

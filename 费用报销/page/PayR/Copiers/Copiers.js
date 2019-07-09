@@ -1,29 +1,16 @@
 Page({
   data: {
-    CopMemNum:'0',
-    CopMem:[
-      {title:'明日香'},
-      {title:'二丫'},
-      {title:'五人'},
-      {title:'五人'},
-      {title:'明日香'},
-      {title:'二丫'},
-      {title:'五人'},
-      {title:'五人'},
-      {title:'明日香'},
-      {title:'五人'},
-      {title:'明日香'},
-      {title:'二丫'},
-      {title:'五人'},
-      {title:'五人'},
-    ]
+    count:[],
+    CopMem:[],
   },
-  onLoad() {
-    const CopMem = this.data.CopMem;
-    const CopMemNum = CopMem.length;
+  onLoad(options) {
+    var count = JSON.parse(options.count);
+    var CopMem = JSON.parse(options.CopMem);
     this.setData({
-      CopMemNum:CopMemNum,
+      count:count,
+      CopMem:CopMem,
     })
+    console.log(this.data.count,this.data.CopMem);
   },
   // 删除图片
   DelCopier(e){

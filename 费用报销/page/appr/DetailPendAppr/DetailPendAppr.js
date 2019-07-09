@@ -144,5 +144,14 @@ Page({
     this.setData({
       ReasonShow:false,
     })
-  }
+  },
+  // 预览图片
+  previewImage(e){
+    const srcs = this.data.Info.account_info.pic;
+    const index = e.currentTarget.dataset.index;
+    dd.previewImage({
+      current:index,
+      urls:srcs,
+    })
+  },
 });

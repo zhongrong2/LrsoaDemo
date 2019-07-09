@@ -15,7 +15,7 @@ Page({
       id:JSON.parse(options.id),
       status:options.status,
     })
-    console.log(options.status,this.data.status);
+    // console.log(options.status,this.data.status);
     this.GetInfo();
   },
   // 获取订单详情
@@ -35,7 +35,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
         that.setData({
           Info:res.data.data,
           apprExam:res.data.data.run_log,
@@ -70,7 +70,7 @@ Page({
         dd.hideLoading();
       },
       fail(err){
-        console.log(err);
+        // console.log(err);
         dd.showLoading({
           content: '加载中...',
           delay: 1000,
@@ -95,7 +95,8 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
+        dd.hideLoading();
         if(res.data.code==0){
           dd.showToast({
             content:res.data.data,
@@ -105,13 +106,48 @@ Page({
         }
       },
       fail(err){
-        console.log(err);
+        // console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
       }
     })
   },
   //取消
   Cancel(){
-    dd.navigateBack();
+    var that=this;
+    that.setData({
+      userInfo:app.globalData.userInfo
+    })
+    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role;
+    // console.log(id,uid,role);
+    dd.httpRequest({
+      url:URL+'/payapply/repeal',
+      method:'POST',
+      data:{
+        id:id,
+        uid:uid,
+        role:role,
+      },
+      dataType:'json',
+      success(res){
+        // console.log(res);
+        dd.hideLoading();
+        dd.showToast({
+          content:res.data.data,
+          duration:3000,
+        })
+        dd.navigateBack();
+      },
+      fail(err){
+        // console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
+      }
+    })
   },
   //修改
   Revise(){
@@ -120,5 +156,14 @@ Page({
     dd.navigateTo({
       url:'/page/PayR/PayR?id='+id
     })
-  }
+  },
+  // 预览图片
+  previewImage(e){
+    const srcs = this.data.Info.account_info.pic;
+    const index = e.currentTarget.dataset.index;
+    dd.previewImage({
+      current:index,
+      urls:srcs,
+    })
+  },
 });

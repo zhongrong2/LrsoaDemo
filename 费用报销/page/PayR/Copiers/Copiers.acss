@@ -31,6 +31,7 @@
 .imgCC-all-img{
   width: 70rpx;
   height: 70rpx;
+  border-radius: 50%;
 }
 .imgCC-all-title{
   font-size: 20rpx;
@@ -53,4 +54,14 @@
   font-size: 28rpx;
   color: #A4A4A4;
   padding: 0 12rpx;
+}
+.headName{
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 22rpx;
+  background-color: #399EFA;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius: 50%;
 }
