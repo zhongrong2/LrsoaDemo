@@ -4,17 +4,32 @@ let URL = app.globalData.http;
 Page({
   data: {
     id:'',
+    type:'copytome',
     Info:'',
     apprExam:[],
   },
   onLoad(options) {
-    this.setData({
-      id:JSON.parse(options.id),
-    })
-    // console.log(this.data.id);
-    var id = this.data.id;
-    this.ReadInfo(id);
-    this.GetInfo();
+    if(options.type==undefined){
+      // console.log(options.type);
+      this.setData({
+        id:JSON.parse(options.id),
+      })
+      // console.log(this.data.id);
+      var id = this.data.id;
+      this.ReadInfo(id);
+      this.GetInfo();
+    }
+    else{
+      this.setData({
+        id:options.id,
+        uid:options.uid,
+        type:options.type,
+      })
+      // console.log(this.data.id);
+      var id = this.data.id;
+      this.ReadInfo(id);
+      this.GetInfo();
+    }
   },
   //阅读订单
   ReadInfo(id){
@@ -47,7 +62,7 @@ Page({
   },
   // 获取订单详情
   GetInfo(){
-    var that=this,id =that.data.id;
+    var that=this,id =that.data.id,type=that.data.type;
     that.setData({
       userInfo:app.globalData.userInfo
     });
@@ -58,11 +73,12 @@ Page({
       data:{
         id:id,
         uid:uid,
-        type:'copytome',
+        type:type,
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
+        dd.hideLoading();
         that.setData({
           Info:res.data.data,
           apprExam:res.data.data.run_log,
@@ -82,8 +98,7 @@ Page({
         }else{
           that.setData({level:'level4'})
         }
-        console.log(that.data.Info.account_info.pic);
-        dd.hideLoading();
+        // console.log(that.data.Info.account_info.pic);
       },
       fail(err){
         console.log(err);

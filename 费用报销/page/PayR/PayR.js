@@ -100,7 +100,7 @@ Page({
         _this.setData({
           images:Imgs,
         })
-        console.log(_this.data.images);
+        // console.log(_this.data.images);
         app.uploadimg({
           url:app.globalData.http+'/payapply/uploadimg',
           filePath:addImages,
@@ -114,7 +114,7 @@ Page({
     this.data.images.splice(index,1);
     const Imgs = this.data.images;
     app.globalData.imgArr.splice(index,1);
-    console.log(index,Imgs,app.globalData.imgArr);
+    // console.log(index,Imgs,app.globalData.imgArr);
     this.setData({
       images:Imgs,
     })
@@ -158,7 +158,7 @@ Page({
     console.log(this.data.count);
     this.data.count.splice(index,1);
     const NewDelCount = this.data.count;
-    console.log(index,this.data.CopMem,NewDelCop);
+    // console.log(index,this.data.CopMem,NewDelCop);
     this.setData({
       CopMem:NewDelCop
     });
@@ -168,7 +168,7 @@ Page({
   ShowCopAll(){
     var count = JSON.stringify(this.data.count);
     var CopMem = JSON.stringify(this.data.CopMem);
-    console.log(count);
+    // console.log(count);
     dd.navigateTo({
       url:'/page/PayR/Copiers/Copiers?count='+count+'&CopMem='+CopMem
     })
@@ -213,7 +213,6 @@ Page({
   onSubmit(){
     // console.log(this.data.reason);
     const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
-    console.log(pic);
     if(reason == '' || reason == undefined){
       dd.showToast({
         content:'请输入申请事由',
@@ -257,6 +256,7 @@ Page({
       return false;
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
+    // console.log(pic);
     // console.log(uid,departId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
@@ -304,7 +304,8 @@ Page({
             'states[0].checked':false,
             'states[1].checked':false,
             'states[2].checked':true,
-          })
+          });
+          app.globalData.imgArr=[];
         }
         else{
           dd.showToast({
@@ -337,7 +338,8 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
+        dd.hideLoading();
         var Info = res.data.data,level;
         if(Info.bill_info.level=='一般'){
           level=3;
@@ -367,7 +369,7 @@ Page({
         for(var i in arr){
           arr[i]
         }
-        console.log(Info.bill_info,arr)
+        // console.log(Info.bill_info,arr)
         that.setData({
           reason:Info.bill_info.title,
           money:Info.bill_info.money,
@@ -383,8 +385,7 @@ Page({
           CopMem:Info.cc_uids,
           level:level,
         })
-        console.log(that.data.count,that.data.CopMem);
-        dd.hideLoading();
+        // console.log(that.data.count,that.data.CopMem);
       },
       fail(err){
         console.log(err);

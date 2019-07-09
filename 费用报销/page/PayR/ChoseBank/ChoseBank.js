@@ -15,12 +15,12 @@ Page({
       dataType:'json',
       success(res){
         console.log(res)
+         dd.hideLoading();
         if(res.data.code==0){
           that.setData({
             bankList:res.data.data
           })
         }
-        dd.hideLoading();
       },
       fail(err){
         console.log(err)

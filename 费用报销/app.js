@@ -7,7 +7,7 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        console.log(code);
+        // console.log(code);
         dd.httpRequest({
           url:that.globalData.http+'/ding/index',
           method:'POST',
@@ -61,7 +61,7 @@ App({
       method:'POST',
       dataType:'json',
       success(res){
-        console.log(res.data.data);
+        // console.log(res.data.data);
         if(res.data.code == 0){
           that.setData({
             showSelect:!that.data.showSelect,
@@ -107,7 +107,7 @@ App({
       success(res){
         success++;
         var resData = JSON.parse(res.data);
-        that.globalData.imgArr == that.globalData.imgArr.unshift(resData.data)
+        that.globalData.imgArr == that.globalData.imgArr.unshift(resData.data);
       },
       fail(res){
         fail++;

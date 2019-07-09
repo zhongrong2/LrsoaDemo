@@ -26,10 +26,10 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
+        dd.hideLoading();
         that.setData({
           areaList:res.data.data
         })
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);
@@ -52,10 +52,10 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
+        dd.hideLoading();
         that.setData({
           cityList:res.data.data
         })
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);

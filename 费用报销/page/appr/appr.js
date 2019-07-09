@@ -41,6 +41,14 @@ Page({
       hasOnshow:true,
     })
   },
+  onUnload(){
+    if (getCurrentPages().length == 1) {
+      // console.log(getCurrentPages().length);
+      dd.navigateBack({
+        delta: 1
+      })
+    }
+  },
   //获取待审批和已驳回的数量
   GetCount(){
     var that=this;
@@ -130,7 +138,8 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data);
+        // console.log(res.data);
+        dd.hideLoading();
         if(res.data.data == '' && that.data.List != ''){
           dd.showToast({
             content:'没有更多数据！',
@@ -148,7 +157,6 @@ Page({
         that.setData({
           page:Page,
         });
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);

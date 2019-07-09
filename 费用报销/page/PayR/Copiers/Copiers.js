@@ -10,7 +10,7 @@ Page({
       count:count,
       CopMem:CopMem,
     })
-    console.log(this.data.count,this.data.CopMem);
+    // console.log(this.data.count,this.data.CopMem);
   },
   // 删除图片
   DelCopier(e){

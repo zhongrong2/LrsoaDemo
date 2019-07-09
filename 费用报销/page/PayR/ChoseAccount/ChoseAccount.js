@@ -48,6 +48,7 @@ Page({
       },
       dataType:'json',
       success(res){
+        dd.hideLoading();
         if(res.data.data == '' && that.data.Account != ''){
           dd.showToast({
             content:'没有更多数据！',
@@ -65,7 +66,6 @@ Page({
         that.setData({
           page:Page,
         });
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);

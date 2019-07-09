@@ -38,6 +38,13 @@ Page({
       hasOnshow:true,
     })
   },
+  onUnload(){
+    if (getCurrentPages().length == 1) {
+      dd.navigateBack({
+        delta: 1
+      })
+    }
+  },
   //获取未读的数量
   GetCount(){
     var that=this;
@@ -127,6 +134,7 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res.data);
+        dd.hideLoading();
         if(res.data.data == '' && that.data.List != ''){
           dd.showToast({
             content:'没有更多数据！',
@@ -146,7 +154,6 @@ Page({
         that.setData({
           page:Page,
         });
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);

@@ -25,3 +25,4 @@ require('../../component/dataInfo/CC/CC');
 require('../../page/PayR/ChoseBank/ChoseBank');
 require('../../component/dataInfo/headInfo/headInfo');
 require('../../page/PayR/ChoseBankSub/ChoseBankSub');
+require('../../page/detail/detail');

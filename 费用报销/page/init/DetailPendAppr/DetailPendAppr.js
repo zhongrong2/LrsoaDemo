@@ -5,22 +5,36 @@ Page({
   data: {
     id:'',
     status:'',
+    type:'isend',
     Info:'',
     apprExam:[],
     CC:[],
     ReasonShow:false,
   },
   onLoad(options) {
-    this.setData({
-      id:JSON.parse(options.id),
-      status:options.status,
-    })
-    // console.log(options.status,this.data.status);
-    this.GetInfo();
+    if(options.type==undefined){
+      // console.log(options.type);
+      this.setData({
+        id:JSON.parse(options.id),
+        status:options.status,
+      })
+      // console.log(options.status,this.data.status);
+      this.GetInfo();
+    }
+    else{
+      this.setData({
+        id:options.id,
+        status:options.status,
+        uid:options.uid,
+        type:options.type,
+      })
+      // console.log(options.status,this.data.status);
+      this.GetInfo();
+    }
   },
   // 获取订单详情
   GetInfo(){
-    var that=this,id =that.data.id;
+    var that=this,id =that.data.id,type=that.data.type;
     that.setData({
       userInfo:app.globalData.userInfo
     });
@@ -31,11 +45,12 @@ Page({
       data:{
         id:id,
         uid:uid,
-        type:'isend',
+        type:type,
       },
       dataType:'json',
       success(res){
         // console.log(res);
+        dd.hideLoading();
         that.setData({
           Info:res.data.data,
           apprExam:res.data.data.run_log,
@@ -66,8 +81,7 @@ Page({
         }else{
           that.setData({level:'level4'});
         }
-        console.log(that.data.Info.account_info.pic);
-        dd.hideLoading();
+        // console.log(that.data.Info.account_info.pic);
       },
       fail(err){
         // console.log(err);

@@ -117,7 +117,7 @@ Page({
     const that = this;
     var Page = that.data.page,limit = that.data.limit;
     var count = that.data.count;
-    console.log(Page);
+    // console.log(Page);
     dd.httpRequest({
       url:URL+'/common/userList',
       method:'POST',
@@ -128,7 +128,8 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data.data);
+        // console.log(res.data.data);
+        dd.hideLoading();
         that.setData({
           departShow:false,
           subdepartShow:false,
@@ -168,7 +169,6 @@ Page({
             }
           }
         }
-        dd.hideLoading();
       },
       fail(err){
         console.log(err);
@@ -256,7 +256,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
         if(res.data.data.length>0){
           that.setData({
             departShow:false,
@@ -308,7 +308,7 @@ Page({
     const that = this;
     var count = that.data.count;
     var CopMem = that.data.CopMem;
-    console.log(count,CopMem);
+    // console.log(count,CopMem);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
