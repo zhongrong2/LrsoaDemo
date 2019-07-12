@@ -29,6 +29,11 @@
   text-align: center;
   line-height: 70rpx;
 }
+.head{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
 .name-title{
   font-size: 20rpx;
   color: #A4A4A4;

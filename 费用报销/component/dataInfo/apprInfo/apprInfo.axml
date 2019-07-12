@@ -1,6 +1,6 @@
 <template name="apprInfo">
   <view class="apprInfo">
-    <image class="Info-icon {{Top}}" mode="scaleToFill" src="{{Info.bill_info.detail_img}}"/>
+    <image a:if="{{(type=='iaudit'||type=='isend')&&(status=='1'||status=='2')?false:true}}" class="Info-icon {{Top}}" mode="scaleToFill" src="{{Info.bill_info.detail_img}}"/>
     <!-- 订单信息开始 -->
     <view class="order">
       <view class="list">

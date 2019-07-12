@@ -6,11 +6,11 @@
   <!-- 个人信息 -->
   <template is="headInfo" data="{{Info,level:level}}"></template>
   <!-- 订单信息 -->
-  <template is="apprInfo" data="{{Info}}"></template>
+  <template is="apprInfo" data="{{Info,type:type,status:status}}"></template>
   <!-- 审批记录 -->
   <template is="apprExam" data="{{apprExam}}"></template>
   <!-- 按钮显示 -->
-  <view class="btns" a:if="{{status==1?true:false}}">
+  <view class="btns" a:if="{{Info.bill_info.button_status==1?true:false}}">
     <button class="btn reject" type="primary" plain="true" hover-class="none" onTap="Back">驳回</button>
     <button class="btn" type="primary" hover-class="none" onTap="Pass">同意</button>
   </view>

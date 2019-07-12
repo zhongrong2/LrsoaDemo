@@ -40,6 +40,7 @@ Page({
       method:'POST',
       dataType:'json',
       success(res){
+        dd.hideLoading();
         // console.log(res.data.data);
         that.setData({
           departShow:true,
@@ -67,6 +68,10 @@ Page({
       },
       fail(err){
         console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
       }
     })
   },
@@ -83,6 +88,7 @@ Page({
       },
       dataType:'json',
       success(res){
+        dd.hideLoading();
         // console.log(res.data.data);
         that.setData({
           departShow:false,
@@ -95,6 +101,10 @@ Page({
       },
       fail(err){
         console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
       }
     })
   },

@@ -21,24 +21,27 @@ Page({
     hasOnshow:false,
   },
   onLoad(options) {
-    this.setData({
+    var that = this;
+    that.setData({
       userInfo:app.globalData.userInfo,
       id:options.id,
     })    
     console.log(options.id);
     if(options.id!=undefined){
-      this.GetInfo();
-      this.CopAllShow();
+      that.GetInfo();
+      var CopMem = that.data.CopMem;
+      if(CopMem.length>0){//判断有抄送人调用多个抄送人显示方法
+        that.CopAllShow();
+      }
     }
   },
   onShow(){
-    var that = this;
-    if(that.data.hasOnshow){
-      that.CopAllShow();
+    if(this.data.hasOnshow){
+     this.CopAllShow();
     }
-    that.setData({
+    this.setData({
       hasOnshow:true,
-    })
+    });
   },
   //选择时间
   ChoseData(){
@@ -316,6 +319,10 @@ Page({
       },
       fail(err){
         console.log(err);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        });
       },
     })
     return true;
@@ -340,51 +347,74 @@ Page({
       success(res){
         // console.log(res);
         dd.hideLoading();
-        var Info = res.data.data,level;
-        if(Info.bill_info.level=='一般'){
-          level=3;
+        if(res.data.code==0){
+          var Info = res.data.data,level;
+          if(Info.bill_info.level=='一般'){
+            level=3;
+            that.setData({
+              'states[0].checked':false,
+              'states[1].checked':false,
+              'states[2].checked':true,
+            })
+          }
+          else if(Info.bill_info.level=='紧急'){
+            level=2;
+            that.setData({
+              'states[0].checked':false,
+              'states[1].checked':true,
+              'states[2].checked':false,
+            })
+          }
+          else if(Info.bill_info.level=='非常紧急'){
+            level=1;
+            that.setData({
+              'states[0].checked':true,
+              'states[1].checked':false,
+              'states[2].checked':false,
+            })
+          };
+          
+          if(Info.bill_info.content!=null){//判断备注是否有值
+            that.setData({
+              content:Info.bill_info.content
+            })
+          }
+          var uids = Info.bill_info.cc_uids;//抄送人
+          if(uids!=null){//判断抄送人是否有值
+            var arr = uids.split(',');
+            for(var i in arr){
+              arr[i]
+            }
+          }
+          else{
+            arr = [];
+          }
+          if(Info.account_info.pic!=null){
+            that.setData({
+              images:Info.account_info.pic,
+            })
+          }
+          // console.log(Info,arr)
           that.setData({
-            'states[0].checked':false,
-            'states[1].checked':false,
-            'states[2].checked':true,
+            reason:Info.bill_info.title,
+            money:Info.bill_info.money,
+            dateVal:Info.bill_info.pay_time,
+            selectVal:Info.bill_info.invoice_type,
+            selectId:Info.bill_info.invoice_id,
+            payment:Info.bill_info.payment,
+            account:Info.account_info.account,
+            accountId:Info.bill_info.id,
+            count:arr,
+            CopMem:Info.cc_uids,
+            level:level,
           })
         }
-        else if(Info.bill_info.level=='紧急'){
-          level=2;
-          that.setData({
-            'states[0].checked':false,
-            'states[1].checked':true,
-            'states[2].checked':false,
-          })
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
         }
-        else if(Info.bill_info.level=='非常紧急'){
-          level=1;
-          that.setData({
-            'states[0].checked':true,
-            'states[1].checked':false,
-            'states[2].checked':false,
-          })
-        };
-        var arr = Info.bill_info.cc_uids.split(',');
-        for(var i in arr){
-          arr[i]
-        }
-        // console.log(Info.bill_info,arr)
-        that.setData({
-          reason:Info.bill_info.title,
-          money:Info.bill_info.money,
-          dateVal:Info.bill_info.pay_time,
-          selectVal:Info.bill_info.invoice_type,
-          selectId:Info.bill_info.invoice_id,
-          payment:Info.bill_info.payment,
-          account:Info.account_info.account,
-          accountId:Info.bill_info.id,
-          content:Info.account_info.content,
-          images:Info.account_info.pic,
-          count:arr,
-          CopMem:Info.cc_uids,
-          level:level,
-        })
         // console.log(that.data.count,that.data.CopMem);
       },
       fail(err){

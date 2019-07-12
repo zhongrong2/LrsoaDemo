@@ -25,7 +25,6 @@ Page({
       dataType:'json',
       success(res){
         console.log(res.data);
-        dd.hideLoading();
         if(res.data.code == 0){
           dd.hideLoading();
           that.setData({

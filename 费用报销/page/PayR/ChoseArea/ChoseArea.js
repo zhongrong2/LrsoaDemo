@@ -26,10 +26,18 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
-        dd.hideLoading();
-        that.setData({
-          areaList:res.data.data
-        })
+        if(res.data.code==0){
+          dd.hideLoading();
+          that.setData({
+            areaList:res.data.data
+          })
+        }
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
+        }
       },
       fail(err){
         console.log(err);
@@ -52,10 +60,18 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
-        dd.hideLoading();
-        that.setData({
-          cityList:res.data.data
-        })
+        if(res.data.code==0){
+          dd.hideLoading();
+          that.setData({
+            cityList:res.data.data
+          })
+        }
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
+        }
       },
       fail(err){
         console.log(err);

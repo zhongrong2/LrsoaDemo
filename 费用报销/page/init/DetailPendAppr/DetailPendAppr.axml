@@ -5,8 +5,8 @@
 
 <view class="pageBody">
   <!-- 审批进度开始 -->
-  <view class="progess">
-    <view class="progess-item" a:if="{{status==1||status==2?true:false}}" a:for="{{apprExam}}" key="{{index}}">
+  <view class="progess" a:if="{{Info.bill_info.status==1||Info.bill_info.status==2?true:false}}">
+    <view class="progess-item" a:for="{{apprExam}}" key="{{index}}">
       <view class="progess-item-info">
         <view class="item-info-name">{{item.username}}</view>
         <view class="item-info-pos">{{item.title}}</view>
@@ -20,7 +20,7 @@
   <template is="headInfo" a:if="{{status==3||status==6?true:false}}" data="{{Info,level:level}}"></template>
   <view a:if="{{Info.bill_info.status=='4'||Info.bill_info.status=='5'?true:false}}" class="levelItem {{level}}">{{Info.bill_info.level}}</view>
   <!-- 订单信息 -->
-  <template is="apprInfo" data="{{Info,Top:Top}}"></template>
+  <template is="apprInfo" data="{{Info,Top:Top,type:type,status:status}}"></template>
   <!-- 抄送人开始 -->
   <template is="CC" data="{{CC}}"></template>
   <!-- 抄送人结束 -->
@@ -28,11 +28,11 @@
   <template is="apprExam" data="{{apprExam}}"></template>
   <!-- 审批记录结束 -->
   <!-- 撤销按钮 -->
-  <view class="Btns" a:if="{{Info.bill_info.status=='1'?true:false}}">
+  <view class="Btns" a:if="{{Info.bill_info.button_status=='2'?true:false}}">
     <button class="btn" type="primary" hover-class="none" onTap="Repeal">撤销</button>
   </view>
   <!-- 修改按钮 -->
-  <view class="btns" a:if="{{Info.bill_info.status=='3'||Info.bill_info.status=='5'?true:false}}">
+  <view class="btns" a:if="{{Info.bill_info.button_status=='3'?true:false}}">
       <button class="btn2 reject" type="primary" plain="true" hover-class="none" onTap="Cancel">取消</button>
       <button class="btn2" type="primary" hover-class="none" onTap="Revise">立即修改</button>
     </view>

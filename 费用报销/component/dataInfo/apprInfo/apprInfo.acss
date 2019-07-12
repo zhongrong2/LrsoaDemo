@@ -12,7 +12,7 @@
   position: absolute;
   top: -10%;
   right: 13.33%;
-  z-index: 50;
+  z-index: 999;
 }
 .level1{
   background-color: #15BC83;

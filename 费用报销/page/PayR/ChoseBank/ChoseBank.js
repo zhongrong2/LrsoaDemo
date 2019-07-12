@@ -15,11 +15,17 @@ Page({
       dataType:'json',
       success(res){
         console.log(res)
-         dd.hideLoading();
         if(res.data.code==0){
+          dd.hideLoading();
           that.setData({
             bankList:res.data.data
           })
+        }
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
         }
       },
       fail(err){

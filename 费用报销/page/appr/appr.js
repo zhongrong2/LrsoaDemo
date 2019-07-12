@@ -41,14 +41,6 @@ Page({
       hasOnshow:true,
     })
   },
-  onUnload(){
-    if (getCurrentPages().length == 1) {
-      // console.log(getCurrentPages().length);
-      dd.navigateBack({
-        delta: 1
-      })
-    }
-  },
   //获取待审批和已驳回的数量
   GetCount(){
     var that=this;
@@ -70,7 +62,7 @@ Page({
           'navItem.nav[0].count':res.data.data.audit,
           'navItem.nav[1].count':res.data.data.back,
         })
-        // console.log(res.data.data,that.data.navItem.nav[0].count);
+        console.log(res.data.data.audit);
         app.addTag(that.data);
         app.InfoShow(that);
       },
@@ -139,24 +131,32 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res.data);
-        dd.hideLoading();
-        if(res.data.data == '' && that.data.List != ''){
-          dd.showToast({
-            content:'没有更多数据！',
-            duration:3000,
+        if(res.data.code==0){
+          dd.hideLoading();
+          if(res.data.data == '' && that.data.List != ''){
+            dd.showToast({
+              content:'没有更多数据！',
+              duration:3000,
+            })
+          }
+          var arr = that.data.List;
+          for(var i = 0;i < res.data.data.length;i++){
+            arr.push(res.data.data[i]);
+          }
+          that.setData({
+            List:arr,
           })
+          Page++;
+          that.setData({
+            page:Page,
+          });
         }
-        var arr = that.data.List;
-        for(var i = 0;i < res.data.data.length;i++){
-          arr.push(res.data.data[i]);
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
         }
-        that.setData({
-          List:arr,
-        })
-        Page++;
-        that.setData({
-          page:Page,
-        });
       },
       fail(err){
         console.log(err);

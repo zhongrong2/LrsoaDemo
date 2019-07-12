@@ -48,24 +48,32 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
-        if(res.data.data == '' && that.data.Account != ''){
-          dd.showToast({
-            content:'没有更多数据！',
-            duration:3000,
-          })
+        if(res.data.code==0){
+          dd.hideLoading();
+          if(res.data.data == '' && that.data.Account != ''){
+            dd.showToast({
+              content:'没有更多数据！',
+              duration:3000,
+            })
+          }
+          var arr = that.data.Account//旧的数组
+          for(var i = 0;i < res.data.data.length;i++){
+            arr.push(res.data.data[i]);
+          }
+          that.setData({
+            Account:arr,
+          });
+          Page++;
+          that.setData({
+            page:Page,
+          });
         }
-        var arr = that.data.Account//旧的数组
-        for(var i = 0;i < res.data.data.length;i++){
-          arr.push(res.data.data[i]);
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
         }
-        that.setData({
-          Account:arr,
-        });
-        Page++;
-        that.setData({
-          page:Page,
-        });
       },
       fail(err){
         console.log(err);
@@ -85,14 +93,25 @@ Page({
       dataType:'json',
       success(res){
         if(res.data.code == 0){
+          dd.hideLoading();
           that.setData({
             AccountListShow:!that.data.AccountListShow,
             AccountList:res.data.data,
           })
         }
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
+        }
       },
       fail(err){
         console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
       }
     })
   },
@@ -130,7 +149,11 @@ Page({
         }
       },
       fail(err){
-        console.log(err)
+        console.log(err);
+        dd.showToast({
+          content:'删除失败',
+          duration:3000,
+        })
       }
     })
   },

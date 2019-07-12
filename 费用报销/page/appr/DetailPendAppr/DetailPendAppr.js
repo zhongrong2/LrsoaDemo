@@ -11,21 +11,38 @@ Page({
     ReasonShow:false,
   },
   onLoad(options) {
+    this.setData({
+      userInfo:app.globalData.userInfo
+    });
     if(options.type==undefined){
       // console.log(options.type);
       this.setData({
         id:JSON.parse(options.id),
         status:options.status,
+        uid:this.data.userInfo.id,
       })
       // console.log(options.status,this.data.status);
       this.GetInfo();
     }
     else{
+      var uId;
+      dd.getStorage({
+        key:'uid',
+        success(res){
+          uId = res.data.uid;
+          // console.log(uid);
+        },
+        fail(err){
+          dd.showToast({
+            content:'网络出错',
+            duration:3000,
+          })
+        }
+      })
       this.setData({
         id:options.id,
-        status:options.status,
-        uid:optionsuid,
         type:options.type,
+        uid:uId,
       })
       // console.log(options.status,this.data.status);
       this.GetInfo();
@@ -33,11 +50,7 @@ Page({
   },
   // 获取订单详情
   GetInfo(){
-    var that=this,id =that.data.id,type=that.data.type;
-    that.setData({
-      userInfo:app.globalData.userInfo
-    });
-    var uid=that.data.userInfo.id;
+    var that=this,id =that.data.id,type=that.data.type,uid=that.data.uid;
     dd.httpRequest({
       url:URL+'/payapply/detail',
       method:'POST',
@@ -49,25 +62,34 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
-        dd.hideLoading();
-        that.setData({
-          Info:res.data.data,
-          apprExam:res.data.data.run_log,
-        })
-        //判断紧急程度显示样式
-        var status=that.data.Info.bill_info.status,level=that.data.Info.bill_info.level;
-        if(status=='1'||status=='2'){
-          if(level=='一般'){
-            that.setData({level:'level1'})
+        if(res.data.code==0){
+          dd.hideLoading();
+          that.setData({
+            Info:res.data.data,
+            apprExam:res.data.data.run_log,
+            status:res.data.data.bill_info.status,
+          })
+          //判断紧急程度显示样式
+          var status=that.data.Info.bill_info.status,level=that.data.Info.bill_info.level;
+          if(status=='1'||status=='2'){
+            if(level=='一般'){
+              that.setData({level:'level1'})
+            }
+            else if(level=='紧急'){
+              that.setData({level:'level2'})
+            }
+            else if(level=='非常紧急'){
+              that.setData({level:'level3'})
+            }
+          }else{
+            that.setData({level:'level4'})
           }
-          else if(level=='紧急'){
-            that.setData({level:'level2'})
-          }
-          else if(level=='非常紧急'){
-            that.setData({level:'level3'})
-          }
-        }else{
-          that.setData({level:'level4'})
+        }
+        else if(res.data.code==1){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
         }
         // console.log(that.data.Info.account_info.pic);
       },
@@ -135,15 +157,32 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res);
-        dd.showToast({
-          content:res.data.data,
-          duration:3000,
-        })
-        that.CloseReason();
-        dd.navigateBack();
+        if(res.data.code==0){
+          dd.showToast({
+            content:res.data.data,
+            duration:3000,
+          })
+          that.CloseReason();
+          dd.navigateBack();
+        }
+        else if(res.data.code==1){
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          })
+          that.CloseReason();
+        }
+        
+        // console.log(getCurrentPages.length);
+        
       },
       fail(err){
         console.log(err);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        })
+        that.CloseReason();
       }
     })
   },

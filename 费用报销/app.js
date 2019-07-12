@@ -1,33 +1,18 @@
 App({
   onLaunch(options) {
     // 第一次打开
-    // options.query == {number:1}
     const that = this;
-    console.info('App onLaunch');
+    // console.info('App onLaunch');
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
+        var uid;
         // console.log(code);
-        dd.httpRequest({
-          url:that.globalData.http+'/ding/index',
-          method:'POST',
-          data:{
-            code:code,
-          },
-          dataType:'json',
+        dd.getStorage({
+          key:'uid',
           success(res){
-            const data = res.data;
-            // console.log(data);
-            if(data.code == 0){
-              that.globalData.userInfo = data.data;
-            }
-            else{
-              dd.showToast({
-                content:res.data.msg,
-                duration:3000,
-              })
-            }
-            
+            uid = res.data.uid;
+            // console.log(uid);
           },
           fail(err){
             dd.showToast({
@@ -36,6 +21,73 @@ App({
             })
           }
         })
+        if(uid){
+          dd.httpRequest({
+            url:that.globalData.http+'/common/userInfo',
+            method:'POST',
+            data:{
+              uid:uid,
+            },
+            dataType:'json',
+            success(res){
+              const data = res.data;
+              if(data.code == 0){
+                that.globalData.userInfo = data.data;
+                // console.log(data.data);
+              }
+              else{
+                dd.showToast({
+                  content:res.data.msg,
+                  duration:3000,
+                })
+              }
+            },
+            fail(err){
+              dd.showToast({
+                content:'网络出错',
+                duration:3000,
+              })
+            }
+          })
+        }
+        else{
+          dd.httpRequest({
+            url:that.globalData.http+'/ding/index',
+            method:'POST',
+            data:{
+              code:code,
+            },
+            dataType:'json',
+            success(res){
+              const data = res.data;
+              // console.log(data);
+              if(data.code == 0){
+                // console.log(data.data.id,'获取uid');
+                const Id = data.data.id;
+                dd.setStorageSync({
+                  key:'uid',
+                  data:{
+                    uid:Id,
+                  }
+                })
+                that.globalData.userInfo = data.data;
+              }
+              else{
+                dd.showToast({
+                  content:res.data.msg,
+                  duration:3000,
+                })
+              }
+              
+            },
+            fail(err){
+              dd.showToast({
+                content:'网络出错',
+                duration:3000,
+              })
+            }
+          })
+        }
       },
       fail(err){
         dd.showToast({
@@ -111,14 +163,14 @@ App({
       },
       fail(res){
         fail++;
-        console.log(fail);
+        // console.log(fail);
       },
       complete(res){
         i++;
         if(i == data.filePath.length){
           console.log("执行完毕，成功"+success+"失败"+fail);
         }else{
-          console.log(i);
+          // console.log(i);
           data.i=i;
           data.success=success;
           data.fail=fail;

@@ -12,6 +12,7 @@ Page({
   },
   onShow() {
     // 页面显示
+    this.onLoad();
   },
   onHide() {
     // 页面隐藏
