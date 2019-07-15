@@ -23,7 +23,7 @@
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">金额</view>
       <view class="form-content">
-        <input class="input" type="text" placeholder="请输入付款金额" value="{{money}}" onBlur="GetMoneny"/>
+        <input class="input" type="number" placeholder="请输入付款金额" value="{{money}}" onBlur="GetMoneny"/>
       </view>
     </view>
     <view class="page-section">
@@ -53,13 +53,19 @@
       </view>
       
     </view>
-    <view class="page-section">
-      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
-      <view class="form-label">收款账号</view>
-      <view class="form-content contentR" onTap="ChoseAccount">
-        <input class="input" type="text" placeholder="请填写收款账号" disabled="true" value="{{account}}"/>
+    <view class="page-section Account-section">
+      <view class="contentT">
+        <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+        <view class="form-label">收款账号</view>
+        <view class="form-content contentR" onTap="ChoseAccount">
+          <input class="input" type="text" placeholder="请填写收款账号" disabled="true" value="{{account}}"/>
+        </view>
+        <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
       </view>
-      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
+      
+      <view class="contentB">
+        <input class="input contentB-input" type="text" placeholder="" disabled="true" value="8888"/>
+      </view>
     </view>
     <view class="page-des">
       <view class="form-title">备注</view>

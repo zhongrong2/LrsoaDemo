@@ -31,10 +31,11 @@ Page({
         success(res){
           uId = res.data.uid;
           that.setData({
-            id:options.id,
+            id:JSON.parse(options.id),
             type:options.type,
-            uid:uId
-          })
+            uid:uId,
+          });
+          that.GetInfo();
         },
         fail(err){
           dd.showToast({
@@ -43,7 +44,6 @@ Page({
           })
         }
       })
-      that.GetInfo();
     }
   },
   // 获取订单详情

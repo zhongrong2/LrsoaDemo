@@ -31,10 +31,13 @@ Page({
           uId = res.data.uid;
           // console.log(uid);
            that.setData({
-            id:options.id,
+            id:JSON.parse(options.id),
             type:options.type,
             uid:uId,
-          })
+          });
+          var id = that.data.id;
+          that.ReadInfo(id);
+          that.GetInfo();
         },
         fail(err){
           dd.showToast({
@@ -44,9 +47,6 @@ Page({
         }
       })
       // console.log(this.data.id);
-      var id = that.data.id;
-      that.ReadInfo(id);
-      that.GetInfo();
     }
   },
   //阅读订单

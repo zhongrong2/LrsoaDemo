@@ -13,17 +13,17 @@ Page({
     var id=that.data.id,type=that.data.type;
     if(type=="iaudit"){
       dd.redirectTo({
-        url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type
+        url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&type='+type
       })
     }
     else if(type=="isend"){
       dd.redirectTo({
-        url:'/page/init/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type
+        url:'/page/init/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&type='+type
       })
     }
     else if(type=="copytome"){
       dd.redirectTo({
-        url:'/page/CC/DetailInfo/DetailInfo?id='+id+'&type='+type
+        url:'/page/CC/DetailInfo/DetailInfo?id='+JSON.stringify(id)+'&type='+type
       })
     }
   },

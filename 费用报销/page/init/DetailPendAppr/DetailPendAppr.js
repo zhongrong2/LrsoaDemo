@@ -33,10 +33,11 @@ Page({
           uId = res.data.uid;
           // console.log(uid);
           that.setData({
-            id:options.id,
+            id:JSON.parse(options.id),
             type:options.type,
             uid:uId,
-          })
+          });
+          that.GetInfo();
         },
         fail(err){
           dd.showToast({
@@ -46,7 +47,6 @@ Page({
         }
       })
       // console.log(options.status,this.data.status);
-      that.GetInfo();
     }
   },
   // 获取订单详情

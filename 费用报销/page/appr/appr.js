@@ -93,10 +93,10 @@ Page({
   },
   //点击查看详情
   InfoTap(e){
-    var that=this,id=e.currentTarget.dataset.id,status=that.data.navItem.status;
+    var that=this,id=e.currentTarget.dataset.id,status=that.data.navItem.status,type='iaudit';
     // console.log(status);
     dd.navigateTo({
-      url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&status='+status
+      url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&status='+status+'&type='+type
     });
   },
   //搜索
