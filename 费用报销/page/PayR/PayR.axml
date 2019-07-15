@@ -51,20 +51,26 @@
       <view class="form-content">
         <input class="input" type="text" placeholder="请输入支付对象名称/单位" value="{{payment}}" onBlur="GetPayment"/>
       </view>
-      
     </view>
-    <view class="page-section Account-section">
+    <view class="page-section" a:if="{{accountName==''?true:false}}">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">收款账号</view>
+      <view class="form-content contentR" onTap="ChoseAccount">
+        <input class="input" type="text" placeholder="请填写收款账号" disabled="true"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
+    </view>
+    <view class="page-section Account-section" a:if="{{accountName==''?false:true}}">
       <view class="contentT">
         <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
         <view class="form-label">收款账号</view>
         <view class="form-content contentR" onTap="ChoseAccount">
-          <input class="input" type="text" placeholder="请填写收款账号" disabled="true" value="{{account}}"/>
+          <input class="input" type="text" placeholder="请填写收款账号" disabled="true" value="{{accountName}}"/>
         </view>
         <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
       </view>
-      
       <view class="contentB">
-        <input class="input contentB-input" type="text" placeholder="" disabled="true" value="8888"/>
+        <input class="input contentB-input" type="text" placeholder="" disabled="true" value="{{account}}"/>
       </view>
     </view>
     <view class="page-des">

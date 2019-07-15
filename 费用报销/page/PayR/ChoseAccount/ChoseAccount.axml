@@ -24,7 +24,7 @@
     <scroll-view onScrollToLower="onReachBottom">
       <view class="YesAccountList">
         <view class="YesAccountList-item" a:for="{{Account}}" key="{{item.id}}" data-index="{{id}}">
-          <view class="YesAccountList-itemBox" data-index="{{item.id}}" data-account="{{item.account}}" onTap="ChoseAccountList">
+          <view class="YesAccountList-itemBox" data-index="{{item.id}}" data-name="{{item.name}}" data-account="{{item.account}}" onTap="ChoseAccountList">
             <image class="Account-info-img" mode="scaleToFill" src="{{item.img}}"/>
             <view class="YesAccountList-item-info">
               <view class="Account-name">{{item.name}}</view>

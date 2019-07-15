@@ -159,14 +159,14 @@ Page({
   },
   //选择收款账户
   ChoseAccountList(e){
-    const account = e.currentTarget.dataset.account;
-    const id = e.currentTarget.dataset.index;
+    const account = e.currentTarget.dataset.account,id = e.currentTarget.dataset.index,name = e.currentTarget.dataset.name;
     // console.log(account,id);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
       account:account,
       accountId:id,
+      accountName:name,
     })
     dd.navigateBack({delta:1});
   },

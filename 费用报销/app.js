@@ -156,7 +156,7 @@ App({
   },
   // 上传多张图片
   uploadimg(data){
-    console.log(data.filePath);
+    // console.log(data.filePath);
     var that = this,i = data.i ? data.i : 0,success = data.success ? data.success : 0,fail = data.fail ? data.fail: 0;
     // console.log(i,success,fail);
     dd.uploadFile({
@@ -167,7 +167,8 @@ App({
       success(res){
         success++;
         var resData = JSON.parse(res.data);
-        that.globalData.imgArr == that.globalData.imgArr.unshift(resData.data);
+        that.globalData.imgArr == that.globalData.imgArr.push(resData.data);
+        console.log(that.globalData.imgArr);
       },
       fail(res){
         fail++;

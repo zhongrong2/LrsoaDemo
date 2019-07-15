@@ -15,6 +15,7 @@ Page({
     selectId:'',//选择发票信息的id
     selectVal:'',//选择发票信息值
     accountId:'',//选择收款账户id
+    accountName:'',
     account:'',//收款账户
     images:[],//图片
     count:'',//抄送人id
@@ -125,7 +126,7 @@ Page({
     this.data.images.splice(index,1);
     const Imgs = this.data.images;
     app.globalData.imgArr.splice(index,1);
-    // console.log(index,Imgs,app.globalData.imgArr);
+    console.log(index,Imgs,app.globalData.imgArr);
     this.setData({
       images:Imgs,
     })
@@ -222,8 +223,9 @@ Page({
   },
   // 提交数据
   onSubmit(){
-    // console.log(this.data.reason);
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
+    var Pics = app.globalData.imgArr;
+    console.log(this.data.images,Pics);
+    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content;
     if(BillTypeId == '' || BillTypeId == undefined){
       dd.showToast({
         content:'请选择付款类型',
@@ -316,6 +318,7 @@ Page({
             selectVal:'',//选择发票信息值
             payment:'',
             accountId:'',//选择收款账户id
+            accountName:'',
             account:'',//收款账户
             content:'',
             images:[],//图片
@@ -363,7 +366,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res);
+        console.log(res);
         dd.hideLoading();
         if(res.data.code==0){
           var Info = res.data.data,level;
@@ -408,9 +411,11 @@ Page({
             arr = [];
           }
           if(Info.account_info.pic!=null){
+            console.log(Info.account_info.pic);
             that.setData({
               images:Info.account_info.pic,
             })
+            app.globalData.imgArr=Info.account_info.pic;
           }
           // console.log(Info,arr)
           that.setData({
@@ -423,6 +428,7 @@ Page({
             selectId:Info.bill_info.invoice_id,
             payment:Info.bill_info.payment,
             account:Info.account_info.account,
+            accountName:Info.account_info.name,
             accountId:Info.bill_info.id,
             count:arr,
             CopMem:Info.cc_uids,

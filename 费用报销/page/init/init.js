@@ -130,6 +130,7 @@ Page({
       },
       dataType:'json',
       success(res){
+        dd.hideLoading();
         // console.log(res.data);
         if(res.data.code==0){
           dd.hideLoading();
