@@ -12,7 +12,7 @@ Page({
     ReasonShow:false,
   },
   onLoad(options) {
-    var that = this;
+    var that = this,uId;;
     that.setData({
       userInfo:app.globalData.userInfo
     });
@@ -23,16 +23,20 @@ Page({
         status:options.status,
         uid:that.data.userInfo.id,
       })
-      console.log(that.data.uid);
+      // console.log(that.data.uid);
       that.GetInfo();
     }
-    else{
-      var uId;
+    else{      
       dd.getStorage({
         key:'uid',
         success(res){
           uId = res.data.uid;
           // console.log(uid);
+          that.setData({
+            id:options.id,
+            type:options.type,
+            uid:uId,
+          })
         },
         fail(err){
           dd.showToast({
@@ -40,11 +44,6 @@ Page({
             duration:3000,
           })
         }
-      })
-      that.setData({
-        id:options.id,
-        type:options.type,
-        uid:uId,
       })
       // console.log(options.status,this.data.status);
       that.GetInfo();
@@ -63,7 +62,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res);
+        console.log(res);
         if(res.data.code==0){
           dd.hideLoading();
           that.setData({

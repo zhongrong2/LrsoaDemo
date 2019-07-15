@@ -8,6 +8,8 @@ Page({
       {id:'2',name:'紧急',value:'紧急',checked:''},
       {id:'3',name:'一般',value:'一般',checked:'true'},
     ],//紧急程度
+    BillTypeId:'',//付款类型Id
+    BillType:'',//付款类型
     dateVal:'',//日期
     showSelect:false,//下拉框发票信息展示
     selectId:'',//选择发票信息的id
@@ -25,7 +27,7 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo,
       id:options.id,
-    })    
+    })
     console.log(options.id);
     if(options.id!=undefined){
       that.GetInfo();
@@ -42,6 +44,12 @@ Page({
     this.setData({
       hasOnshow:true,
     });
+  },
+  //选择付款类型
+  ChoseBillType(){
+    dd.navigateTo({
+      url:'/page/PayR/BillType/BillType'
+    })
   },
   //选择时间
   ChoseData(){
@@ -215,7 +223,14 @@ Page({
   // 提交数据
   onSubmit(){
     // console.log(this.data.reason);
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
+    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = app.globalData.imgArr,arr = that.data.count,level = that.data.level,content = that.data.content;
+    if(BillTypeId == '' || BillTypeId == undefined){
+      dd.showToast({
+        content:'请选择付款类型',
+        duration:3000,
+      });
+      return false;
+    }
     if(reason == '' || reason == undefined){
       dd.showToast({
         content:'请输入申请事由',
@@ -260,13 +275,14 @@ Page({
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
     // console.log(pic);
-    // console.log(uid,departId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
+    console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
       data:{
         uid:uid,
         department_id:departId,
+        type:BillTypeId,
         title:reason,
         money:money,
         pay_time:dateVal,
@@ -290,6 +306,8 @@ Page({
             url:'/page/init/init'
           })
           that.setData({
+            BillTypeId:'',
+            BillType:'',
             reason:'',
             money:'',
             dateVal:'',//日期
@@ -396,6 +414,8 @@ Page({
           }
           // console.log(Info,arr)
           that.setData({
+            BillTypeId:Info.bill_info.type_id,
+            BillType:Info.bill_info.type,
             reason:Info.bill_info.title,
             money:Info.bill_info.money,
             dateVal:Info.bill_info.pay_time,

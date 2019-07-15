@@ -2,7 +2,6 @@ Page({
   data: {
     id:'',
     type:'',
-    uid:'',
   },
   onLoad(options) {
     // console.log(query);
@@ -10,22 +9,21 @@ Page({
     that.setData({
       id:options.id,
       type:options.type,
-      uid:options.uid,
     })
-    var id=that.data.id,type=that.data.type,uid=that.data.uid;
+    var id=that.data.id,type=that.data.type;
     if(type=="iaudit"){
       dd.redirectTo({
-        url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type+'&uid='+uid
+        url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type
       })
     }
     else if(type=="isend"){
       dd.redirectTo({
-        url:'/page/init/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type+'&uid='+uid
+        url:'/page/init/DetailPendAppr/DetailPendAppr?id='+id+'&type='+type
       })
     }
     else if(type=="copytome"){
       dd.redirectTo({
-        url:'/page/CC/DetailInfo/DetailInfo?id='+id+'&type='+type+'&uid='+uid
+        url:'/page/CC/DetailInfo/DetailInfo?id='+id+'&type='+type
       })
     }
   },

@@ -6,22 +6,29 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        var uid;
-        // console.log(code);
-        dd.getStorage({
-          key:'uid',
-          success(res){
-            uid = res.data.uid;
-            // console.log(uid);
-          },
-          fail(err){
-            dd.showToast({
-              content:'网络出错',
-              duration:3000,
-            })
-          }
+        console.log(code);
+        that.GetUid(that,code)
+      },
+      fail(err){
+        console.log(err);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
         })
-        if(uid){
+      }
+    });
+  },
+  //获取缓存uid
+  GetUid(that,code){
+    var KeyRes;
+    dd.getStorage({
+      key:'uid',
+      success: function(res) {
+        // console.log(res);
+        KeyRes = res.data;
+        // console.log(res.data);
+        if(KeyRes!=null){
+          var uid = KeyRes.uid;
           dd.httpRequest({
             url:that.globalData.http+'/common/userInfo',
             method:'POST',
@@ -33,7 +40,7 @@ App({
               const data = res.data;
               if(data.code == 0){
                 that.globalData.userInfo = data.data;
-                // console.log(data.data);
+                  // console.log(data.data);
               }
               else{
                 dd.showToast({
@@ -62,9 +69,9 @@ App({
               const data = res.data;
               // console.log(data);
               if(data.code == 0){
-                // console.log(data.data.id,'获取uid');
+                console.log(data.data.id,'获取uid');
                 const Id = data.data.id;
-                dd.setStorageSync({
+                dd.setStorage({
                   key:'uid',
                   data:{
                     uid:Id,
@@ -78,7 +85,7 @@ App({
                   duration:3000,
                 })
               }
-              
+                      
             },
             fail(err){
               dd.showToast({
@@ -89,7 +96,8 @@ App({
           })
         }
       },
-      fail(err){
+      fail: function(res){
+        console.log(res);
         dd.showToast({
           content:'网络出错',
           duration:3000,

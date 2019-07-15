@@ -9,27 +9,32 @@ Page({
     apprExam:[],
   },
   onLoad(options) {
-    this.setData({
+    var that=this,uId;
+    that.setData({
       userInfo:app.globalData.userInfo
     });
     if(options.type==undefined){
       // console.log(options.type);
-      this.setData({
+      that.setData({
         id:JSON.parse(options.id),
-        uid:this.data.userInfo.id,
+        uid:that.data.userInfo.id,
       })
       // console.log(this.data.id);
-      var id = this.data.id;
-      this.ReadInfo(id);
-      this.GetInfo();
+      var id = that.data.id;
+      that.ReadInfo(id);
+      that.GetInfo();
     }
-    else{
-      var uId;
+    else{      
       dd.getStorage({
         key:'uid',
         success(res){
           uId = res.data.uid;
           // console.log(uid);
+           that.setData({
+            id:options.id,
+            type:options.type,
+            uid:uId,
+          })
         },
         fail(err){
           dd.showToast({
@@ -38,15 +43,10 @@ Page({
           })
         }
       })
-      this.setData({
-        id:options.id,
-        type:options.type,
-        uid:uId,
-      })
       // console.log(this.data.id);
-      var id = this.data.id;
-      this.ReadInfo(id);
-      this.GetInfo();
+      var id = that.data.id;
+      that.ReadInfo(id);
+      that.GetInfo();
     }
   },
   //阅读订单

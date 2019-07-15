@@ -1,0 +1,6 @@
+<view class="pageBody">
+  <view class="border"></view>
+  <view class="BillTypeList">
+    <view class="BillType-item" a:for="{{List}}" key="{{index}}" data-index="{{index}}" data-title="{{item}}" onTap="ChoseType">{{item}}</view>
+  </view>
+</view>

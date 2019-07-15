@@ -11,26 +11,30 @@ Page({
     ReasonShow:false,
   },
   onLoad(options) {
-    this.setData({
+    var that=this,uId;
+    that.setData({
       userInfo:app.globalData.userInfo
     });
     if(options.type==undefined){
       // console.log(options.type);
-      this.setData({
+      that.setData({
         id:JSON.parse(options.id),
         status:options.status,
-        uid:this.data.userInfo.id,
+        uid:that.data.userInfo.id,
       })
-      // console.log(options.status,this.data.status);
-      this.GetInfo();
+      // console.log(this.data.uid);
+      that.GetInfo();
     }
     else{
-      var uId;
       dd.getStorage({
         key:'uid',
         success(res){
           uId = res.data.uid;
-          // console.log(uid);
+          that.setData({
+            id:options.id,
+            type:options.type,
+            uid:uId
+          })
         },
         fail(err){
           dd.showToast({
@@ -39,18 +43,13 @@ Page({
           })
         }
       })
-      this.setData({
-        id:options.id,
-        type:options.type,
-        uid:uId,
-      })
-      // console.log(options.status,this.data.status);
-      this.GetInfo();
+      that.GetInfo();
     }
   },
   // 获取订单详情
   GetInfo(){
     var that=this,id =that.data.id,type=that.data.type,uid=that.data.uid;
+    // console.log(uid);
     dd.httpRequest({
       url:URL+'/payapply/detail',
       method:'POST',

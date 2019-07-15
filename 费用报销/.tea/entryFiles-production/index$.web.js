@@ -26,3 +26,4 @@ require('../../page/PayR/ChoseBank/ChoseBank');
 require('../../component/dataInfo/headInfo/headInfo');
 require('../../page/PayR/ChoseBankSub/ChoseBankSub');
 require('../../page/detail/detail');
+require('../../page/PayR/BillType/BillType');

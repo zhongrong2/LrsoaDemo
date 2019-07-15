@@ -2,6 +2,14 @@
 
 <view class="page">
   <form class="form" onSubmit="onSubmit">
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">付款类型</view>
+      <view class="form-content contentR" onTap="ChoseBillType">
+        <input class="input" type="text" placeholder="请选择付款类型" disabled="true" value="{{BillType}}"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseBillType"/>
+    </view>
     <view class="pay-reason">
       <view class="pay-reason-title">
         <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>

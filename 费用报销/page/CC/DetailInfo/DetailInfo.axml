@@ -33,6 +33,10 @@
           <view class="list-title">申请类型</view>
           <view class="list-value">{{Info.bill_info.flow_type}}</view>
         </view>
+        <view class="list-item">
+          <view class="list-title">付款类型</view>
+          <view class="list-value">{{Info.bill_info.type}}</view>
+        </view>
       </view>
       <view class="list">
         <view class="list-item">
