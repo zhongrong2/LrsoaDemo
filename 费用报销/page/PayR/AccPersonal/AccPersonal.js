@@ -30,7 +30,11 @@ Page({
   },
   //添加账户
   onSubmit(){
-    const that = this,bank = that.data.bankName,name = that.data.name,account = that.data.account;
+    const that = this;
+    that.setData({
+      userInfo:app.globalData.userInfo
+    });
+    var bank=that.data.bankName,name=that.data.name,account=that.data.account,uid=that.data.userInfo.id;
     if(bank == '' || bank == undefined){
       dd.showToast({
         content:'请选择银行',
@@ -60,6 +64,7 @@ Page({
         bank:that.data.bankId,
         name:name,
         account:account,
+        uid:uid,
       },
       success(res){
         // console.log(res);

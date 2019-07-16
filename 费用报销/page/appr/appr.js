@@ -23,6 +23,9 @@ Page({
   },
   onLoad() {
     const that=this,status=that.data.navItem.status;
+    that.setData({
+      hasOnshow:false,
+    })
     this.GetAppr(that,status);
     this.GetCount(); 
   },
@@ -62,7 +65,7 @@ Page({
           'navItem.nav[0].count':res.data.data.audit,
           'navItem.nav[1].count':res.data.data.back,
         })
-        console.log(res.data.data.audit);
+        // console.log(res.data.data.audit);
         app.addTag(that.data);
         app.InfoShow(that);
       },
@@ -164,6 +167,7 @@ Page({
           content: '加载中...',
           delay: 1000,
         });
+        that.onShow();
       }
     })
   },  

@@ -298,38 +298,17 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.code == 0){
           dd.showToast({
             content:res.data.data,
             duration:3000,
           });
+          var Page=getCurrentPages.length;
+          console.log(Page);
           dd.switchTab({
             url:'/page/init/init'
           })
-          that.setData({
-            BillTypeId:'',
-            BillType:'',
-            reason:'',
-            money:'',
-            dateVal:'',//日期
-            showSelect:false,//下拉框发票信息展示
-            selectId:'',//选择发票信息的id
-            selectVal:'',//选择发票信息值
-            payment:'',
-            accountId:'',//选择收款账户id
-            accountName:'',
-            account:'',//收款账户
-            content:'',
-            images:[],//图片
-            count:'',//抄送人id
-            CopMem:[],//抄送人信息
-            level:'3',//默认紧急程度
-            'states[0].checked':false,
-            'states[1].checked':false,
-            'states[2].checked':true,
-          });
-          app.globalData.imgArr=[];
         }
         else{
           dd.showToast({
@@ -366,7 +345,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
         dd.hideLoading();
         if(res.data.code==0){
           var Info = res.data.data,level;
@@ -429,7 +408,7 @@ Page({
             payment:Info.bill_info.payment,
             account:Info.account_info.account,
             accountName:Info.account_info.name,
-            accountId:Info.bill_info.id,
+            accountId:Info.account_info.id,
             count:arr,
             CopMem:Info.cc_uids,
             level:level,

@@ -26,6 +26,7 @@ Page({
     var that = this;
     if(that.data.hasOnshow){
       that.setData({
+        AccountListShow:false,//添加账户显示
         page:1,
         Account:[],
       })
@@ -38,17 +39,22 @@ Page({
   //获取账户列表
   GetAccountList(){
     const that = this; 
-    var Page = that.data.page;
+    that.setData({
+      userInfo:app.globalData.userInfo
+    });
+    var Page = that.data.page,uid=that.data.userInfo.id;
     dd.httpRequest({
       url:URL+'/payapply/accountList',
       method:'POST',
       data:{
         page:Page,
         limit:that.data.limit,
+        uid:uid,
       },
       dataType:'json',
       success(res){
         if(res.data.code==0){
+          // console.log(res.data);
           dd.hideLoading();
           if(res.data.data == '' && that.data.Account != ''){
             dd.showToast({

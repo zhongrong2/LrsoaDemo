@@ -63,7 +63,11 @@ Page({
   },
   //添加账户
   onSubmit(){
-    const that = this,bank = that.data.bankName,area = that.data.selectAddress,sub_bank = that.data.banSubName,name = that.data.name,account = that.data.account;
+    const that = this;
+    that.setData({
+      userInfo:app.globalData.userInfo
+    });
+    var bank=that.data.bankName,area=that.data.selectAddress,sub_bank=that.data.banSubName,name=that.data.name,account=that.data.account,uid=that.data.userInfo.id;
     if(bank == '' || bank == undefined){
       dd.showToast({
         content:'请选择银行',
@@ -109,6 +113,7 @@ Page({
         sub_bank:that.data.bankSubId,
         name:name,
         account:account,
+        uid:uid,
       },
       success(res){
         // console.log(res);

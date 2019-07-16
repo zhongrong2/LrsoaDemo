@@ -2,13 +2,13 @@
   <!-- 没有收款账户开始 -->
   <view a:if="{{Account.length <= 0 ? true : false}}" class="NoAccount">
     <image class="NoAccount-add" mode="scaleToFill" src="/image/add_account.png" onTap="AddAccount"/>
-    <view class="NoAccount-title">添加收款账户</view>
+    <view class="NoAccount-title">添加收款账号</view>
   </view>
   <!-- 没有收款账户结束 -->
   <!-- 有收款账户的添加开始 -->
   <view a:if="{{Account.length > 0 ? true : false}}" class="YesAccount-add" onTap="AddAccount">
     <image class="YesAccount-add-img" mode="scaleToFill" src="/image/add_account.png"/>
-    <view class="YesAccount-title">添加收款账户</view>
+    <view class="YesAccount-title">添加收款账号</view>
   </view>
   <!-- 有收款账户的添加结束 -->
   <!-- 选择收款账户开始 -->

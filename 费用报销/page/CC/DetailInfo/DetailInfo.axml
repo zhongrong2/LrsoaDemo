@@ -16,7 +16,7 @@
       </view>
     </view>
     <!-- 个人信息结束 -->
-    <image class="Info-icon" mode="scaleToFill" src="{{Info.bill_info.detail_img}}"/>
+    <image a:if="{{Info.bill_info.status==1||Info.bill_info.status==2?false:true}}" class="Info-icon" mode="scaleToFill" src="{{Info.bill_info.detail_img}}"/>
     <!-- 订单信息开始 -->
     <view class="order">
       <view class="list">
@@ -64,7 +64,7 @@
     <!-- 订单信息结束 -->
     <!-- 付款账号开始 -->
     <view class="pay">
-      <view class="pay-title">付款账号</view>
+      <view class="pay-title">收款账号</view>
       <view class="pay-type">{{Info.account_info.type}}</view>
       <view class="list">
         <view class="list-item">

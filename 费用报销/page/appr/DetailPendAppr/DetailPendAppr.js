@@ -9,6 +9,7 @@ Page({
     Info:'',
     apprExam:[],
     ReasonShow:false,
+    hasOnshow:false,
   },
   onLoad(options) {
     var that=this,uId;
@@ -45,6 +46,14 @@ Page({
         }
       })
     }
+  },
+  onShow(){
+    if(this.data.hasOnshow){
+     this.GetInfo();
+    }
+    this.setData({
+      hasOnshow:true,
+    });
   },
   // 获取订单详情
   GetInfo(){
@@ -162,7 +171,7 @@ Page({
             duration:3000,
           })
           that.CloseReason();
-          dd.navigateBack();
+          dd.navigateBack({delay:1});
         }
         else if(res.data.code==1){
           dd.showToast({
@@ -171,9 +180,6 @@ Page({
           })
           that.CloseReason();
         }
-        
-        // console.log(getCurrentPages.length);
-        
       },
       fail(err){
         console.log(err);
@@ -195,7 +201,8 @@ Page({
   CloseReason(){
     this.setData({
       ReasonShow:false,
-    })
+    });
+    this.onShow();
   },
   // 预览图片
   previewImage(e){

@@ -154,7 +154,7 @@ Page({
         }
         else if(res.data.code==1){
           dd.showLoading({
-            content: '加载中1...',
+            content: '加载中...',
             delay: 1000,
           });
         }
@@ -162,9 +162,10 @@ Page({
       fail(err){
         console.log(err);
         dd.showLoading({
-          content: '加载中2...',
+          content: '加载中...',
           delay: 1000,
         });
+        that.onShow();
       }
     })
   },

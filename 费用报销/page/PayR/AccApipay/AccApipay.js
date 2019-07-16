@@ -22,7 +22,11 @@ Page({
   },
   //添加账户
   onSubmit(){
-    const that = this,name = that.data.name,account = that.data.account;
+    const that = this;
+    that.setData({
+      userInfo:app.globalData.userInfo
+    });
+    var name=that.data.name,account=that.data.account,uid=that.data.userInfo.id;
     if(name == '' || name == undefined){
       dd.showToast({
         content:'请输入账户名称',
@@ -44,8 +48,10 @@ Page({
         type:that.data.type,
         name:name,
         account:account,
+        uid:uid,
       },
       success(res){
+        // console.log(res)
         if(res.data.code == 0){
           dd.showToast({
             content:res.data.data,

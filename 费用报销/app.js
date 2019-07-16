@@ -6,7 +6,7 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        console.log(code);
+        // console.log(code);
         that.GetUid(that,code)
       },
       fail(err){

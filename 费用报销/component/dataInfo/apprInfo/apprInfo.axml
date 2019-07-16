@@ -47,7 +47,7 @@
     <!-- 订单信息结束 -->
     <!-- 付款账号开始 -->
     <view class="pay">
-      <view class="pay-title">付款账号</view>
+      <view class="pay-title">收款账号</view>
       <view class="pay-type">{{Info.account_info.type}}</view>
       <view class="list">
         <view class="list-item">
