@@ -137,7 +137,14 @@ Page({
             content:res.data.data,
             duration:3000,
           })
-          dd.navigateBack();
+          // dd.navigateBack();
+          var page = getCurrentPages();// 获取当前页面栈
+          var beforePage = page[page.length - 2]; // 跳转页面的栈
+          dd.navigateBack({
+            success: function () {
+              beforePage.onShow(); // 执行前一个页面的onLoad方法
+            }
+          })
         }
         else if(res.data.code==1){
           dd.showToast({
@@ -179,7 +186,14 @@ Page({
             content:res.data.data,
             duration:3000,
           })
-          dd.navigateBack();
+          // dd.navigateBack();
+          var page = getCurrentPages()  ;// 获取当前页面栈
+          var beforePage = page[page.length - 2]; // 跳转页面的栈
+          dd.navigateBack({
+            success: function () {
+              beforePage.onShow(); // 执行前一个页面的onLoad方法
+            }
+          })
         }
         else if(res.data.code==1){
           dd.showToast({

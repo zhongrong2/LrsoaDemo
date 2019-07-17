@@ -171,7 +171,14 @@ Page({
             duration:3000,
           })
           that.CloseReason();
-          dd.navigateBack({delay:1});
+          // dd.navigateBack({delay:1});
+          var page = getCurrentPages();// 获取当前页面栈
+          var beforePage = page[page.length - 2]; // 跳转页面的栈
+          dd.navigateBack({
+            success: function () {
+              beforePage.onShow(); // 执行前一个页面的onLoad方法
+            }
+          })
         }
         else if(res.data.code==1){
           dd.showToast({

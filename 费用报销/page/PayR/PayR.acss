@@ -38,6 +38,15 @@
   font-family: PingFang-SC-Medium;
   color: #575b60;
   font-weight: 500;
+  -webkit-opacity:1;  
+  opacity: 1;  
+  background-color: #FFFFFF;
+}
+input[disabled],input:disabled,input.disabled{  
+    color: #3e3e3e;  
+    -webkit-text-fill-color: #3e3e3e;  
+    -webkit-opacity:1;  
+    opacity: 1;  
 }
 .contentR{
   padding-right: 15rpx;

@@ -224,7 +224,7 @@ Page({
   // 提交数据
   onSubmit(){
     var Pics = app.globalData.imgArr;
-    console.log(this.data.images,Pics);
+    // console.log(this.data.images,Pics);
     const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content;
     if(BillTypeId == '' || BillTypeId == undefined){
       dd.showToast({
@@ -277,7 +277,7 @@ Page({
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
     // console.log(pic);
-    console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
+    // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
