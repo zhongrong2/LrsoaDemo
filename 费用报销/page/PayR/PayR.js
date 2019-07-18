@@ -394,7 +394,6 @@ Page({
             that.setData({
               images:Info.account_info.pic,
             })
-            app.globalData.imgArr=Info.account_info.pic;
           }
           // console.log(Info,arr)
           that.setData({

@@ -6,8 +6,9 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        // console.log(code);
-        that.GetUid(that,code)
+        console.log(code);
+        that.ClearUid();
+        that.GetUid(that,code);
       },
       fail(err){
         console.log(err);
@@ -76,7 +77,15 @@ App({
                   data:{
                     uid:Id,
                   }
-                })
+                });
+                var NowDate = new Date();//获取当前时间
+                var DateTime = new Date(NowDate).getTime();
+                dd.setStorage({
+                  key:'date',
+                  data:{
+                    date:DateTime,
+                  }
+                });
                 that.globalData.userInfo = data.data;
               }
               else{
@@ -105,8 +114,46 @@ App({
       }
     });
   },
+  //定时清理缓存
+  ClearUid(){
+    var nowDate = new Date();//获取当前时间
+    var nowDateTime = new Date(nowDate).getTime();
+    console.log(nowDate,nowDateTime);
+    var date;
+    dd.getStorage({
+      key:'date',
+      success:function(res){
+        date = res.data;
+        console.log(date);
+        if(date==null){
+          dd.setStorage({
+            key:'date',
+            data:{
+              date:nowDateTime,
+            }
+          })
+        }
+        else{
+          var dateStor = res.data.date;
+          console.log(dateStor);
+          var dateDiff = nowDateTime-dateStor;
+          console.log(dateDiff);
+          if(dateDiff>3600000){
+            dd.removeStorage({key:'uid'});
+          }
+        }
+      },
+      fail:function(res){
+        console.log(res);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        })
+      }
+    })
+  },
   onShow(options) {
-    // 从后台被 scheme 重新打开
+    // 从后台被scheme重新打开
     // options.query == {number:1}
   },
   globalData:{

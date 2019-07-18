@@ -38,7 +38,7 @@
   <!-- 子级公司部门模块结束 -->
   <!-- 部门员工开始 -->
   <view class="member-body" a:if="{{memberShow}}">
-    <scroll-view onScrollToLower="onReachBottom">
+    <scroll-view scroll-y="true" onScrollToLower="onReachBottom">
       <view class="member-list">
         <view class="depart" onTap="DepTap">{{parentName}}</view>
         <view class="member-list-items">

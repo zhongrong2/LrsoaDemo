@@ -41,7 +41,7 @@ Page({
       dataType:'json',
       success(res){
         dd.hideLoading();
-        // console.log(res.data.data);
+        console.log(res.data.data);
         that.setData({
           departShow:true,
           subdepartShow:false,
@@ -138,7 +138,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res.data.data);
+        console.log(res.data.data);
         dd.hideLoading();
         that.setData({
           departShow:false,
