@@ -6,7 +6,7 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        console.log(code);
+        // console.log(code);
         that.ClearUid();
         that.GetUid(that,code);
       },
@@ -118,13 +118,13 @@ App({
   ClearUid(){
     var nowDate = new Date();//获取当前时间
     var nowDateTime = new Date(nowDate).getTime();
-    console.log(nowDate,nowDateTime);
+    // console.log(nowDate,nowDateTime);
     var date;
     dd.getStorage({
       key:'date',
       success:function(res){
         date = res.data;
-        console.log(date);
+        // console.log(date);
         if(date==null){
           dd.setStorage({
             key:'date',
@@ -135,10 +135,10 @@ App({
         }
         else{
           var dateStor = res.data.date;
-          console.log(dateStor);
+          // console.log(dateStor);
           var dateDiff = nowDateTime-dateStor;
-          console.log(dateDiff);
-          if(dateDiff>3600000){
+          // console.log(dateDiff);
+          if(dateDiff>36000){
             dd.removeStorage({key:'uid'});
           }
         }
