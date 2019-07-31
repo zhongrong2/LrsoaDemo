@@ -69,7 +69,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res);
+        console.log(res.data.data);
         if(res.data.code==0){
           dd.hideLoading();
           that.setData({
@@ -89,7 +89,8 @@ Page({
             else if(level=='非常紧急'){
               that.setData({level:'level3'})
             }
-          }else{
+          }
+          else{
             that.setData({level:'level4'})
           }
         }
@@ -119,7 +120,16 @@ Page({
   },
   //审批通过
   Pass(){
-    var that=this;
+    var that=this,Info=that.data.Info;
+    var ShowCop = Info.bill_info.if_second_cc_uids,id=Info.bill_info.id,count=Info.bill_info.cc_uids,CopMem=Info.cc_uids;
+    var CopMem = JSON.stringify(CopMem);
+    // console.log(ShowCop,id,count,CopMem);
+    if(!ShowCop){
+      dd.navigateTo({
+        url:'/page/appr/ApprPass/ApprPass?id='+JSON.stringify(id)+'&count='+count+'&CopMem='+CopMem
+      });
+      return
+    }
     that.reasonTap();
     that.setData({
       ReaType:'0'
@@ -175,9 +185,7 @@ Page({
           var page = getCurrentPages();// 获取当前页面栈
           var beforePage = page[page.length - 2]; // 跳转页面的栈
           dd.navigateBack({
-            success: function () {
-              beforePage.onShow(); // 执行前一个页面的onLoad方法
-            }
+            
           })
         }
         else if(res.data.code==1){

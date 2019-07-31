@@ -3,5 +3,6 @@
 <view class="container" key="container">
   <view class="Title">财务</view>
   <template is="grid" data="{{...grid}}"></template>
+  <view class="clerStorage" onTap="ClearStorage">清理缓存</view>
 </view>
 

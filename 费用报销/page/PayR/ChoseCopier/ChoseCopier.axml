@@ -9,75 +9,87 @@
   <!-- 搜索框结束 -->
   <view class="box"></view>
   <!-- 公司部门模块开始 -->
-  <view class="department-body" a:if="{{departShow}}">
-    <view class="depart-list" a:for="{{depart}}" key="{{index}}" data-index="{{index}}">
-      <view class="depart">{{item.name}}</view>
-      <view class="depart-list-class">
-        <view class="depart-list-item" a:for="{{item._child}}" key="{{index}}" data-id="{{item.id}}" data-parName="{{item.parent_name}}" onTap="{{item.departs == true ? 'GetChildDepartList' : 'GetMemList'}}">
-          <view class="depart-item-title">{{item.name}}</view>
-          <view class="depart-item-numPer">（{{item.count}}人）</view>
-          <image mode="scaleToFill" class="depart-item-right" src="/image/departRight.png"/>
+  <block a:if="{{depart.length>0}}">
+    <view class="department-body">
+      <view class="depart-list" a:for="{{depart}}" key="{{index}}" data-index="{{index}}">
+        <view class="depart">{{item.name}}</view>
+        <view class="depart-list-class">
+          <view class="depart-list-item" a:for="{{item._child}}" key="{{index}}" data-id="{{item.id}}" data-parName="{{item.parent_name}}" onTap="{{item.departs == true ? 'GetChildDepartList' : 'GetMemList'}}">
+            <view class="depart-item-title">{{item.name}}</view>
+            <view class="depart-item-numPer">（{{item.count}}人）</view>
+            <image mode="scaleToFill" class="depart-item-right" src="/image/departRight.png"/>
+          </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
   <!-- 公司部门模块结束 -->
   <!-- 子级公司部门模块开始 -->
-  <view class="department-body" a:if="{{subdepartShow}}">
-    <view class="depart-list">
-      <view class="depart" onTap="DepTap">{{subdepart.name}}</view>
-      <view class="depart-list-class">
-        <view class="depart-list-item" a:for="{{subdepart._child}}" key="{{index}}" data-id="{{item.id}}" data-parName="{{item.parent_name}}" onTap="GetMemList">
-          <view class="depart-item-title">{{item.name}}</view>
-          <view class="depart-item-numPer">（{{item.count}}人）</view>
-          <image mode="scaleToFill" class="depart-item-right" src="/image/departRight.png"/>
+  <block a:elif="{{subdepart._child.length>0}}">
+    <view class="department-body">
+      <view class="depart-list">
+        <view class="depart" onTap="DepTap">{{subdepart.name}}</view>
+        <view class="depart-list-class">
+          <view class="depart-list-item" a:for="{{subdepart._child}}" key="{{index}}" data-id="{{item.id}}" data-parName="{{item.parent_name}}" onTap="GetMemList">
+            <view class="depart-item-title">{{item.name}}</view>
+            <view class="depart-item-numPer">（{{item.count}}人）</view>
+            <image mode="scaleToFill" class="depart-item-right" src="/image/departRight.png"/>
+          </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
+  
   <!-- 子级公司部门模块结束 -->
   <!-- 部门员工开始 -->
-  <view class="member-body" a:if="{{memberShow}}">
-    <scroll-view scroll-y="true" onScrollToLower="onReachBottom">
-      <view class="member-list">
-        <view class="depart" onTap="DepTap">{{parentName}}</view>
-        <view class="member-list-items">
-          <view class="member-list-item" a:for="{{member}}" key="{{index}}" data-id="{{item.id}}">
-            <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
-            <view class="member-item-title">{{item.name}}</view>
-            <view class="member-item-class">{{item.department_name}}</view>
-            <view class="position-border"></view>
-            <view class="member-item-position">{{item.position}}</view>
+  <block a:elif="{{member.length>0}}">
+    <view class="member-body">
+      <scroll-view scroll-y="true" onScrollToLower="ScrollMem">
+        <view class="member-list">
+          <view class="depart" onTap="DepTap">{{parentName}}</view>
+          <view class="member-list-items">
+            <view class="member-list-item" a:for="{{member}}" key="{{index}}" data-id="{{item.id}}">
+              <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
+              <view class="member-item-title">{{item.name}}</view>
+              <view class="member-item-class">{{item.department_name}}</view>
+              <view class="position-border"></view>
+              <view class="member-item-position">{{item.position}}</view>
+            </view>
           </view>
         </view>
-      </view>
-    </scroll-view>  
-  </view>
+      </scroll-view>  
+    </view>
+  </block>
+  
   <!-- 部门员工结束 -->
   <!-- 搜索结果模块开始 -->
-  <view class="searchRes-body" a:if="{{searchResShow}}">
-    <view class="searchRes-list">
-      <view class="searchRes-title" onTap="GetDepartList">联系人</view>
-      <view class="searchRes-items">
-        <view class="searchRes-item" a:for="{{member}}" key="{{index}}" data-index="{{index}}">
-          <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
-          <image a:if="{{item.head_img==''?false:true}}" class="searchRes-head" mode="scaleToFill" src="{{item.head_img}}"/>
-          <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
-          <view class="searchRes-info">
-            <view class="searchRes-info-petname">{{item.name}}</view>
-            <view class="searchRes-info-name">姓名：{{item.name}}</view>
-            <view class="searchRes-info-position">{{item.parent_name}}-{{item.position}}</view>
+  <block a:elif="{{SearchMember.length>0}}">
+    <view class="searchRes-body">
+      <view class="searchRes-list">
+        <view class="searchRes-title" onTap="GetDepartList">联系人</view>
+        <view class="searchRes-items">
+          <view class="searchRes-item" a:for="{{SearchMember}}" key="{{index}}" data-index="{{index}}">
+            <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
+            <image a:if="{{item.head_img==''?false:true}}" class="searchRes-head" mode="scaleToFill" src="{{item.head_img}}"/>
+            <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
+            <view class="searchRes-info">
+              <view class="searchRes-info-petname">{{item.name}}</view>
+              <view class="searchRes-info-name">姓名：{{item.name}}</view>
+              <view class="searchRes-info-position">{{item.parent_name}}-{{item.position}}</view>
+            </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
   <!-- 搜索结果模块结束 -->
   <!-- 未搜索到结果开始 -->
-  <view class="searchNoRes-body" a:if="{{searchNoResShow}}">
-    <view class="searchRes-title" onTap="GetDepartList">联系人</view>
-    <view class="searchNoRes-por">找不到关于“{{searchVal}}”联系人</view>
-  </view>
+  <block a:elif="{{SearchMember.length==0&&SearchFlag}}">
+    <view class="searchNoRes-body">
+      <view class="searchRes-title" onTap="GetDepartList">联系人</view>
+      <view class="searchNoRes-por">找不到关于“{{searchVal}}”联系人</view>
+    </view>
+  </block>
   <!-- 未搜索到结果结束 -->
   <view class="boxBottom"></view>
   <!-- 总计开始 -->

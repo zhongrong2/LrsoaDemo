@@ -3,9 +3,6 @@ let URL = app.globalData.http;
 
 Page({
   data: {
-    departShow:true,
-    subdepartShow:false,
-    memberShow:false,
     searchResShow:false,
     searchNoResShow:false,
     page:1,
@@ -13,6 +10,8 @@ Page({
     depart:[],//部门列表
     subdepart:[],//子级部门列表
     member:[],//部门成员列表
+    SearchMember:[],//搜索部门成员列表
+    SearchFlag:false,//搜索显示
     parentName:'',
     countPer:'0',
     count:[],
@@ -35,6 +34,12 @@ Page({
   //获取部门列表
   GetDepartList(){
     const that = this;
+    that.setData({
+      subdepart:[],
+      member:[],
+      SearchMember:[],
+      SearchFlag:false,
+    });
     dd.httpRequest({
       url:URL+'/common/departmentList',
       method:'POST',
@@ -42,13 +47,6 @@ Page({
       success(res){
         dd.hideLoading();
         console.log(res.data.data);
-        that.setData({
-          departShow:true,
-          subdepartShow:false,
-          memberShow:false,
-          searchResShow:false,
-          searchNoResShow:false,
-        });
         //判断是否还有子级部门
         for(var i = 0;i < res.data.data.length;i++){
           const childs = res.data.data[i]._child;
@@ -61,10 +59,10 @@ Page({
             }
           }
         }
+        // console.log(that.data.depart);
         that.setData({
           depart:res.data.data,
         });
-        // console.log(that.data.depart);
       },
       fail(err){
         console.log(err);
@@ -79,6 +77,12 @@ Page({
   GetChildDepartList(e){
     const that = this;
     const id = e.currentTarget.dataset.id;
+    that.setData({
+      depart:[],
+      member:[],
+      SearchMember:[],
+    });
+    // console.log(that.data.depart)
     // console.log(name);
     dd.httpRequest({
       url:URL+'/common/subDepartmentList',
@@ -89,13 +93,8 @@ Page({
       dataType:'json',
       success(res){
         dd.hideLoading();
-        // console.log(res.data.data);
+        console.log(res.data.data);
         that.setData({
-          departShow:false,
-          subdepartShow:true,
-          memberShow:false,
-          searchResShow:false,
-          searchNoResShow:false,
           subdepart:res.data.data,
         });
       },
@@ -127,6 +126,11 @@ Page({
     const that = this;
     var Page = that.data.page,limit = that.data.limit;
     var count = that.data.count;
+    that.setData({
+      depart:[],
+      subdepart:[],
+      SearchMember:[],
+    });
     // console.log(Page);
     dd.httpRequest({
       url:URL+'/common/userList',
@@ -141,11 +145,6 @@ Page({
         console.log(res.data.data);
         dd.hideLoading();
         that.setData({
-          departShow:false,
-          subdepartShow:false,
-          memberShow:true,
-          searchResShow:false,
-          searchNoResShow:false,
           parentName:parName,
         });
         if(res.data.data == '' && that.data.member != ''){
@@ -178,7 +177,7 @@ Page({
               // console.log("存在",member)
             }
           }
-        }
+        };
       },
       fail(err){
         console.log(err);
@@ -243,16 +242,15 @@ Page({
   },
   // 返回第一级公司部门
   DepTap(){
-    this.setData({
-      departShow:true,
-      memberShow:false,
-      subdepartShow:false,
-    })
+    this.GetDepartList();
   },
   //搜索
   Search(e){
-    var that = this,page = that.data.page,limit = that.data.limit;;
+    var that = this,page = that.data.page,limit = that.data.limit;
     that.setData({
+      depart:[],
+      subdepart:[],
+      member:[],
       searchVal:e.detail.value,
     });
     dd.httpRequest({
@@ -266,25 +264,16 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res);
+        console.log(res.data.data);
         if(res.data.data.length>0){
           that.setData({
-            departShow:false,
-            subdepartShow:false,
-            memberShow:false,
-            searchResShow:true,
-            searchNoResShow:false,
-            member:res.data.data,
+            SearchMember:res.data.data,
           });
         }
         else{
           that.setData({
-            departShow:false,
-            subdepartShow:false,
-            memberShow:false,
-            searchResShow:false,
-            searchNoResShow:true,
-            member:[],
+            SearchMember:[],
+            SearchFlag:true,
           });
         }
         that.addTag();
@@ -308,7 +297,7 @@ Page({
     })
   },
   //下拉加载部门成员数据数据不用初始化
-  onReachBottom(){
+  ScrollMem(){
     var that= this,id=that.data.id,parName=that.data.parName;
     // console.log(id,parName);
     that.MemList(id,parName);

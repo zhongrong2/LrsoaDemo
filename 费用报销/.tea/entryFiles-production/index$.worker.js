@@ -49,6 +49,7 @@ require('../../component/dataInfo/headInfo/headInfo');
 require('../../page/PayR/ChoseBankSub/ChoseBankSub');
 require('../../page/detail/detail');
 require('../../page/PayR/BillType/BillType');
+require('../../page/appr/ApprPass/ApprPass');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
 }

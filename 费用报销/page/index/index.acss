@@ -7,3 +7,9 @@
 .Title{
   margin: 30rpx 0rpx 38rpx 30rpx;
 }
+.clerStorage{
+  margin: 50rpx 0rpx 38rpx 30rpx;
+  width: 200rpx;
+  height: 90rpx;
+  color: orangered;
+}

@@ -76,5 +76,14 @@ Page({
         url:URL
       })
     }
+  },
+  //清理缓存
+  ClearStorage(){
+    dd.removeStorage({
+      key: 'uid',
+      success: function(){
+        dd.alert({content: '清理成功,请退出重新进入',buttonText: '确定'});
+      }
+    });
   }
 });

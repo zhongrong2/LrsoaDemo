@@ -1,0 +1,35 @@
+<view class="pageBody">
+  <view class="remark">
+    <textarea class="remarkVal" placeholder="请输入备注信息" maxlength="300" value="{{content}}" onBlur="GetContent"></textarea>
+  </view>
+  <view class="Copier">
+    <view class="page-item-titles">
+      <view class="page-titles-title">抄送人</view>
+      <view class="page-titles-por">{{CopMem.length < 0 ? '请选择抄送人' : '抄送'+CopMem.length+'人'}}</view>
+    </view>
+    <view class="page-item-imgCC">
+        <view class="imgCC-all" a:if="{{CopMem.length > 3 ? true : false}}" onTap="ShowCopAll">
+          <view class="imgCC-allL">
+            <image class="imgCC-all-img" mode="scaleToFill" src="/image/imgCC_all.png"/>
+            <view class="imgCC-all-title">查看全部</view>
+          </view>
+          <view class="imgCC-allR">+</view>
+        </view>
+        <view class="imgCC-items">
+          <view class="imgCC-item" a:for="{{CopMem.length > 3 ? newCopMem : CopMem}}" key="{{index}}">
+            <view class="imgCC-allL">
+              <image class="imgCC-cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelCopier" data-index="{{index}}" data-id="{{item.id}}"/>
+              <image a:if="{{item.head_img==''?false:true}}" class="imgCC-all-img" mode="widthFix" src="{{item.head_img}}"/>
+              <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
+              <view class="imgCC-all-title">{{item.name}}</view>
+            </view>
+            <view class="imgCC-allR">+</view>
+          </view>
+        </view>
+    </view>
+    <view class="page-item-img">
+      <image mode="scaleToFill" src="/image/addCC.png" class="addCC" onTap="ChoseCopier"/>
+    </view>
+  </view>
+  <view class="btn" onTap="Sure">确认</view>
+</view>

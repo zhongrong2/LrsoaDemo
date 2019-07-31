@@ -277,7 +277,7 @@ Page({
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
     // console.log(pic);
-    console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,pics,cc_uids,level,content);
+    // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,pics,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
@@ -346,7 +346,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
         dd.hideLoading();
         if(res.data.code==0){
           var Info = res.data.data,level;
@@ -391,7 +391,7 @@ Page({
             arr = [];
           }
           if(Info.account_info.pic!=null){
-            console.log(Info.account_info.pic);
+            // console.log(Info.account_info.pic);
             that.setData({
               images:Info.account_info.pic,
             })

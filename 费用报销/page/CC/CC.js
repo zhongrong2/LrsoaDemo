@@ -113,7 +113,7 @@ Page({
     })
     const uid=that.data.userInfo.id;
     var Page = that.data.page;
-    // console.log(Page);
+    // console.log(uid);
     dd.httpRequest({
       url:URL+'/payapply/copyToMe',
       method:'POST',

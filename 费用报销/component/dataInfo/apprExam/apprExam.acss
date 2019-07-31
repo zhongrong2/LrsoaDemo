@@ -19,9 +19,10 @@
 .apprExam-item-Info{
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 .apprExam-item-pers{
-  flex: 1;
+  width: 80%;
   text-align: left;
   padding-left: 2.67%;
   font-size: 28rpx;
@@ -31,6 +32,9 @@
 .apprExam-item-time{
   font-size: 24rpx;
   color: #191F25;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .apprExam-border{
   width: 4rpx;
@@ -60,4 +64,7 @@
   text-align: center;
   line-height: 70rpx;
   border-radius: 50%;
+}
+.perCop{
+  flex: 1;
 }

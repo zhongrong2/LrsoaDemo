@@ -26,7 +26,8 @@
     "component/dataInfo/headInfo/headInfo",
     "page/PayR/ChoseBankSub/ChoseBankSub",
     "page/detail/detail",
-    "page/PayR/BillType/BillType"
+    "page/PayR/BillType/BillType",
+    "page/appr/ApprPass/ApprPass"
   ],
   "window": {
     "enableWK": "YES",

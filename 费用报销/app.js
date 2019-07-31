@@ -6,8 +6,7 @@ App({
     dd.getAuthCode({
       success(res){
         const code = res.authCode;
-        // console.log(code);
-        that.ClearUid();
+        console.log(code);
         that.GetUid(that,code);
       },
       fail(err){
@@ -70,20 +69,12 @@ App({
               const data = res.data;
               // console.log(data);
               if(data.code == 0){
-                console.log(data.data.id,'获取uid');
+                // console.log(data.data.id,'获取uid');
                 const Id = data.data.id;
                 dd.setStorage({
                   key:'uid',
                   data:{
                     uid:Id,
-                  }
-                });
-                var NowDate = new Date();//获取当前时间
-                var DateTime = new Date(NowDate).getTime();
-                dd.setStorage({
-                  key:'date',
-                  data:{
-                    date:DateTime,
                   }
                 });
                 that.globalData.userInfo = data.data;
@@ -114,44 +105,6 @@ App({
       }
     });
   },
-  //定时清理缓存
-  ClearUid(){
-    var nowDate = new Date();//获取当前时间
-    var nowDateTime = new Date(nowDate).getTime();
-    // console.log(nowDate,nowDateTime);
-    var date;
-    dd.getStorage({
-      key:'date',
-      success:function(res){
-        date = res.data;
-        // console.log(date);
-        if(date==null){
-          dd.setStorage({
-            key:'date',
-            data:{
-              date:nowDateTime,
-            }
-          })
-        }
-        else{
-          var dateStor = res.data.date;
-          // console.log(dateStor);
-          var dateDiff = nowDateTime-dateStor;
-          // console.log(dateDiff);
-          if(dateDiff>36000){
-            dd.removeStorage({key:'uid'});
-          }
-        }
-      },
-      fail:function(res){
-        console.log(res);
-        dd.showToast({
-          content:'网络出错',
-          duration:3000,
-        })
-      }
-    })
-  },
   onShow(options) {
     // 从后台被scheme重新打开
     // options.query == {number:1}
@@ -159,7 +112,7 @@ App({
   globalData:{
     userInfo:'',
     imgArr:[],
-    http:"http://www.longshihua.cn",
+    http:"http://api.ding.longshihua.cn",
   },
   // 显示下拉框
   ShowSelect(that,URL){
