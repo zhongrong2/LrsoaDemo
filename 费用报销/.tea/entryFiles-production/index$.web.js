@@ -28,3 +28,5 @@ require('../../page/PayR/ChoseBankSub/ChoseBankSub');
 require('../../page/detail/detail');
 require('../../page/PayR/BillType/BillType');
 require('../../page/appr/ApprPass/ApprPass');
+require('../../page/PayR/ChoseDepart/ChoseDepart');
+require('../../page/PayR/ChoseProposer/ChoseProposer');

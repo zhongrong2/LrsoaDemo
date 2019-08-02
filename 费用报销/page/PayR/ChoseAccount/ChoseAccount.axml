@@ -27,7 +27,7 @@
           <view class="YesAccountList-itemBox" data-index="{{item.id}}" data-name="{{item.name}}" data-account="{{item.account}}" onTap="ChoseAccountList">
             <image class="Account-info-img" mode="scaleToFill" src="{{item.img}}"/>
             <view class="YesAccountList-item-info">
-              <view class="Account-name">{{item.name}}</view>
+              <view class="Account-name">{{item.name}}<view class="Account-bank">{{item.bank_name}}</view></view>
               <view class="Account-num">{{item.name}}账号：{{item.account}}</view>
             </view>
           </view>

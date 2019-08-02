@@ -9,7 +9,7 @@
           <view class="apprExam-item-pers">
             <view class="item-per-post">{{item.title}}</view>
             <view class="item-per-name">{{item.username}}
-              <view class="perCop" a:if="{{item.audit_status==''?false:true}}">({{item.audit_status}})</view>
+              <view class="perCop" a:if="{{item.audit_status==''?false:true}}">({{item.audit_status}}{{second_cc_uids}})</view>
             </view>
           </view>
           <view class="apprExam-item-time">{{item.bl_time}}</view>

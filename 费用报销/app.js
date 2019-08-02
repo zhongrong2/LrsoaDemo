@@ -112,7 +112,7 @@ App({
   globalData:{
     userInfo:'',
     imgArr:[],
-    http:"http://api.ding.longshihua.cn",
+    http:"http://www.longshihua.cn",
   },
   // 显示下拉框
   ShowSelect(that,URL){

@@ -4,6 +4,22 @@
   <form class="form" onSubmit="onSubmit">
     <view class="page-section">
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">申请部门</view>
+      <view class="form-content contentR" onTap="ChoseDepart">
+        <input class="input" type="text" placeholder="请选择申请部门" disabled="true" value="{{DepartVal}}"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseDepart"/>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
+      <view class="form-label">申请人</view>
+      <view class="form-content contentR" onTap="ChoseProposer">
+        <input class="input" type="text" placeholder="请选择申请人" disabled="true" value="{{ProMemVal}}" style="width:98%;padding-left:18rpx"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseProposer"/>
+    </view>
+    <view class="page-section">
+      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">付款类型</view>
       <view class="form-content contentR" onTap="ChoseBillType">
         <input class="input" type="text" placeholder="请选择付款类型" disabled="true" value="{{BillType}}"/>

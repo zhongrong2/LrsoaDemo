@@ -27,7 +27,9 @@
     "page/PayR/ChoseBankSub/ChoseBankSub",
     "page/detail/detail",
     "page/PayR/BillType/BillType",
-    "page/appr/ApprPass/ApprPass"
+    "page/appr/ApprPass/ApprPass",
+    "page/PayR/ChoseDepart/ChoseDepart",
+    "page/PayR/ChoseProposer/ChoseProposer"
   ],
   "window": {
     "enableWK": "YES",

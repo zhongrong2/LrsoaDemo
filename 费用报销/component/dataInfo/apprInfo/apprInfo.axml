@@ -9,8 +9,13 @@
           <view class="list-value">{{Info.bill_info.sno}}</view>
         </view>
         <view class="list-item">
-          <view class="list-title">所在部门</view>
+          <view class="list-title">申请部门</view>
           <view class="list-value">{{Info.bill_info.department_id}}</view>
+        </view>
+        <view class="list-item">
+          <view class="list-title">申请人</view>
+          <view class="list-value">{{Info.bill_info.apply_names
+}}</view>
         </view>
         <view class="list-item">
           <view class="list-title">申请类型</view>
@@ -50,6 +55,10 @@
       <view class="pay-title">收款账号</view>
       <view class="pay-type">{{Info.account_info.type}}</view>
       <view class="list">
+        <view class="list-item" a:if="{{Info.account_info.bank_name!=''}}">
+          <view class="list-title">银行</view>
+          <view class="list-value">{{Info.account_info.bank_name}}</view>
+        </view>
         <view class="list-item">
           <view class="list-title">收款人</view>
           <view class="list-value">{{Info.account_info.name}}</view>

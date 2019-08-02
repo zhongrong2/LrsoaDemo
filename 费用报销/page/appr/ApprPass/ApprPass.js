@@ -97,9 +97,15 @@ Page({
       userInfo:app.globalData.userInfo
     });
     var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count;
-    // console.log(id,uid,role,content,count);
-    var cc_uids = count.toString();
-    // console.log(cc_uids);
+    console.log(id,uid,role,content,count);
+    var cc_uids;
+    if(count=='null'){
+      cc_uids = ''
+    }
+    else{
+      cc_uids = count.toString();
+    }
+    console.log(cc_uids);
     dd.httpRequest({
       url:URL+'/payapply/pass',
       method:'POST',

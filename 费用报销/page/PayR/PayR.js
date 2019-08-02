@@ -8,6 +8,10 @@ Page({
       {id:'2',name:'紧急',value:'紧急',checked:''},
       {id:'3',name:'一般',value:'一般',checked:'true'},
     ],//紧急程度
+    DepartId:'',//申请部门id
+    DepartVal:'',//申请部门
+    ProMemId:'',//申请人id
+    ProMemVal:'',//申请人
     BillTypeId:'',//付款类型Id
     BillType:'',//付款类型
     dateVal:'',//日期
@@ -221,11 +225,38 @@ Page({
       content:e.detail.value,
     })
   },
+  // 选择申请部门
+  ChoseDepart(){
+    dd.navigateTo({
+      url:'/page/PayR/ChoseDepart/ChoseDepart'
+    })
+  },
+  // 选择申请人
+  ChoseProposer(){
+    dd.navigateTo({
+      url:'/page/PayR/ChoseProposer/ChoseProposer'
+    })
+  },
   // 提交数据
   onSubmit(){
     var Pics = app.globalData.imgArr;
     // console.log(this.data.images,Pics);
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content;
+    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId;
+    console.log(DepartId,ProMemId);
+    if(DepartId == '' || DepartId == undefined){
+      dd.showToast({
+        content:'请选择申请部门',
+        duration:3000,
+      });
+      return false;
+    }
+    if(ProMemId == '' || ProMemId == undefined){
+      dd.showToast({
+        content:'请选择申请人',
+        duration:3000,
+      });
+      return false;
+    }
     if(BillTypeId == '' || BillTypeId == undefined){
       dd.showToast({
         content:'请选择付款类型',
@@ -285,6 +316,8 @@ Page({
         uid:uid,
         department_id:departId,
         type:BillTypeId,
+        department_id:DepartId,
+        apply_uids:ProMemId,
         title:reason,
         money:money,
         pay_time:dateVal,
@@ -346,9 +379,9 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res);
+        // console.log(res.data.data);
         dd.hideLoading();
-        if(res.data.code==0){
+        if(res.data.code==0){//判断状态
           var Info = res.data.data,level;
           if(Info.bill_info.level=='一般'){
             level=3;
@@ -390,7 +423,7 @@ Page({
           else{
             arr = [];
           }
-          if(Info.account_info.pic!=null){
+          if(Info.account_info.pic!=null){//如果没有图片
             // console.log(Info.account_info.pic);
             that.setData({
               images:Info.account_info.pic,
@@ -399,6 +432,10 @@ Page({
           }
           // console.log(Info,arr)
           that.setData({
+            DepartId:Info.bill_info.department,//申请部门id
+            DepartVal:Info.bill_info.department_id,//申请部门
+            ProMemId:Info.bill_info.apply_uids,//申请人id
+            ProMemVal:Info.bill_info.apply_names,//申请人
             BillTypeId:Info.bill_info.type_id,
             BillType:Info.bill_info.type,
             reason:Info.bill_info.title,

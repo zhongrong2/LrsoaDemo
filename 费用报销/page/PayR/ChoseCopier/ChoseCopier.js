@@ -10,6 +10,7 @@ Page({
     depart:[],//部门列表
     subdepart:[],//子级部门列表
     member:[],//部门成员列表
+    memListShow:false,//部门成员列表
     SearchMember:[],//搜索部门成员列表
     SearchFlag:false,//搜索显示
     parentName:'',
@@ -117,6 +118,7 @@ Page({
       parName:parName,
       page:'1',//重新点击选择部门数据初始化
       member:[],//重新点击选择部门数据初始化
+      memListShow:true,
     })
     this.MemList(id,parName);
   },
@@ -242,6 +244,9 @@ Page({
   },
   // 返回第一级公司部门
   DepTap(){
+    this.setData({
+      memListShow:false
+    })
     this.GetDepartList();
   },
   //搜索
@@ -252,7 +257,9 @@ Page({
       subdepart:[],
       member:[],
       searchVal:e.detail.value,
+      SearchFlag:true,
     });
+    console.log(that.data.SearchFlag);
     dd.httpRequest({
       url:URL+'/common/userList',
       method:'POST',
@@ -267,13 +274,12 @@ Page({
         console.log(res.data.data);
         if(res.data.data.length>0){
           that.setData({
-            SearchMember:res.data.data,
+            member:res.data.data,
           });
         }
         else{
           that.setData({
-            SearchMember:[],
-            SearchFlag:true,
+            member:[],
           });
         }
         that.addTag();
@@ -295,6 +301,14 @@ Page({
         console.log(err)
       }
     })
+  },
+  //获取所有的
+  GetAllDepartList(){
+    var that = this;
+    that.setData({
+      SearchFlag:false,
+    });
+    that.GetDepartList();
   },
   //下拉加载部门成员数据数据不用初始化
   ScrollMem(){

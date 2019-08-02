@@ -42,33 +42,33 @@
   
   <!-- 子级公司部门模块结束 -->
   <!-- 部门员工开始 -->
-  <block a:elif="{{member.length>0}}">
+  <block a:elif="{{member.length>0&&memListShow}}">
     <view class="member-body">
-      <scroll-view scroll-y="true" onScrollToLower="ScrollMem">
         <view class="member-list">
           <view class="depart" onTap="DepTap">{{parentName}}</view>
-          <view class="member-list-items">
-            <view class="member-list-item" a:for="{{member}}" key="{{index}}" data-id="{{item.id}}">
-              <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
-              <view class="member-item-title">{{item.name}}</view>
-              <view class="member-item-class">{{item.department_name}}</view>
-              <view class="position-border"></view>
-              <view class="member-item-position">{{item.position}}</view>
+           <scroll-view scroll-y="true" onScrollToLower="ScrollMem" style="height:1100rpx">
+            <view class="member-list-items">
+              <view class="member-list-item" a:for="{{member}}" key="{{index}}" data-id="{{item.id}}">
+                <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
+                <view class="member-item-title">{{item.name}}</view>
+                <view class="member-item-class">{{item.department_name}}</view>
+                <view class="position-border"></view>
+                <view class="member-item-position">{{item.position}}</view>
+              </view>
             </view>
-          </view>
+          </scroll-view>  
         </view>
-      </scroll-view>  
     </view>
   </block>
   
   <!-- 部门员工结束 -->
   <!-- 搜索结果模块开始 -->
-  <block a:elif="{{SearchMember.length>0}}">
+  <block a:elif="{{member.length>0&&SearchFlag}}">
     <view class="searchRes-body">
       <view class="searchRes-list">
-        <view class="searchRes-title" onTap="GetDepartList">联系人</view>
+        <view class="searchRes-title" onTap="GetAllDepartList">联系人</view>
         <view class="searchRes-items">
-          <view class="searchRes-item" a:for="{{SearchMember}}" key="{{index}}" data-index="{{index}}">
+          <view class="searchRes-item" a:for="{{member}}" key="{{index}}" data-index="{{index}}">
             <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseMem"/>
             <image a:if="{{item.head_img==''?false:true}}" class="searchRes-head" mode="scaleToFill" src="{{item.head_img}}"/>
             <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
@@ -84,9 +84,9 @@
   </block>
   <!-- 搜索结果模块结束 -->
   <!-- 未搜索到结果开始 -->
-  <block a:elif="{{SearchMember.length==0&&SearchFlag}}">
+  <block a:elif="{{member.length==0&&SearchFlag}}">
     <view class="searchNoRes-body">
-      <view class="searchRes-title" onTap="GetDepartList">联系人</view>
+      <view class="searchRes-title" onTap="GetAllDepartList">联系人</view>
       <view class="searchNoRes-por">找不到关于“{{searchVal}}”联系人</view>
     </view>
   </block>

@@ -5,7 +5,7 @@
       <image a:if="{{Info.bill_info.head_img==''?false:true}}" class="Info-haed" mode="scaleToFill" src="{{Info.bill_info.head_img}}"/>
       <view a:if="{{Info.bill_info.head_img==''?true:false}}" class="headName">{{Info.bill_info.username}}</view>
       <view class="Infos">
-        <view class="Info-name">{{Info.bill_info.username}}</view>
+        <view class="Info-name">代申请人：{{Info.bill_info.username}}</view>
         <view class="Info-state">{{Info.bill_info.sponsor_text}}</view>
       </view> 
       <view class="Info-Urg {{level}}">{{Info.bill_info.level}}</view>
