@@ -1,28 +1,36 @@
 <view class="pageBody">
   <!-- 没有收款账户开始 -->
-  <view a:if="{{Account.length <= 0 ? true : false}}" class="NoAccount">
+  <!-- <view class="NoAccount">
     <image class="NoAccount-add" mode="scaleToFill" src="/image/add_account.png" onTap="AddAccount"/>
     <view class="NoAccount-title">添加收款账号</view>
-  </view>
+  </view> -->
   <!-- 没有收款账户结束 -->
   <!-- 有收款账户的添加开始 -->
-  <view a:if="{{Account.length > 0 ? true : false}}" class="YesAccount-add" onTap="AddAccount">
+  <view class="YesAccount-add" onTap="AddAccount">
     <image class="YesAccount-add-img" mode="scaleToFill" src="/image/add_account.png"/>
     <view class="YesAccount-title">添加收款账号</view>
   </view>
   <!-- 有收款账户的添加结束 -->
   <!-- 选择收款账户开始 -->
-    <view a:if="{{AccountListShow}}" class="AccountList {{Account.length > 0 ? '' : 'AccountListActive'}}">
-      <view class="AccountList-item" a:for="{{AccountList}}" key="{{index}}" onTap="ChoseAccount" data-index="{{index}}">
-        <image class="AccountList-item-img" mode="scaleToFill" src="{{item.img}}"/>
-        <view class="AccountList-item-title">{{item.name}}</view>
-      </view>
+  <view a:if="{{AccountListShow}}" class="AccountList {{Account.length > 0 ? '' : 'AccountListActive'}}">
+    <view class="AccountList-item" a:for="{{AccountList}}" key="{{index}}" onTap="ChoseAccount" data-index="{{index}}">
+      <image class="AccountList-item-img" mode="scaleToFill" src="{{item.img}}"/>
+      <view class="AccountList-item-title">{{item.name}}</view>
     </view>
+  </view>
   <!-- 选择收款账户结束 -->
   <!-- 有收款账户开始 -->
-  <view a:if="{{Account.length > 0 ? true : false}}" class="YesAccount">
+  <view class="YesAccount">
     <scroll-view onScrollToLower="onReachBottom">
       <view class="YesAccountList">
+        <view class="YesAccountList-item">
+          <view class="YesAccountList-itemBox" data-index="1" data-name="现金" data-account="" onTap="ChoseAccountList">
+            <image class="Account-info-img" mode="scaleToFill" src="../../../image/account_money.png"/>
+            <view class="YesAccountList-item-info">
+              <view class="Account-name">现金</view>
+            </view>
+          </view>
+        </view>
         <view class="YesAccountList-item" a:for="{{Account}}" key="{{item.id}}" data-index="{{id}}">
           <view class="YesAccountList-itemBox" data-index="{{item.id}}" data-name="{{item.name}}" data-account="{{item.account}}" onTap="ChoseAccountList">
             <image class="Account-info-img" mode="scaleToFill" src="{{item.img}}"/>
@@ -37,7 +45,6 @@
         </view>
       </view>
     </scroll-view>
-    
   </view>
   <!-- 有收款账户结束 -->
 </view>

@@ -164,12 +164,12 @@ textarea{resize: none;}textarea {  -webkit-appearance: none;}
 }
 .form-btns{
   margin: 200rpx 6.67% 0 6.67%;
-  font-size:34px;
+}
+.submit{
+  font-size:34rpx;
   font-family:PingFang-SC-Medium;
   font-weight:500;
   color: white;
-}
-.submit{
   height: 90rpx;
   line-height: 90rpx;
   text-align: center;

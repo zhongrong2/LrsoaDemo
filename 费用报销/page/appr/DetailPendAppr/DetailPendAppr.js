@@ -69,7 +69,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data.data);
+        // console.log(res.data.data);
         if(res.data.code==0){
           dd.hideLoading();
           that.setData({

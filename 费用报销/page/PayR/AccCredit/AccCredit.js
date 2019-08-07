@@ -5,7 +5,7 @@ Page({
   data: {
     bankId:'',//银行id
     bankName:'',//银行名称
-    type:'2',//账户类型
+    type:'4',//账户类型
     name:'',//账户名称
     account:'',//账户卡号
   },

@@ -19,7 +19,7 @@ Page({
     selectId:'',//选择发票信息的id
     selectVal:'',//选择发票信息值
     accountId:'',//选择收款账户id
-    accountName:'',
+    accountName:'',//收款账户名称
     account:'',//收款账户
     images:[],//图片
     count:'',//抄送人id
@@ -307,8 +307,8 @@ Page({
       return false;
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
-    // console.log(pic);
-    // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,pics,cc_uids,level,content);
+    console.log(pic);
+    console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,pics,cc_uids,level,content);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
@@ -450,7 +450,12 @@ Page({
             count:arr,
             CopMem:Info.cc_uids,
             level:level,
-          })
+          });
+          if(Info.account_info.id==1){//判断是现金显示现金
+            that.setData({
+              accountName:Info.account_info.type,
+            })
+          }
         }
         else if(res.data.code==1){
           dd.showLoading({

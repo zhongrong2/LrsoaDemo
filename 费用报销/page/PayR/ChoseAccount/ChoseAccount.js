@@ -8,6 +8,7 @@ Page({
       {Url:'/page/PayR/AccApipay/AccApipay'},
       {Url:'/page/PayR/AccPersonal/AccPersonal'},
       {Url:'/page/PayR/AccPublic/AccPublic'},
+      {Url:'/page/PayR/AccCredit/AccCredit'},
     ],//选择添加账户列表
     delBtnWidth:140,
     page:1,//默认加载第一次
@@ -166,7 +167,7 @@ Page({
   //选择收款账户
   ChoseAccountList(e){
     const account = e.currentTarget.dataset.account,id = e.currentTarget.dataset.index,name = e.currentTarget.dataset.name;
-    // console.log(account,id);
+    // console.log(account,id,name);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({

@@ -29,7 +29,8 @@
     "page/PayR/BillType/BillType",
     "page/appr/ApprPass/ApprPass",
     "page/PayR/ChoseDepart/ChoseDepart",
-    "page/PayR/ChoseProposer/ChoseProposer"
+    "page/PayR/ChoseProposer/ChoseProposer",
+    "page/PayR/AccCredit/AccCredit"
   ],
   "window": {
     "enableWK": "YES",
