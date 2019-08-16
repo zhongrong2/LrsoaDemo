@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .count-per{
   font-size: 28rpx;
@@ -86,6 +86,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 110rpx;
 }
 .searchRes-title{
   width: 89.34%;

@@ -167,7 +167,7 @@ Page({
           content: '加载中...',
           delay: 1000,
         });
-        that.onShow();
+        setTimeout(()=>{that.onShow()},3000);
       }
     })
   },

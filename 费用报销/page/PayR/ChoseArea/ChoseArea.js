@@ -13,16 +13,20 @@ Page({
     procinceName:'',
     procinceId:'',
     cityId:'',
+    searchVal:'',
   },
   onLoad() {
     this.GetArea();
   },
   // 获取省份列表
-  GetArea(){
+  GetArea(name){
     var that = this;
     dd.httpRequest({
       url:URL+'/common/provinceList',
       method:'POST',
+      data:{
+        name:name,
+      },
       dataType:'json',
       success(res){
         // console.log(res);
@@ -49,12 +53,13 @@ Page({
     })
   },
   //获取市列表
-  GetCity(id){
+  GetCity(id,name){
     var that = this;
     dd.httpRequest({
       url:URL+'/common/cityList',
       method:'POST',
       data:{
+        name:name,
         province_id:id,
       },
       dataType:'json',
@@ -87,17 +92,22 @@ Page({
     const Proid = e.currentTarget.dataset.id,name = e.currentTarget.dataset.name;
     // console.log(id,name);
     this.setData({
+      searchVal:'',
       AreaShow:false,
       CityShow:true,
       procinceName:name,
       procinceId:Proid,
     })
-    this.GetCity(Proid);
+    var cityname='';
+    this.GetCity(Proid,cityname);
   },
   //选择市
   ChoseCity(e){
     const that = this,id = e.currentTarget.dataset.id,name = e.currentTarget.dataset.name,Proid = that.data.procinceId,procinceName = that.data.procinceName;
     var selectAddress;
+    that.setData({
+      searchVal:'',
+    })
     // console.log(name,procinceName);
     if(procinceName == '北京市' || procinceName == '天津市' || procinceName == '上海市' || procinceName == '重庆市'){
       selectAddress = procinceName;
@@ -121,5 +131,19 @@ Page({
     this.setData({
       letterItem:item
     })
-  }
+  },
+  //搜索
+  Search(e){
+    const that=this;
+    that.setData({
+      searchVal:e.detail.value,
+    });
+    var searchVal = this.data.searchVal,Proid='',CityShow=this.data.CityShow;
+    // console.log(searchVal);
+    if(CityShow){
+      this.GetCity(Proid,searchVal);
+      return;
+    }
+    this.GetArea(searchVal)
+  },
 });

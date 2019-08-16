@@ -4,9 +4,8 @@ let URL = app.globalData.http;
 Page({
   data: {
     member:[],//成员列表
-    countPer:'0',//默认选择人数
-    count:[],
-    CopMem:[],
+    count:'',
+    CopMem:'',
     searchVal:'',
     page:1,
     limit:10,
@@ -36,7 +35,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        // console.log(res.data.data)
+        console.log(res.data.data)
         if(res.data.code==0){
           dd.hideLoading();
           //下拉加载
@@ -59,14 +58,13 @@ Page({
           });
           that.addTag();
           var count = that.data.count,member=that.data.member;
-          for(var i=0;i<count.length;i++){//判断点击确定之前是否选择该成员
-            for(var j=0;j<member.length;j++){
-              if(count[i]==member[j].id){
-                member[j].choseMemShow=true;
-                that.setData({
-                  member:member,
-                })
-              }
+          //判断点击确定之前是否选择该成员
+          for(var j=0;j<member.length;j++){
+            if(count==member[j].id){
+              member[j].choseMemShow=true;
+              that.setData({
+                member:member,
+              })
             }
           };
           if(res.data.data.length==0){
@@ -91,58 +89,20 @@ Page({
       }
     })
   },
-  //计算选择抄送人人数
-  AddMem(addIndex,name,id){
-    var that = this;
-    if(addIndex !== ""){
-      // console.log(addIndex,index)
-      var count = that.data.count;//选择抄送人的id
-      that.data.count.push(addIndex);//添加选中抄送人id
-      var CopMem = that.data.CopMem;
-      var copmenAdd = name;//获取添加用户的name
-      that.data.CopMem.push(copmenAdd);//把要添加用户的数据放到已选择抄送人数据中
-      that.setData({
-        countPer:that.data.countPer-1+2,
-        count:that.data.count,
-        CopMem:that.data.CopMem,
-      })
-      // console.log(that.data.count,that.data.CopMem);
-    }
-    else{
-      // console.log(addIndex,id)
-      var count = that.data.count;
-      for(var j=0;j<count.length;j++){//删除取消的抄送人id
-        if(count[j]==id){
-          count.splice(j,1);
-        }
-      } 
-      var CopMem = that.data.CopMem;
-      for(var i=0;i<CopMem.length;i++){//删除取消的抄送人数据
-        if(CopMem[i]==name){
-          CopMem.splice(i,1);
-        }
-      }
-      that.setData({
-        countPer:this.data.countPer-1,
-        count:this.data.count,
-        CopMem:that.data.CopMem,
-      });
-      console.log(that.data.count,that.data.CopMem);
-    }
-  },
   // 选择成员
   ChoseMem(e){
     const index = e.currentTarget.dataset.index;
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
     const member = this.data.member;
+    this.addTag();
     member[index].choseMemShow = !member[index].choseMemShow;
-    const addIndex = member[index].choseMemShow ? id : '';
     this.setData({
       member:member,
+      count:id,
+      CopMem:name,
     });
-    // console.log(member,addIndex,index,id)
-    this.AddMem(addIndex,name,id);
+    console.log(member,index,id,name);
   },
   //确定选择抄送人
   Sure(){
@@ -166,11 +126,11 @@ Page({
     var searchVal=e.detail.value;
     this.setData({
       searchVal:e.detail.value,
-      SearchNoRes:true,
-      page:1,//重新点击选择部门数据初始化
-      member:[],//重新点击选择部门数据初始化
+      SearchNoRes:false,
+      page:1,//重新选择部门数据初始化
+      member:[],//重新选择部门数据初始化
     })
-    // console.log(searchVal);
+    // console.log(this.data.member);
     this.GetPro(searchVal);
   },
   //全部成员

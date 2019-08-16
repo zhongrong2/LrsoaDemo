@@ -8,8 +8,8 @@
   </view>
   <!-- 搜索框结束 -->
   <!-- 申请人列表开始 -->
-  <view class="memList">
-    <view a:if="{{member.length>0&&SearchNoRes}}" class="searchRes-title" onTap="GetAllPro">全部成员</view>
+  <view class="memList" a:if="{{member.length>0}}">
+    <view class="searchRes-title" onTap="GetAllPro">全部成员</view>
     <view class="member-list">
       <scroll-view scroll-y="true" onScrollToLower="ScrollList" style="height:1100rpx;">
         <view class="member-list-items">
@@ -35,7 +35,6 @@
   <!-- 未搜索到结果结束 -->
   <!-- 总计开始 -->
   <view class="count-body">
-    <view class="count-per">已选择{{CopMem.length}}人</view>
     <button type="primary" class="count-btn" onTap="Sure">确定</button>
   </view>
   <!-- 总计结束 -->

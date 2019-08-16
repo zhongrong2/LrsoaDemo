@@ -51,7 +51,6 @@
       <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseData"/>
     </view>
     <view class="page-section">
-      <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">发票信息</view>
       <view class="form-content contentR" onTap="ShowSelect">
         <input class="input" type="text" placeholder="请选择发票信息" disabled="true" value="{{selectVal}}"/>

@@ -30,3 +30,4 @@ require('../../page/PayR/BillType/BillType');
 require('../../page/appr/ApprPass/ApprPass');
 require('../../page/PayR/ChoseDepart/ChoseDepart');
 require('../../page/PayR/ChoseProposer/ChoseProposer');
+require('../../page/PayR/AccCredit/AccCredit');

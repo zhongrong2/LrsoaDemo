@@ -3,7 +3,7 @@
   <view class="search-body">
     <view class="searchBox">
       <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
-      <input type="search" class="search-input" placeholder="请输入省市" />
+      <input type="search" class="search-input" placeholder="请输入省市" value="{{searchVal}}" onConfirm="Search"/>
     </view>
   </view>
   <!-- 搜索框结束 -->

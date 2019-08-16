@@ -91,7 +91,7 @@
         <view class="list-item">
           <view class="list-title">图片</view>
           <view class="list-value">
-            <image class="list-img" a:for="{{Info.account_info.pic}}" key="{{index}}" mode="scaleToFill" src="{{item}}"/>
+            <image class="list-img" a:for="{{Info.account_info.pic}}" key="{{index}}" data-index="{{index}}" mode="scaleToFill" onTap="previewImage" src="{{item}}"/>
           </view>
         </view>
       </view>

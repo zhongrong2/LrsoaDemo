@@ -142,7 +142,7 @@ Page({
           var beforePage = page[page.length - 2]; // 跳转页面的栈
           dd.navigateBack({
             success: function () {
-              beforePage.onShow(); // 执行前一个页面的onLoad方法
+              beforePage.onLoad(); // 执行前一个页面的onLoad方法
             }
           })
         }
