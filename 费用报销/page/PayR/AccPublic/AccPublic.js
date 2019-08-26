@@ -11,7 +11,7 @@ Page({
     CityId:'',
     selectAddress:'',
     bankSubId:'',
-    banSubName:'',
+    banSubName:'',//银行支行
     type:3,
   },
   onLoad() {},

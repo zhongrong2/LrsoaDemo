@@ -16,14 +16,18 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     });
+    // console.log(options.type);
     if(options.type==undefined){
-      // console.log(options.type);
       that.setData({
         id:JSON.parse(options.id),
         status:options.status,
         uid:that.data.userInfo.id,
       })
-      // console.log(this.data.uid);
+      // var id=that.data.id,uid=this.data.uid;
+      // dd.alert({
+      //   content: id+','+uid,
+      // });
+      // console.log(that.data.id,this.data.uid);
       that.GetInfo();
     }
     else{
@@ -228,4 +232,48 @@ Page({
       urls:srcs,
     })
   },
+  //已打款
+  MakeMoney(){
+    var that=this;
+    var Info=that.data.Info;
+    var stateBtn = Info.bill_info.button_status,id =that.data.id,uid=that.data.uid;
+    // console.log(stateBtn,id,uid);
+    if(stateBtn==4){
+      dd.httpRequest({
+        url:URL+'/payapply/remit',
+        method:'POST',
+        data:{
+          id:id,
+          uid:uid,
+        },
+        success(res){
+          console.log(res.data);
+          dd.hideLoading();
+          if(res.data.code==0){
+            dd.navigateBack({
+              delta: 1
+            })
+          }
+          if(res.data.code==1){
+            dd.showToast({
+              content:res.data.data,
+              duration:3000,
+            })
+          }
+        },
+        fail(err){
+          dd.showLoading({
+            content: '加载中...',
+            delay: 1000,
+          });
+        }
+      })
+    }
+    else{
+      dd.showToast({
+        content:'已打款',
+        duration:3000,
+      })
+    }
+  }
 });

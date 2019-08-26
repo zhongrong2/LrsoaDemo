@@ -62,9 +62,9 @@
     </view>
     <view class="page-section">
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
-      <view class="form-label">支付对象</view>
+      <view class="form-label">收款人</view>
       <view class="form-content">
-        <input class="input" type="text" placeholder="请输入支付对象名称/单位" value="{{payment}}" onBlur="GetPayment"/>
+        <input class="input" type="text" placeholder="请输入收款单位/人" value="{{payment}}" onBlur="GetPayment"/>
       </view>
     </view>
     <view class="page-section" a:if="{{account==''?true:false}}">

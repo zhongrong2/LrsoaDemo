@@ -33,7 +33,12 @@
   </view>
   <!-- 修改按钮 -->
   <view class="btns" a:if="{{Info.bill_info.button_status=='3'?true:false}}">
-      <button class="btn2 reject" type="primary" plain="true" hover-class="none" onTap="Cancel">取消</button>
-      <button class="btn2" type="primary" hover-class="none" onTap="Revise">立即修改</button>
-    </view>
+    <button class="btn2 reject" type="primary" plain="true" hover-class="none" onTap="Cancel">取消</button>
+    <button class="btn2" type="primary" hover-class="none" onTap="Revise">立即修改</button>
+  </view>
+  <!-- 出纳打款按钮显示 -->
+  <view class="MakeMoneyBtn" a:if="{{Info.bill_info.button_status==5?true:false}}">
+    <view class="MakeMoneyBtn-title">审批通过</view>
+    <view class="MakeMoneyBtn-btn">已打款</view>
+  </view>
 </view>

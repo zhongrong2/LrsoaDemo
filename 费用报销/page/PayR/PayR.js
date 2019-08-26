@@ -109,14 +109,15 @@ Page({
   AddImg(){
     const _this = this;
     dd.chooseImage({
-      count:10,
+      count:'10',
+      sourceType:['album', 'camera'],//可以指定来源是相册还是相机，默认二者都有  
       success:(res) => {
         const addImages =res.filePaths;
         const Imgs = _this.data.images.concat(addImages);
         _this.setData({
           images:Imgs,
         })
-        console.log(_this.data.images);
+        console.log(addImages,_this.data.images);
         app.uploadimg({
           url:URL+'/payapply/uploadimg',
           filePath:addImages,

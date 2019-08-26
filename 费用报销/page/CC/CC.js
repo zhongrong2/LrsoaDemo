@@ -162,7 +162,8 @@ Page({
           content: '加载中...',
           delay: 1000,
         });
-        setTimeout(()=>{that.onShow()},3000);
+        that.onShow()
+        // setTimeout(()=>{},3000);
       }
     })
   },

@@ -61,11 +61,10 @@ Page({
       },
       dataType:'json',
       success(res){
+        // console.log(res.data.data.back);
         that.setData({
           'navItem.nav[0].count':res.data.data.audit,
-          'navItem.nav[1].count':res.data.data.back,
         })
-        // console.log(res.data.data.audit);
         app.addTag(that.data);
         app.InfoShow(that);
       },
@@ -96,10 +95,10 @@ Page({
   },
   //点击查看详情
   InfoTap(e){
-    var that=this,id=e.currentTarget.dataset.id,status=that.data.navItem.status,type='iaudit';
+    var that=this,id=e.currentTarget.dataset.id,status=that.data.navItem.status;
     // console.log(status);
     dd.navigateTo({
-      url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&status='+status+'&type='+type
+      url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&status='+status
     });
   },
   //搜索
@@ -167,7 +166,8 @@ Page({
           content: '加载中...',
           delay: 1000,
         });
-        setTimeout(()=>{that.onShow()},3000);
+        that.onShow()
+        // setTimeout(()=>{},3000);
       }
     })
   },

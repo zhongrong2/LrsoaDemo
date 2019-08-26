@@ -67,3 +67,34 @@
   top: 3.02%;
   right: 4%;
 }
+/* 打款按钮 */
+.MakeMoneyBtn{
+  width: 90.14%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0rpx 5.33% 0 4.53%;
+  border-top: 2rpx solid #F7F7F7;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  border-radius: 4rpx;
+}
+.MakeMoneyBtn-title{
+  font-size: 28rpx;
+  color: #191F25;
+}
+.MakeMoneyBtn-btn{
+  width: 21.33%;
+  height: 60rpx;
+  background-color: #3296fa;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+.MakeMoneyBtn2-btn{
+  background-color: #15BC83;
+}

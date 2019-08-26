@@ -1,0 +1,11 @@
+<view class="pageBody">
+  <form onSubmit="onSubmit">
+    <view class="form-item">
+      <view class="form-item-title">银行支行</view>
+      <input class="form-item-val" placeholder="请输入银行支行" value="{{BankSubName}}" onBlur="GetName"/>
+    </view>
+    <view class="form-btns">
+      <button class="submit" hover-class="none" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

@@ -30,7 +30,8 @@
     "page/appr/ApprPass/ApprPass",
     "page/PayR/ChoseDepart/ChoseDepart",
     "page/PayR/ChoseProposer/ChoseProposer",
-    "page/PayR/AccCredit/AccCredit"
+    "page/PayR/AccCredit/AccCredit",
+    "page/PayR/AddBankSub/AddBankSub"
   ],
   "window": {
     "enableWK": "YES",

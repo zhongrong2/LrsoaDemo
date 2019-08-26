@@ -40,7 +40,7 @@ App({
               const data = res.data;
               if(data.code == 0){
                 that.globalData.userInfo = data.data;
-                  // console.log(data.data);
+                // console.log(that.globalData.userInfo);
               }
               else{
                 dd.showToast({
@@ -78,6 +78,7 @@ App({
                   }
                 });
                 that.globalData.userInfo = data.data;
+                // console.log(that.globalData.userInfo);
               }
               else{
                 dd.showToast({
@@ -112,7 +113,7 @@ App({
   globalData:{
     userInfo:'',
     imgArr:[],
-    http:"http://www.longshihua.cn",
+    http:"http://www.longshihua.cn:8009",
   },
   // 显示下拉框
   ShowSelect(that,URL){
@@ -167,7 +168,7 @@ App({
       success(res){
         success++;
         var resData = JSON.parse(res.data);
-        console.log(resData.data);
+        // console.log(resData.data);
         that.globalData.imgArr == that.globalData.imgArr.push(resData.data);
         console.log(that.globalData.imgArr);
       },
