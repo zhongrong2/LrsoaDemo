@@ -132,7 +132,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.code==0){
           dd.hideLoading();
           if(res.data.data == '' && that.data.List != ''){

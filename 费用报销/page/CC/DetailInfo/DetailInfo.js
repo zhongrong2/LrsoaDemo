@@ -115,10 +115,10 @@ Page({
           }
         }
         else if(res.data.code==1){
-          dd.showLoading({
-            content: '加载中...',
-            delay: 1000,
-          });
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          })
         }
         // console.log(that.data.Info.account_info.pic);
       },

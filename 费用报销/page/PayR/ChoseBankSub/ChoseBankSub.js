@@ -86,5 +86,12 @@ Page({
     dd.navigateTo({
       url:'/page/PayR/AddBankSub/AddBankSub?bankId='+bankId+'&ProId='+ProId+'&CityId='+CityId
     })
+  },
+  //返回该页面刷新页面
+  changeData(){
+    this.setData({
+      name:'',
+    });
+    this.GetBankSub();
   }
 });

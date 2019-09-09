@@ -2,7 +2,10 @@ let app = getApp();
 let URL = app.globalData.http;
 
 Page({
-  data: {},
+  data: {
+    name:'',
+    hasOnshow:false
+  },
   onLoad() {
     this.GetBank();
   },
@@ -13,8 +16,11 @@ Page({
       url:URL+'/common/bankList',
       method:'POST',
       dataType:'json',
+      data:{
+        name:that.data.name,
+      },
       success(res){
-        console.log(res)
+        // console.log(res)
         if(res.data.code==0){
           dd.hideLoading();
           that.setData({
@@ -47,5 +53,25 @@ Page({
       bankName:name,
     })
     dd.navigateBack({delta:1});
+  },
+  //搜索银行
+  Search(e){
+    this.setData({
+      name:e.detail.value,
+    })
+    this.GetBank();
+  },
+  //添加银行
+  AddBank(){
+    dd.navigateTo({
+      url:'/page/PayR/AddBank/AddBank'
+    })
+  },
+  //返回该页面刷新页面
+  changeData(){
+    this.setData({
+      name:'',
+    });
+    this.GetBank();
   }
 });

@@ -1,4 +1,18 @@
 <view class="pageBody">
+  <!-- 搜索框开始 -->
+  <view class="search-body">
+    <view class="searchBox">
+      <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
+      <input type="search" class="search-input" placeholder="请输入您选择的支行" value="{{searchVal}}" onConfirm="Search"/>
+    </view>
+  </view>
+  <!-- 搜索框结束 -->
+  <!-- 添加支行开始 -->
+  <view class="AddBank" onTap="AddBank">
+    <image class="AddBank-logo" mode="scaleToFill" src="/image/add_account.png"/>
+    <view class="AddBank-title">添加银行</view>
+  </view>
+  <!-- 添加支行结束 -->
   <view class="border"></view>
   <view class="backList">
     <view class="back-item" a:for="{{bankList}}" key="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ChoseBank">{{item.name}}</view>

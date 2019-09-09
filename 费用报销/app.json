@@ -11,6 +11,7 @@
     "page/PayR/ChoseArea/ChoseArea",
     "page/appr/appr",
     "page/appr/DetailPendAppr/DetailPendAppr",
+    "page/appr/ApprPass/ApprPass",
     "page/init/init",
     "page/init/DetailPendAppr/DetailPendAppr",
     "page/CC/CC",
@@ -27,11 +28,11 @@
     "page/PayR/ChoseBankSub/ChoseBankSub",
     "page/detail/detail",
     "page/PayR/BillType/BillType",
-    "page/appr/ApprPass/ApprPass",
     "page/PayR/ChoseDepart/ChoseDepart",
     "page/PayR/ChoseProposer/ChoseProposer",
     "page/PayR/AccCredit/AccCredit",
-    "page/PayR/AddBankSub/AddBankSub"
+    "page/PayR/AddBankSub/AddBankSub",
+    "page/PayR/AddBank/AddBank"
   ],
   "window": {
     "enableWK": "YES",

@@ -1,3 +1,47 @@
+.search-body{
+  border-top: 2rpx solid #F7F7F7;
+}
+.AddBank{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5.33%;
+  margin-top: 110rpx;
+  border-bottom: 10rpx solid #F7F7F7;
+}
+.AddBank-logo{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+.AddBank-title{
+  flex: 1;
+  font-size: 30rpx;
+  color: #333333;
+  text-align: left;
+  line-height: 90rpx;
+}
+.backList{
+  flex: 1;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+.back-item{
+  flex: 1;
+  width: 100%;
+  height: 100rpx;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color: #333333;
+  text-align: left;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #F7F7F7;
+  padding: 0 5.47%;
+}
 .border{
   flex: 1;
   height: 10rpx;

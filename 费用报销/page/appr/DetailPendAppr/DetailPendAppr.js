@@ -14,7 +14,8 @@ Page({
   onLoad(options) {
     var that=this,uId;
     that.setData({
-      userInfo:app.globalData.userInfo
+      userInfo:app.globalData.userInfo,
+      hasInform:options.type,
     });
     // console.log(options.type);
     if(options.type==undefined){
@@ -99,10 +100,10 @@ Page({
           }
         }
         else if(res.data.code==1){
-          dd.showLoading({
-            content: '加载中...',
-            delay: 1000,
-          });
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          })
         }
         // console.log(that.data.Info.account_info.pic);
       },
@@ -127,7 +128,7 @@ Page({
     var that=this,Info=that.data.Info;
     var ShowCop = Info.bill_info.if_second_cc_uids,id=Info.bill_info.id,count=Info.bill_info.cc_uids,CopMem=Info.cc_uids;
     var CopMem = JSON.stringify(CopMem);
-    // console.log(ShowCop,id,count,CopMem);
+    console.log(ShowCop,id,count,CopMem);
     if(ShowCop){
       dd.navigateTo({
         url:'/page/appr/ApprPass/ApprPass?id='+JSON.stringify(id)+'&count='+count+'&CopMem='+CopMem
@@ -235,7 +236,7 @@ Page({
   //已打款
   MakeMoney(){
     var that=this;
-    var Info=that.data.Info;
+    var Info=that.data.Info,hasInform=that.data.hasInform;
     var stateBtn = Info.bill_info.button_status,id =that.data.id,uid=that.data.uid;
     // console.log(stateBtn,id,uid);
     if(stateBtn==4){
@@ -250,13 +251,22 @@ Page({
           console.log(res.data);
           dd.hideLoading();
           if(res.data.code==0){
-            dd.navigateBack({
-              delta: 1
+            dd.showToast({
+              content:res.data.data,
+              duration:3000,
             })
+            if(hasInform==undefined){
+              dd.navigateBack({
+                delta: 1
+              });
+            }
+            else{
+              that.onShow();
+            }
           }
           if(res.data.code==1){
             dd.showToast({
-              content:res.data.data,
+              content:res.data.msg,
               duration:3000,
             })
           }
@@ -271,7 +281,7 @@ Page({
     }
     else{
       dd.showToast({
-        content:'已打款',
+        content:'已打款成功',
         duration:3000,
       })
     }

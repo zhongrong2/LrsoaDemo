@@ -109,7 +109,7 @@ Page({
   AddImg(){
     const _this = this;
     dd.chooseImage({
-      count:'10',
+      count:10,
       sourceType:['album', 'camera'],//可以指定来源是相册还是相机，默认二者都有  
       success:(res) => {
         const addImages =res.filePaths;

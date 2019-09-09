@@ -42,3 +42,6 @@
   border-bottom: 2rpx solid #F7F7F7;
   padding: 0 5.47%;
 }
+.SearchNoRes{
+  text-align: center;
+}

@@ -1,0 +1,6 @@
+.form-item{
+  border-top: 2rpx solid #F7F7F7;
+}
+.form-item-val{
+  height: 0.96rem;
+}

@@ -1,5 +1,6 @@
 require('@alipay/appx-compiler/lib/sjsEnvInit');
 require('./config$');
+
 require('../../page/index/index');
 require('../../page/PayR/PayR');
 require('../../page/PayR/ChoseCopier/ChoseCopier');
@@ -11,6 +12,7 @@ require('../../page/PayR/AccPublic/AccPublic');
 require('../../page/PayR/ChoseArea/ChoseArea');
 require('../../page/appr/appr');
 require('../../page/appr/DetailPendAppr/DetailPendAppr');
+require('../../page/appr/ApprPass/ApprPass');
 require('../../page/init/init');
 require('../../page/init/DetailPendAppr/DetailPendAppr');
 require('../../page/CC/CC');
@@ -27,7 +29,8 @@ require('../../component/dataInfo/headInfo/headInfo');
 require('../../page/PayR/ChoseBankSub/ChoseBankSub');
 require('../../page/detail/detail');
 require('../../page/PayR/BillType/BillType');
-require('../../page/appr/ApprPass/ApprPass');
 require('../../page/PayR/ChoseDepart/ChoseDepart');
 require('../../page/PayR/ChoseProposer/ChoseProposer');
 require('../../page/PayR/AccCredit/AccCredit');
+require('../../page/PayR/AddBankSub/AddBankSub');
+require('../../page/PayR/AddBank/AddBank');

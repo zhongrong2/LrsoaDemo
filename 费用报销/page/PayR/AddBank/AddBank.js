@@ -3,42 +3,32 @@ let URL = app.globalData.http;
 
 Page({
   data: {
-    BankSubName:''
+    BankName:'',
   },
-  onLoad(options) {
-    this.setData({
-      bankId:options.bankId,
-      ProId:options.ProId,
-      CityId:options.CityId,
-    })
-    console.log(this.data.bankId,this.data.ProId,this.data.CityId);
-  },
-  //获取支行名称
+  onLoad() {},
+  //获取名称
   GetName(e){
     this.setData({
-      BankSubName:e.detail.value,
+      BankName:e.detail.value,
     })
   },
   //添加支行
   onSubmit(){
     var that = this;
-    var bankId=that.data.bankId,ProId=that.data.ProId,CityId=that.data.CityId,BankSubName=that.data.BankSubName;
-    console.log(bankId,ProId,CityId,BankSubName);
-    if(BankSubName==undefined||BankSubName==''){
+    var BankName=that.data.BankName;
+    console.log(BankName);
+    if(BankName==undefined||BankName==''){
       dd.showToast({
-        content:'请输入银行支行',
+        content:'请输入银行',
         duration:3000,
       });
       return;
     }
     dd.httpRequest({
-      url:URL+'/common/addSubBank',
+      url:URL+'/common/addBank',
       method:'POST',
       data:{
-        bank_id:bankId,
-        province_id:ProId,
-        city_id:CityId,
-        sub_bank:BankSubName,
+        bank_name:BankName,
       },
       success(res){
         // console.log(res);

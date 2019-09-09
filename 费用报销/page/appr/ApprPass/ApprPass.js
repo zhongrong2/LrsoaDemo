@@ -6,6 +6,10 @@ Page({
     count:'',//抄送人id
     CopMem:[],//抄送人信息
     hasOnshow:false,
+    showSelect:false,//下拉框展示
+    selectVal:'',//选择审批人
+    selectId:'',//选择审批人id
+    select:''//审批人列表
   },
   onLoad(option) {
     var that=this;
@@ -96,8 +100,8 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     });
-    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count;
-    console.log(id,uid,role,content,count);
+    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId=that.data.selectId;
+    console.log(id,uid,role,content,count,selectId);
     var cc_uids;
     if(count=='null'){
       cc_uids = ''
@@ -115,6 +119,7 @@ Page({
         role:role,
         content:content,
         second_cc_uids:cc_uids,
+        audit_uid:selectId,
       },
       dataType:'json',
       success(res){
@@ -142,5 +147,14 @@ Page({
         });
       },
     })
-  }
+  },
+  //显示下拉框
+  ShowSelect(){
+    const url = URL+'/common/auditUids';
+    app.ShowSelect(this,url);
+  },
+  //选择下拉框值
+  SelectItem(e){
+    app.SelectItem(this,e);
+  },
 });

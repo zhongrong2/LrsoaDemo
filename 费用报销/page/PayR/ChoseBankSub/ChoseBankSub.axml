@@ -18,4 +18,7 @@
     <view class="back-item" a:for="{{bankList}}" key="{{index}}" data-id="{{item.subid}}" data-name="{{item.name}}" onTap="ChoseBankSub">{{item.name}}  </view>
   <!-- 支行列表结束 -->
   </view>
+  <!-- 搜素支行没有结果开始 -->
+  <!-- <view class="SearchNoRes" a:if="{{bankList.length==0}}">没有搜索到该支行</view> -->
+  <!-- 搜素支行没有结果结束-->
 </view>
