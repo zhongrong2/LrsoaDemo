@@ -8,6 +8,7 @@ Page({
         {title:'待审批',count:'',status:'1'},
         {title:'已驳回',count:'',status:'3'},
         {title:'已通过',count:'',status:'4'},
+        {title:'已打款',count:'',status:'7'},
       ],
       navIndex:0,
       NavTap:'NavTap',
