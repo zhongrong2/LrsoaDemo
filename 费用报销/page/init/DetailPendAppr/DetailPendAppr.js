@@ -215,7 +215,7 @@ Page({
   Revise(){
     var that=this,id=that.data.Info.bill_info.id;
     console.log(id);
-    dd.navigateTo({
+    dd.reLaunch({
       url:'/page/PayR/PayR?id='+id
     })
   },

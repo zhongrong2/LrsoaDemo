@@ -31,7 +31,7 @@ Page({
     var that = this;
     that.setData({
       userInfo:app.globalData.userInfo,
-      id:options.id,
+      id:options.id,//订单id
     })
     console.log(options.id);
     if(options.id!=undefined){
@@ -238,9 +238,9 @@ Page({
   // 提交数据
   onSubmit(){
     var Pics = app.globalData.imgArr;
-    console.log(Pics);
+    // console.log(Pics);
     const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId;
-    console.log(DepartId,ProMemId,that.data.ProMemVal);
+    // console.log(DepartId,ProMemId,that.data.ProMemVal);
     if(DepartId == '' || DepartId == undefined){
       dd.showToast({
         content:'请选择申请部门',
@@ -298,8 +298,9 @@ Page({
       return false;
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
-    console.log(pic);
+    // console.log(pic);
     // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
+    // console.log(that.data.id);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
@@ -319,6 +320,7 @@ Page({
         cc_uids:cc_uids,
         level:level,
         content:content,
+        id:that.data.id,
       },
       dataType:'json',
       success(res){
@@ -332,7 +334,7 @@ Page({
           app.globalData.imgArr = [];
           // console.log(Page);
           dd.switchTab({
-            url:'/page/init/init'
+            url:'/page/init/init',
           })
         }
         else{

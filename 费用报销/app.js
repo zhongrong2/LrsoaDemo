@@ -7,6 +7,13 @@ App({
       success(res){
         const code = res.authCode;
         console.log(code);
+        if(code=='200, 注意：这不是一个真实的 authCode，请登录并关联应用后再次执行'){
+          dd.showToast({
+            content:'请登录',
+            duration:3000,
+          })
+          return;
+        }
         that.GetUid(that,code);
       },
       fail(err){
@@ -38,6 +45,7 @@ App({
             dataType:'json',
             success(res){
               const data = res.data;
+              // console.log(data);
               if(data.code == 0){
                 that.globalData.userInfo = data.data;
                 // console.log(that.globalData.userInfo);

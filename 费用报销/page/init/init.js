@@ -64,7 +64,7 @@ Page({
           'navItem.nav[0].count':res.data.data.audit,
           'navItem.nav[1].count':res.data.data.back,
         })
-        console.log(res.data.data);
+        // console.log(res.data.data);
         app.addTag(that.data);
         app.InfoShow(that);
       },
@@ -131,7 +131,7 @@ Page({
       dataType:'json',
       success(res){
         dd.hideLoading();
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.code==0){
           dd.hideLoading();
           if(res.data.data == '' && that.data.List != ''){
