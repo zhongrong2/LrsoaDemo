@@ -1,10 +1,4 @@
 <view class="pageBody">
-  <!-- 没有收款账户开始 -->
-  <!-- <view class="NoAccount">
-    <image class="NoAccount-add" mode="scaleToFill" src="/image/add_account.png" onTap="AddAccount"/>
-    <view class="NoAccount-title">添加收款账号</view>
-  </view> -->
-  <!-- 没有收款账户结束 -->
   <!-- 有收款账户的添加开始 -->
   <view class="YesAccount-add" onTap="AddAccount">
     <image class="YesAccount-add-img" mode="scaleToFill" src="/image/add_account.png"/>
@@ -19,9 +13,21 @@
     </view>
   </view>
   <!-- 选择收款账户结束 -->
+  <!-- 选择已付款开始 -->
+  <view class="Payments">
+    <view class="Payments-title">已付款</view>
+    <view class="Payments-list">
+      <view class="Payments-item" a:for="{{Payments}}" key="{{index}}" data-index="{{item.id}}" data-name="{{item.name}}" data-account="" onTap="ChoseAccountList">
+        <image class="Payments-item-img" mode="scaleToFill" src="{{item.imgUrl}}"/>
+        <view class="Payments-item-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 选择已付款结束 -->
   <!-- 有收款账户开始 -->
   <view class="YesAccount">
     <scroll-view onScrollToLower="onReachBottom">
+      <view class="YesAccountList-title">收款账户</view>
       <view class="YesAccountList">
         <view class="YesAccountList-item">
           <view class="YesAccountList-itemBox" data-index="1" data-name="现金" data-account="" onTap="ChoseAccountList">

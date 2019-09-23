@@ -178,7 +178,7 @@ App({
         var resData = JSON.parse(res.data);
         // console.log(resData.data);
         that.globalData.imgArr == that.globalData.imgArr.push(resData.data);
-        console.log(that.globalData.imgArr);
+        // console.log(that.globalData.imgArr);
       },
       fail(res){
         fail++;

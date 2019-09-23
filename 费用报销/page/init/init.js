@@ -24,6 +24,9 @@ Page({
   },
   onLoad() {
     const that=this,status=that.data.navItem.status;
+    that.setData({
+      List:[],
+    })
     this.GetInit(that,status);
     this.GetCount();
   },
@@ -49,7 +52,7 @@ Page({
       userInfo:app.globalData.userInfo
     })
     const uid=that.data.userInfo.id,role=that.data.userInfo.role;
-    console.log(role)
+    // console.log(role)
     dd.httpRequest({
       url:URL+'/payapply/tipsCount',
       method:'POST',

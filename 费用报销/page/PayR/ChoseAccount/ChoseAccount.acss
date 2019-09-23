@@ -1,23 +1,3 @@
-/* 没有收款账户样式 */
-.NoAccount{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 59rpx;
-}
-.NoAccount-add{
-  width: 90rpx;
-  height: 90rpx;
-  margin: 60rpx 0rpx 30rpx 0rpx;
-}
-.NoAccount-title{
-  font-size: 24rpx;
-  color: #000000;
-  font-family:PingFang-SC-Medium;
-  font-weight:500;
-  line-height: 30rpx;
-}
 /* 有收款账户样式 */
 .YesAccount{
   flex: 1;
@@ -31,9 +11,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 110rpx;
+  height: 120rpx;
   padding: 0 5.33%;
-  border-bottom: 30rpx solid #F6F6F6;
 }
 .YesAccount-add-img{
   width: 50rpx;
@@ -111,16 +90,53 @@
   color: #666666;
   font-weight: 400;
 }
+/* 选择已付款样式 */
+.Payments{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.Payments-title{
+  width: 91.46%;
+  height: 40rpx;
+  padding: 0 4.27%;
+  background-color: #F6F6F6;
+  font-size: 26rpx;
+  color: #191F25;
+  text-align: left;
+  line-height: 40rpx;
+}
+.Payments-list{
+  width: 90.94%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding:0 4.53%;
+}
+.Payments-item{
+  width: 33.33%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.Payments-item-img{
+  width: 60rpx;
+  height: 60rpx;
+}
+.Payments-item-name{
+  font-size: 30rpx;
+  color: #191F25;
+  padding-left: 10rpx;
+  line-height: 120rpx;
+}
 /* 选择账户样式 */
 .AccountList{
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-bottom: 30rpx solid #F6F6F6;
-}
-.AccountListActive{
   border-top: 30rpx solid #F6F6F6;
-  border-bottom: 0rpx;
 }
 .AccountList-item{
   height: 100rpx;
@@ -145,4 +161,14 @@
 .AccountList-item-title{
   flex: 1;
   margin-left: 2.8%;
+}
+.YesAccountList-title{
+  width: 91.46%;
+  height: 40rpx;
+  padding: 0 4.27%;
+  background-color: #F6F6F6;
+  font-size: 26rpx;
+  color: #191F25;
+  text-align: left;
+  line-height: 40rpx;
 }
