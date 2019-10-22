@@ -52,6 +52,20 @@ Page({
   },
   //选择付款类型
   ChoseBillType(){
+    this.setData({
+      reason:'',
+      money:'',
+      dateVal:'',
+      selectId:'',//选择发票信息的id
+      selectVal:'',//选择发票信息值
+      accountId:'',//选择收款账户id
+      accountName:'',//收款账户名称
+      account:'',//收款账户
+      images:[],//图片
+      count:'',//抄送人id
+      CopMem:[],//抄送人信息
+      level:'3',//默认紧急程度
+    })
     dd.navigateTo({
       url:'/page/PayR/BillType/BillType'
     })
@@ -239,7 +253,7 @@ Page({
   onSubmit(){
     var Pics = app.globalData.imgArr;
     // console.log(Pics);
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId;
+    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId,BillType=that.data.BillType;
     // console.log(DepartId,ProMemId,that.data.ProMemVal);
     if(DepartId == '' || DepartId == undefined){
       dd.showToast({
@@ -269,38 +283,52 @@ Page({
       });
       return false;
     }
-    if(money == '' || money == undefined){
-      dd.showToast({
-        content:'请输入付款金额',
-        duration:3000,
+    if(BillTypeId==34){
+      this.setData({
+        accountId:1,//选择收款账户id
       });
-      return false;
+      if(dateVal == '' || dateVal == undefined){
+        dd.showToast({
+          content:'请选择支付时间',
+          duration:3000,
+        });
+        return false;
+      }
     }
-    if(dateVal == '' || dateVal == undefined){
-      dd.showToast({
-        content:'请选择支付时间',
-        duration:3000,
-      });
-      return false;
-    }
-    if(payment == '' || payment == undefined){
-      dd.showToast({
-        content:'请输入支付对象名称/单位',
-        duration:3000,
-      });
-      return false;
-    }
-    if(accountId == '' || accountId == undefined){
-      dd.showToast({
-        content:'请填写收款账号',
-        duration:3000,
-      });
-      return false;
+    if(BillTypeId!=34){
+      if(money == '' || money == undefined){
+        dd.showToast({
+          content:'请输入付款金额',
+          duration:3000,
+        });
+        return false;
+      }
+      if(dateVal == '' || dateVal == undefined){
+        dd.showToast({
+          content:'请选择支付时间',
+          duration:3000,
+        });
+        return false;
+      }
+      if(payment == '' || payment == undefined){
+        dd.showToast({
+          content:'请输入收款对象名称/单位',
+          duration:3000,
+        });
+        return false;
+      }
+      if(accountId == '' || accountId == undefined){
+        dd.showToast({
+          content:'请填写收款账号',
+          duration:3000,
+        });
+        return false;
+      }
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
     // console.log(pic);
     // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
-    // console.log(that.data.id);
+    console.log(that.data.accountId);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',

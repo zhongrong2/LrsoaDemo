@@ -317,3 +317,8 @@ radio{
   padding-right: 5%;
   line-height: 73rpx;
 }
+.img-prompt{
+  font-size: 22rpx;
+  color: red;
+  padding-bottom: 10rpx;
+}

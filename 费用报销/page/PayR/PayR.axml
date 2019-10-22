@@ -35,7 +35,7 @@
         <textarea class="textarea" placeholder="请输入申请事由" maxlength="30" value="{{reason}}" onBlur="GetReason"></textarea>
       </view>
     </view>
-    <view class="page-section">
+    <view class="page-section" a:if="{{BillTypeId=='34'?false:true}}">
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">金额</view>
       <view class="form-content">
@@ -50,7 +50,7 @@
       </view>
       <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseData"/>
     </view>
-    <view class="page-section">
+    <view class="page-section" a:if="{{BillTypeId=='34'?false:true}}">
       <view class="form-label">发票信息</view>
       <view class="form-content contentR" onTap="ShowSelect">
         <input class="input" type="text" placeholder="请选择发票信息" disabled="true" value="{{selectVal}}"/>
@@ -60,14 +60,14 @@
     <view class="page-select" a:if="{{showSelect}}">
       <template is="select" data="{{select}}"></template>
     </view>
-    <view class="page-section">
+    <view class="page-section" a:if="{{BillTypeId=='34'?false:true}}">
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">收款人</view>
       <view class="form-content">
         <input class="input" type="text" placeholder="请输入收款单位/人" value="{{payment}}" onBlur="GetPayment"/>
       </view>
     </view>
-    <view class="page-section" a:if="{{account==''?true:false}}">
+    <view class="page-section" a:if="{{BillTypeId=='34'?false:(account==''?true:false)}}">
       <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
       <view class="form-label">收款账号</view>
       <view class="form-content contentR" onTap="ChoseAccount">
@@ -75,7 +75,7 @@
       </view>
       <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseAccount"/>
     </view>
-    <view class="page-section Account-section" a:if="{{account==''?false:true}}">
+    <view class="page-section Account-section" a:if="{{account==''?false:(BillTypeId==34?false:true)}}">
       <view class="contentT">
         <image class="form-xing" mode="scaleToFill" src="/image/xing.png"/>
         <view class="form-label">收款账号</view>
@@ -95,6 +95,7 @@
       </view>
     </view>
     <view class="page-imgs">
+      <view class="img-prompt" a:if="{{BillTypeId=='34'?true:false}}">金额看图片</view>
       <view class="form-title form-title-img">图片</view>
       <view class="form-content form-content-img">
         <view class="addImages" a:for="{{images}}" key="{{index}}">

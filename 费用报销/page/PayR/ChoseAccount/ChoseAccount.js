@@ -175,11 +175,20 @@ Page({
     // console.log(account,id,name);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
-    prevPage.setData({
-      account:account,
-      accountId:id,
-      accountName:name,
-    })
+    if(id==2||id==3||id==4){
+      prevPage.setData({
+        account:account,
+        accountId:id,
+        accountName:'已付款/'+name,
+      })
+    }
+    else{
+      prevPage.setData({
+        account:account,
+        accountId:id,
+        accountName:name,
+      })
+    }
     dd.navigateBack({delta:1});
   },
   //下拉加载数据
