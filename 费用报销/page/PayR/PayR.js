@@ -253,7 +253,7 @@ Page({
   onSubmit(){
     var Pics = app.globalData.imgArr;
     // console.log(Pics);
-    const that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId,BillType=that.data.BillType;
+    var that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId,BillType=that.data.BillType;
     // console.log(DepartId,ProMemId,that.data.ProMemVal);
     if(DepartId == '' || DepartId == undefined){
       dd.showToast({
@@ -326,9 +326,10 @@ Page({
       }
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
+    var accountId = that.data.accountId;
     // console.log(pic);
     // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
-    console.log(that.data.accountId);
+    // console.log(that.data.accountId);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
