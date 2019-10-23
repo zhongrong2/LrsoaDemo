@@ -129,7 +129,7 @@ Page({
     var ShowCop = Info.bill_info.if_second_cc_uids,id=Info.bill_info.id,count=Info.bill_info.cc_uids,CopMem=Info.cc_uids;
     var CopMem = JSON.stringify(CopMem);
     // console.log(ShowCop,id,count,CopMem);
-    if(ShowCop){
+    if(!ShowCop){
       dd.navigateTo({
         url:'/page/appr/ApprPass/ApprPass?id='+JSON.stringify(id)+'&count='+count+'&CopMem='+CopMem
       });

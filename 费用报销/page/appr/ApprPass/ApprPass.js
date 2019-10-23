@@ -9,7 +9,11 @@ Page({
     showSelect:false,//下拉框展示
     selectVal:'',//选择审批人
     selectId:'',//选择审批人id
-    select:''//审批人列表
+    select:'',//审批人列表
+    showSelect2:false,//下拉框展示
+    selectVal2:'',//选择审批人
+    selectId2:'',//选择审批人id
+    select2:''//审批人列表
   },
   onLoad(option) {
     var that=this;
@@ -100,8 +104,8 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     });
-    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId=that.data.selectId;
-    console.log(id,uid,role,content,count,selectId);
+    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId=that.data.selectId,selectId2=that.data.selectId2;
+    console.log(id,uid,role,content,count,selectId,selectId2);
     var cc_uids;
     if(count=='null'){
       cc_uids = ''
@@ -120,6 +124,7 @@ Page({
         content:content,
         second_cc_uids:cc_uids,
         audit_uid:selectId,
+        second_audit_uid:selectId2,
       },
       dataType:'json',
       success(res){
@@ -150,11 +155,59 @@ Page({
   },
   //显示下拉框
   ShowSelect(){
+    this.setData({
+      showSelect2:false,
+    })
     const url = URL+'/common/auditUids';
     app.ShowSelect(this,url);
   },
   //选择下拉框值
   SelectItem(e){
     app.SelectItem(this,e);
+  },
+  //显示下拉框
+  ShowSelect2(){
+    var that = this;
+    that.setData({
+      showSelect:false,
+    })
+    dd.httpRequest({
+      url:URL+'/common/secondAuditUids',
+      method:'POST',
+      dataType:'json',
+      success(res){
+        // console.log(res.data.data);
+        if(res.data.code == 0){
+          that.setData({
+            showSelect2:!that.data.showSelect2,
+            select2:res.data.data,
+          });
+        }
+        else{
+          dd.showToast({
+            content:'请稍等',
+            duration:3000,
+          })
+        }
+      },
+      fail(err){
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        })
+      }
+    })
+  },
+  //选择下拉框值
+  SelectItem2(e){
+    var that = this;
+    const Index = e.currentTarget.dataset.index;
+    const Val = e.currentTarget.dataset.text;
+    // console.log(Index,Val);
+    that.setData({
+      selectVal2:Val,
+      selectId2:Index,
+      showSelect2:false,
+    })
   },
 });

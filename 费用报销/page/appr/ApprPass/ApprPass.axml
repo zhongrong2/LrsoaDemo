@@ -43,6 +43,18 @@
       <view class="select-item" a:for="{{select}}" key="{{index}}" data-index="{{item.id}}" data-id="{{item.id}}" data-text="{{item.name}}" onTap="SelectItem">{{item.name}}</view>
   </view>
   </view>
+  <view class="ApprPeo">
+    <view class="ApprPeo-title">审批人</view>
+    <view class="ApprPeo-val" onTap="ShowSelect2">
+      <input class="ApprPeo-input" type="text" placeholder="请选择审批人" disabled="true" value="{{selectVal2}}"/>
+    </view>
+    <image class="ApprPeo-right-select" mode="scaleToFill" src="/image/select.png"/ onTap="ShowSelect2">
+  </view>
+  <view class="page-select" a:if="{{showSelect2}}">
+    <view class="select">
+      <view class="select-item" a:for="{{select2}}" key="{{index}}" data-index="{{item.id}}" data-id="{{item.id}}" data-text="{{item.name}}" onTap="SelectItem2">{{item.name}}</view>
+  </view>
+  </view>
   <view class="btn-box">
     <view class="btn" onTap="Sure">确认</view>
   </view>
