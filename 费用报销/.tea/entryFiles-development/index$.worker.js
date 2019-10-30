@@ -5,7 +5,9 @@ self.__appxInited = 1;
 require('./config$');
 
 
-var AFAppX = self.AFAppX;
+var AFAppX = self.AFAppX.getAppContext
+  ? self.AFAppX.getAppContext().AFAppX
+  : self.AFAppX;
 self.getCurrentPages = AFAppX.getCurrentPages;
 self.getApp = AFAppX.getApp;
 self.Page = AFAppX.Page;
@@ -14,43 +16,45 @@ self.my = AFAppX.bridge || AFAppX.abridge;
 self.abridge = self.my;
 self.Component = AFAppX.WorkerComponent || function(){};
 self.$global = AFAppX.$global;
+self.requirePlugin = AFAppX.requirePlugin;
+        
 
 
 function success() {
 require('../../app');
-require('../../page/index/index');
-require('../../page/PayR/PayR');
-require('../../page/PayR/ChoseCopier/ChoseCopier');
-require('../../page/PayR/Copiers/Copiers');
-require('../../page/PayR/AccApipay/AccApipay');
-require('../../page/PayR/ChoseAccount/ChoseAccount');
-require('../../page/PayR/AccPersonal/AccPersonal');
-require('../../page/PayR/AccPublic/AccPublic');
-require('../../page/PayR/ChoseArea/ChoseArea');
-require('../../page/appr/appr');
-require('../../page/appr/DetailPendAppr/DetailPendAppr');
-require('../../page/appr/ApprPass/ApprPass');
-require('../../page/init/init');
-require('../../page/init/DetailPendAppr/DetailPendAppr');
-require('../../page/CC/CC');
-require('../../page/CC/DetailInfo/DetailInfo');
-require('../../component/grid/grid');
-require('../../component/select/select');
-require('../../component/nav/nav');
-require('../../component/dataList/dataList');
-require('../../component/dataInfo/apprInfo/apprInfo');
-require('../../component/dataInfo/apprExam/apprExam');
-require('../../component/dataInfo/CC/CC');
-require('../../page/PayR/ChoseBank/ChoseBank');
-require('../../component/dataInfo/headInfo/headInfo');
-require('../../page/PayR/ChoseBankSub/ChoseBankSub');
-require('../../page/detail/detail');
-require('../../page/PayR/BillType/BillType');
-require('../../page/PayR/ChoseDepart/ChoseDepart');
-require('../../page/PayR/ChoseProposer/ChoseProposer');
-require('../../page/PayR/AccCredit/AccCredit');
-require('../../page/PayR/AddBankSub/AddBankSub');
-require('../../page/PayR/AddBank/AddBank');
+require('../../page/index/index?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/PayR?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseCopier/ChoseCopier?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/Copiers/Copiers?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AccApipay/AccApipay?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseAccount/ChoseAccount?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AccPersonal/AccPersonal?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AccPublic/AccPublic?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseArea/ChoseArea?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/appr/appr?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/appr/DetailPendAppr/DetailPendAppr?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/appr/ApprPass/ApprPass?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/init/init?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/init/DetailPendAppr/DetailPendAppr?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/CC/CC?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/CC/DetailInfo/DetailInfo?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/grid/grid?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/select/select?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/nav/nav?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/dataList/dataList?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/dataInfo/apprInfo/apprInfo?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/dataInfo/apprExam/apprExam?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/dataInfo/CC/CC?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseBank/ChoseBank?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../component/dataInfo/headInfo/headInfo?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseBankSub/ChoseBankSub?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/detail/detail?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/BillType/BillType?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseDepart/ChoseDepart?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/ChoseProposer/ChoseProposer?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AccCredit/AccCredit?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AddBankSub/AddBankSub?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/PayR/AddBank/AddBank?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
 }

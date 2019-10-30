@@ -19,6 +19,7 @@ Page({
       {id:'2',name:'备用金',imgUrl:'../../../image/Payment1.png'},
       {id:'3',name:'借款',imgUrl:'../../../image/Payment2.png'},
       {id:'4',name:'银行卡',imgUrl:'../../../image/account_personal.png'},
+      {id:'5',name:'公司信用卡',imgUrl:'../../../image/account-bank.png'},
     ],
   },
   onLoad() {
