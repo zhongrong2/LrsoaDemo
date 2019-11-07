@@ -42,6 +42,7 @@ Page({
   //选择付款类型
   ChoseType(e){
     const index = e.currentTarget.dataset.index,title = e.currentTarget.dataset.title;
+    // console.log(index);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({

@@ -322,3 +322,12 @@ radio{
   color: red;
   padding-bottom: 10rpx;
 }
+.form-title{
+  display: flex;
+  flex-direction: row;
+}
+.content-prompt{
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: orangered;
+}

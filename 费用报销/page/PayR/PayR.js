@@ -73,28 +73,6 @@ Page({
   //选择时间
   ChoseData(){
     const _this = this;
-    // var date = new Date();
-    // var year = date.getFullYear();
-    // var month = date.getMonth()+1;
-    // var day = date.getDate();
-    // var time;
-    // if(month>0 && month<10){
-    //   if(day>0 && day<10){
-    //     time = year+"-"+"0"+month+"-"+"0"+day;
-    //   }
-    //   else{
-    //     time = year+"-"+"0"+month+"-"+day;
-    //   }
-    // }
-    // else{
-    //   if(day>0 && day<10){
-    //     time = year+"-"+month+"-"+"0"+day;
-    //   }
-    //   else{
-    //     time = year+"-"+month+"-"+day;
-    //   }
-    // }
-    // console.log(time);
     dd.datePicker({
       format:'yyyy-MM-dd',
       success:(res) => {
@@ -320,6 +298,15 @@ Page({
       if(accountId == '' || accountId == undefined){
         dd.showToast({
           content:'请填写收款账号',
+          duration:3000,
+        });
+        return false;
+      }
+    }
+    if(BillTypeId==35){
+      if(content==''||content==undefined){
+        dd.showToast({
+          content:'请填写油号、吨位、供应商信息',
           duration:3000,
         });
         return false;

@@ -89,7 +89,9 @@
       </view>
     </view>
     <view class="page-des">
-      <view class="form-title">备注</view>
+      <view class="form-title">备注
+        <view class="content-prompt" a:if="{{BillTypeId=='35'?true:false}}">(请填写油号、吨位、供应商信息)必填</view>
+      </view>
       <view class="form-content content-des-textaarea">
         <textarea class="textarea-des" placeholder="请输入备注信息" maxlength="200" value="{{content}}" onBlur="GetContent"></textarea>
       </view>
