@@ -35,7 +35,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res.data.data)
+        // console.log(res.data.data)
         if(res.data.code==0){
           dd.hideLoading();
           //下拉加载
@@ -102,7 +102,7 @@ Page({
       count:id,
       CopMem:name,
     });
-    console.log(member,index,id,name);
+    // console.log(member,index,id,name);
   },
   //确定选择抄送人
   Sure(){
@@ -112,7 +112,7 @@ Page({
     // console.log(count,CopMem);
     var ProMemId = count.toString();
     var ProMemVal = CopMem.toString();
-    console.log(ProMemId,ProMemVal);
+    // console.log(ProMemId,ProMemVal);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
@@ -120,6 +120,7 @@ Page({
       ProMemVal:ProMemVal,
     })
     dd.navigateBack({delta:1});
+    that.addTag();
   },
   // 搜索
   Search(e){

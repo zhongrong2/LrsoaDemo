@@ -6,6 +6,7 @@
         <view class="list-item-info">
           <view class="item-info-floater">{{item.username}}提交的{{item.flow_type}}</view>
           <view class="item-info-number">审批编号：{{item.sno}}</view>
+          <view class="item-info-number">付款金额：{{item.money}}</view>
           <view class="item-info-reason">申请事由：{{item.title}}</view>
           <view class="item-info-class">所在部门：{{item.department_id}}</view>
           <view class="item-info-PayTime">付款时间：{{item.pay_time}}</view>

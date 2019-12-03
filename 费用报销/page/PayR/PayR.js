@@ -102,12 +102,8 @@ Page({
       sourceType:['album', 'camera'],//可以指定来源是相册还是相机，默认二者都有  
       success:(res) => {
         const addImages =res.filePaths;
-        const Imgs = _this.data.images.concat(addImages);
-        _this.setData({
-          images:Imgs,
-        })
-        console.log(addImages,_this.data.images);
-        app.uploadimg({
+        // console.log(addImages);
+        _this.uploadimg({
           url:URL+'/payapply/uploadimg',
           filePath:addImages,
         });
@@ -119,11 +115,10 @@ Page({
     const index = e.currentTarget.dataset.index;
     this.data.images.splice(index,1);
     const Imgs = this.data.images;
-    app.globalData.imgArr.splice(index,1);
-    console.log(index,Imgs,app.globalData.imgArr);
     this.setData({
       images:Imgs,
-    })
+    });
+    console.log(index,this.data.images);
   },
   // 预览图片
   previewImage(e){
@@ -229,10 +224,7 @@ Page({
   },
   // 提交数据
   onSubmit(){
-    var Pics = app.globalData.imgArr;
-    // console.log(Pics);
-    var that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = Pics,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId,BillType=that.data.BillType;
-    // console.log(DepartId,ProMemId,that.data.ProMemVal);
+    var that = this,uid = that.data.userInfo.id,departId = that.data.userInfo.department_id,BillTypeId=that.data.BillTypeId,reason = that.data.reason,money = that.data.money,dateVal = that.data.dateVal,selectId = that.data.selectId,payment = that.data.payment,accountId = that.data.accountId,pics = that.data.images,arr = that.data.count,level = that.data.level,content = that.data.content,DepartId=that.data.DepartId,ProMemId=that.data.ProMemId,BillType=that.data.BillType;
     if(DepartId == '' || DepartId == undefined){
       dd.showToast({
         content:'请选择申请部门',
@@ -314,9 +306,7 @@ Page({
     }
     var cc_uids = arr.toString(),pic = JSON.stringify(pics);
     var accountId = that.data.accountId;
-    // console.log(pic);
-    // console.log(uid,departId,BillTypeId,reason,money,dateVal,selectId,payment,accountId,pic,cc_uids,level,content);
-    // console.log(that.data.accountId);
+    console.log(pic);
     dd.httpRequest({
       url:URL+'/payapply/submit',
       method:'POST',
@@ -346,8 +336,6 @@ Page({
             content:res.data.data,
             duration:3000,
           });
-          var Page=getCurrentPages.length;
-          app.globalData.imgArr = [];
           // console.log(Page);
           dd.switchTab({
             url:'/page/init/init',
@@ -437,7 +425,6 @@ Page({
             that.setData({
               images:Info.account_info.pic,
             })
-            app.globalData.imgArr = Info.account_info.pic;
           }
           // console.log(Info,arr)
           that.setData({
@@ -480,6 +467,41 @@ Page({
           content: '加载中...',
           delay: 1000,
         });
+      }
+    })
+  },
+  // 上传多张图片
+  uploadimg(data){
+    // console.log(data.filePath);
+    var that = this,i = data.i ? data.i : 0,success = data.success ? data.success : 0,fail = data.fail ? data.fail: 0;
+    dd.uploadFile({
+      url:data.url,
+      fileType:'image',
+      fileName:'file',
+      filePath:data.filePath[i],
+      success(res){
+        success++;
+        var resData = JSON.parse(res.data);
+        // console.log(resData.data);
+        const Imgs = that.data.images.concat(resData.data);
+        that.setData({
+          images:Imgs,
+        })
+        // console.log(that.data.images);
+      },
+      fail(res){
+        fail++;
+      },
+      complete(res){
+        i++;
+        if(i == data.filePath.length){
+          console.log("执行完毕，成功"+success+"失败"+fail);
+        }else{
+          data.i=i;
+          data.success=success;
+          data.fail=fail;
+          that.uploadimg(data);
+        }
       }
     })
   },

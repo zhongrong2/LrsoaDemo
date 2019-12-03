@@ -8,9 +8,13 @@ App({
         const code = res.authCode;
         console.log(code);
         if(code=='200, 注意：这不是一个真实的 authCode，请登录并关联应用后再次执行'){
-          dd.showToast({
-            content:'请登录',
-            duration:3000,
+          dd.alert({
+            title: '提示',
+            content:'请退出重新登录',
+            buttonText: '知道了',
+            success: () => {
+              
+            },
           })
           return;
         }
@@ -120,8 +124,7 @@ App({
   },
   globalData:{
     userInfo:'',
-    imgArr:[],
-    http:"http://api.ding.longshihua.cn",
+    http:"http://www.longshihua.cn:8009",
   },
   // 显示下拉框
   ShowSelect(that,URL){
@@ -161,41 +164,6 @@ App({
       selectVal:Val,
       selectId:Index,
       showSelect:false,
-    })
-  },
-  // 上传多张图片
-  uploadimg(data){
-    // console.log(data.filePath);
-    var that = this,i = data.i ? data.i : 0,success = data.success ? data.success : 0,fail = data.fail ? data.fail: 0;
-    // console.log(i,success,fail);
-    dd.uploadFile({
-      url:data.url,
-      fileType:'image',
-      fileName:'file',
-      filePath:data.filePath[i],
-      success(res){
-        success++;
-        var resData = JSON.parse(res.data);
-        // console.log(resData.data);
-        that.globalData.imgArr == that.globalData.imgArr.push(resData.data);
-        // console.log(that.globalData.imgArr);
-      },
-      fail(res){
-        fail++;
-        // console.log(fail);
-      },
-      complete(res){
-        i++;
-        if(i == data.filePath.length){
-          console.log("执行完毕，成功"+success+"失败"+fail);
-        }else{
-          // console.log(i);
-          data.i=i;
-          data.success=success;
-          data.fail=fail;
-          that.uploadimg(data);
-        }
-      }
     })
   },
   // 在数据中添加消息展示参数
