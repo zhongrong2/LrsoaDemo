@@ -1,0 +1,8 @@
+@import "/page/PayR/ChoseProposer/ChoseProposer.acss";
+.count-body{
+  justify-content: space-between;
+}
+.count-num{
+  font-size: 28rpx;
+  color: #191F25;
+}

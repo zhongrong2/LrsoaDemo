@@ -1,0 +1,29 @@
+<import src="/component/nav/nav.axml"/>
+<view class="page">
+  <!-- 导航栏开始 -->
+  <template is="nav" data="{{...navItem}}"></template>
+  <!-- 导航栏结束 -->
+  <!-- 数据列表开始 -->
+  <view class="DataList">
+    <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}">
+      <view class="item-top">
+        <view class="list-station">{{item.station}}</view>
+        <view class="list-time">{{item.time}}</view>
+      </view>
+      <view class="item-middle">
+        <view class="list-complains" a:if="{{navItem.navIndex==0}}">投诉人员：{{item.com}}</view>
+        <view class="list-comType {{item.comType=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1}}">{{item.comType}}</view>
+        <view class="list-state {{item.state=='已处理'?'list-stateacte':''}}">{{item.state}}</view>
+      </view>
+      <view class="item-bottom">
+        <view class="list-des">{{item.des}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 数据列表结束 -->
+  <!-- 反馈按钮开始 -->
+  <view class="Btn" a:if="{{navItem.navIndex==1}}">
+    <view class="btn">我要反馈</view>
+  </view>
+  <!-- 反馈按钮结束 -->
+</view>

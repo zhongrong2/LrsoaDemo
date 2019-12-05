@@ -32,7 +32,13 @@
     "page/PayR/ChoseProposer/ChoseProposer",
     "page/PayR/AccCredit/AccCredit",
     "page/PayR/AddBankSub/AddBankSub",
-    "page/PayR/AddBank/AddBank"
+    "page/PayR/AddBank/AddBank",
+    "page/complain/compOrder/compOrder",
+    "page/complain/compOrder/DetailCustComp/DetailCustComp",
+    "page/complain/compOrder/DetailEmplFeed/DetailEmplFeed",
+    "page/complain/compOrder/ChoseDealPeople/ChoseDealPeople",
+    "page/complain/complain",
+    "page/complain/ChoseCompDepart/ChoseCompDepart"
   ],
   "window": {
     "enableWK": "YES",

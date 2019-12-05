@@ -1,0 +1,23 @@
+<view class="pageBody">
+  <!-- 搜索框开始 -->
+  <view class="search-body">
+    <view class="searchBox">
+      <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
+      <input type="search" class="search-input" placeholder="搜索" value="{{searchVal}}" onConfirm="Search"/>
+    </view>
+  </view>
+  <!-- 搜索框结束 -->
+  <!-- 部门列表开始 -->
+  <view class="DepartList">
+    <view class="DepartList-item" a:for="{{List}}" key="{{index}}" data-index="{{item.id}}" data-title="{{item.name}}" onTap="ChoseDepart">{{item.name}}</view>
+  <!-- 部门列表结束 -->
+  </view>
+  <!-- 未搜索到结果开始 -->
+  <block a:if="{{List.length==0&&SearchNoRes}}">
+    <view class="searchNoRes-body">
+      <view class="searchRes-title" onTap="GetDeparts">全部部门</view>
+      <view class="searchNoRes-por">没有关于该部门的搜索结果</view>
+    </view>
+  </block>
+  <!-- 未搜索到结果结束 -->
+</view>

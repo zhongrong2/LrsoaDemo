@@ -1,0 +1,91 @@
+.page{
+  background-color: white;
+}
+.top{
+  height: 98rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4.13%;
+}
+.top-left{
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Info-station{
+  font-size: 32rpx;
+  color: #191F25;
+}
+.Info-time{
+  font-size: 24rpx;
+  color: #7A7D81;
+  line-height: 30rpx;
+}
+.top-state{
+  width: 80rpx;
+  height: 40rpx;
+  background-color: #15BC83;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 4rpx;
+}
+.middle{
+  display: flex;
+  flex-direction: column;
+}
+.middle-top{
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #F6F6F6;
+  font-size: 28rpx;
+  color: #7A7D81;
+  padding: 0 4.4%;
+}
+.Info-comPer{
+  padding-left: 10rpx;
+}
+.middle-content{
+  padding: 28rpx 6.67%;
+  font-size: 28rpx;
+  color: #575B60;
+  line-height: 30rpx;
+}
+.Info-imgs{
+  padding: 20rpx 0rpx;
+}
+.bottom{
+  display: flex;
+  flex-direction: column;
+}
+.bottom-title{
+  height: 60rpx;
+  padding: 0 4.27%;
+  background-color: #F6F6F6;
+  font-size: 28rpx;
+  color: #7A7D81;
+  line-height: 60rpx;
+}
+.bottom-content{
+  padding: 0 4.27%;
+  display: flex;
+  flex-direction: column;
+}
+.Info-time{
+  font-size: 24rpx;
+  color: #7A7D81;
+  line-height: 50rpx;
+}
+.Info-result{
+  font-size: 28rpx;
+  color: #575B60;
+  line-height: 30rpx;
+  padding-top: 10rpx;
+}

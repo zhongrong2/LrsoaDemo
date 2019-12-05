@@ -1,0 +1,80 @@
+<view class="page">
+  <form class="form" onSubmit="onSubmit">
+    <view class="page-section">
+      <view class="form-label">选择部门</view>
+      <view class="form-content contentR" onTap="ChoseDepart">
+        <input class="input" type="text" placeholder="请选择反馈部门" disabled="true" value="{{DepartVal}}"/>
+      </view>
+      <image class="form-right" mode="scaleToFill" src="/image/right.png" onTap="ChoseDepart"/>
+    </view>
+    <view class="page-section">
+      <view class="form-label">反馈类型</view>
+      <view class="form-content form-radio" onTap="ChoseDepart">
+        <view class="radio-item" a:for="{{radios}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseComptype">
+          <image class="radioImg" mode="scaleToFill" src="{{item.ShowIcon?'/image/radio2.png':'/image/radio.png'}}"/>
+          <view>{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="page-section" a:if="{{ShowComp}}">
+      <view class="form-label">投诉对象</view>
+      <view class="form-content">
+        <input class="input" type="text" placeholder="请填写投诉对象" value="{{money}}" onBlur="GetMoneny"/>
+      </view>
+    </view>
+    <view class="page-des">
+      <view class="form-title">内容描述</view>
+      <view class="form-content content-des-textaarea">
+        <textarea class="textarea-des" placeholder="请输入描述信息" maxlength="200" value="{{content}}" onBlur="GetContent"></textarea>
+      </view>
+      <view class="form-content-img">
+        <view class="addImages" a:for="{{images}}" key="{{index}}">
+          <image data-index="{{index}}" class="add-image"  mode="aspectFill" src="{{item}}" onTap="previewImage"/>
+          <image class="cancel" mode="scaleToFill" src="/image/cancel.png" onTap="DelImg" data-index="{{index}}"/>
+        </view>
+        <image mode="scaleToFill" src="/image/add.png" class="add" onTap="AddImg"/>
+      </view>
+    </view>
+    <!-- 投诉人信息 -->
+    <view class="page-sections" a:if="{{ShowComp?true:false}}">
+      <view class="page-sectionItem">
+        <view class="form-label">实名举报</view>
+        <view class="form-content form-radio">
+          <image class="radioImg" mode="scaleToFill" src="{{radioImg}}" onTap="ShowCompinfo"/>
+        </view>
+      </view>
+      <view a:if="{{ShowCompInfo}}">
+        <view class="page-sectionItem">
+          <view class="form-label">投诉人姓名：</view>
+          <view class="form-content">
+            <input class="input" type="text" placeholder="请填写投诉人姓名" value="{{money}}" onBlur="GetMoneny"/>
+          </view>
+        </view>
+        <view class="page-sectionItem">
+          <view class="form-label">投诉人电话：</view>
+          <view class="form-content">
+            <input class="input" type="text" placeholder="请填写投诉人电话" value="{{money}}" onBlur="GetMoneny"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 建议人信息 -->
+    <view class="page-sections" a:elif="{{ShowComp?false:true}}">
+      <view class="page-sectionItem">
+        <view class="form-label">建议人姓名：</view>
+        <view class="form-content">
+          <input class="input" type="text" placeholder="请填写建议人姓名" value="{{money}}" onBlur="GetMoneny"/>
+        </view>
+      </view>
+      <view class="page-sectionItem">
+        <view class="form-label">建议人电话：</view>
+        <view class="form-content">
+          <input class="input" type="text" placeholder="请填写建议人电话" value="{{money}}" onBlur="GetMoneny"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-submit">
+      <button class="submit" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

@@ -98,6 +98,10 @@ Page({
   InfoTap(e){
     var that=this,id=e.currentTarget.dataset.id,status=that.data.navItem.status;
     // console.log(status);
+    //初始化
+    that.setData({
+      hasOnshow:false,
+    })
     dd.navigateTo({
       url:'/page/appr/DetailPendAppr/DetailPendAppr?id='+JSON.stringify(id)+'&status='+status
     });

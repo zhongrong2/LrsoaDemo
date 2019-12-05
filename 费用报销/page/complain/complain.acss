@@ -1,0 +1,45 @@
+@import "/page/PayR/PayR.acss";
+.page-des{
+  min-height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.add{
+  margin-bottom: 30rpx;
+}
+.form-radio{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.radio-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #0A0A0A;
+  margin-left: 30rpx;
+}
+.radioImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.page-sections{
+  margin-bottom: 30rpx;
+}
+.page-sectionItem{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 90rpx;
+  padding: 0% 4.4% 0% 2.53%;
+  line-height: 90rpx;
+}
+.radioImg{
+  width: 36rpx;
+  height: 36rpx;
+}

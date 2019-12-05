@@ -104,8 +104,8 @@ Page({
     that.setData({
       userInfo:app.globalData.userInfo
     });
-    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId=that.data.selectId,selectId2=that.data.selectId2;
-    console.log(id,uid,role,content,count,selectId,selectId2);
+    var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId2=that.data.selectId2;
+    console.log(id,uid,role,content,count,selectId2);
     var cc_uids;
     if(count=='null'){
       cc_uids = ''
@@ -123,7 +123,6 @@ Page({
         role:role,
         content:content,
         second_cc_uids:cc_uids,
-        audit_uid:selectId,
         second_audit_uid:selectId2,
       },
       dataType:'json',

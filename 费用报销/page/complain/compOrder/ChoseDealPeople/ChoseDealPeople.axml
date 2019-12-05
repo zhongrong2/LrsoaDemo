@@ -1,0 +1,42 @@
+<view class="pageBody">
+  <!-- 搜索框开始 -->
+  <view class="search-body">
+    <view class="searchBox">
+      <image class="search-icon" mode="scaleToFill" src="/image/search.png"/>
+      <input type="search" class="search-input" placeholder="搜索" value="{{searchVal}}" onConfirm="Search"/>
+    </view>
+  </view>
+  <!-- 搜索框结束 -->
+  <!-- 申请人列表开始 -->
+  <view class="memList" a:if="{{member.length>0}}">
+    <view class="searchRes-title" onTap="GetAllPro">全部成员</view>
+    <view class="member-list">
+      <scroll-view scroll-y="true" onScrollToLower="ScrollList" style="height:1100rpx;">
+        <view class="member-list-items">
+          <view class="member-list-item" a:for="{{member}}" key="{{index}}" data-id="{{item.id}}">
+            <image class="cir" mode="scaleToFill" src="{{item.choseMemShow ? '/image/circular_HL.png' : '/image/circular.png'}}" data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ChoseMem"/>
+            <view class="member-item-title">{{item.name}}</view>
+            <view class="member-item-class">{{item.department_name}}</view>
+            <view class="position-border"></view>
+            <view class="member-item-position">{{item.position}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 申请人列表结束 -->
+  <!-- 未搜索到结果开始 -->
+  <block a:if="{{member.length==0&&SearchNoRes}}">
+    <view class="searchNoRes-body">
+      <view class="searchRes-title" onTap="GetAllPro">全部成员</view>
+      <view class="searchNoRes-por">没有关于该成员的搜索结果</view>
+    </view>
+  </block>
+  <!-- 未搜索到结果结束 -->
+  <!-- 总计开始 -->
+  <view class="count-body">
+    <view class="count-num">已选择{{count.length}}人</view>
+    <button type="primary" class="count-btn" onTap="Sure">确定</button>
+  </view>
+  <!-- 总计结束 -->
+</view>

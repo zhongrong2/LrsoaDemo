@@ -1,0 +1,85 @@
+@import "/component/nav/nav.acss";
+.page{
+  background-color: white;
+}
+/* 数据列表样式 */
+.DataList{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 100rpx 0 130rpx;
+}
+.DataList-item{
+  border-top: 20rpx solid #F6F6F6;
+  padding: 29rpx 4.13% 38rpx;
+}
+.item-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #7A7D81;
+  font-size: 32rpx;
+}
+.list-time{
+  font-size: 24rpx;
+}
+.item-middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 8rpx 0 17rpx;
+  color: #191F25;
+  font-size: 28rpx;
+}
+.list-complains,.list-comType{
+  padding-left: 20rpx;
+}
+.list-comType{
+  color: #F25643;
+  font-weight: bold;
+}
+.list-comTypeAct{
+  color: #576A95;
+  font-weight: bold;
+}
+.list-state{
+  width: 80rpx;
+  height: 40rpx;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 40rpx;
+  background-color: #F25643;
+  border-radius: 4rpx;
+}
+.list-stateacte{
+  background-color: #15BC83;
+}
+.item-bottom{
+  padding: 0 20rpx;
+  color: #7A7D81;
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+.Btn{
+  width: 100%;
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+.btn{
+  width: 86.67%;
+  height: 90rpx;
+  background-color: #399EFA;
+  border:1rpx solid #3F87D1;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 90rpx;
+}

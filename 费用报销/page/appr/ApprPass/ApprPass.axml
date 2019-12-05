@@ -31,7 +31,7 @@
       <image mode="scaleToFill" src="/image/addCC.png" class="addCC" onTap="ChoseCopier"/>
     </view>
   </view>
-  <view class="ApprPeo">
+  <!-- <view class="ApprPeo">
     <view class="ApprPeo-title">审批人</view>
     <view class="ApprPeo-val" onTap="ShowSelect">
       <input class="ApprPeo-input" type="text" placeholder="请选择审批人" disabled="true" value="{{selectVal}}"/>
@@ -41,8 +41,8 @@
   <view class="page-select" a:if="{{showSelect}}">
     <view class="select">
       <view class="select-item" a:for="{{select}}" key="{{index}}" data-index="{{item.id}}" data-id="{{item.id}}" data-text="{{item.name}}" onTap="SelectItem">{{item.name}}</view>
-  </view>
-  </view>
+    </view>
+  </view> -->
   <view class="ApprPeo">
     <view class="ApprPeo-title">审批人</view>
     <view class="ApprPeo-val" onTap="ShowSelect2">

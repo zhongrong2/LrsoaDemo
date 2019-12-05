@@ -19,6 +19,13 @@ self.$global = AFAppX.$global;
 self.requirePlugin = AFAppX.requirePlugin;
         
 
+if(AFAppX.registerApp) {
+  AFAppX.registerApp({
+    appJSON: appXAppJson,
+  });
+}
+
+
 
 function success() {
 require('../../app');
@@ -55,6 +62,12 @@ require('../../page/PayR/ChoseProposer/ChoseProposer?hash=32d7d2807ed4e666ef03b4
 require('../../page/PayR/AccCredit/AccCredit?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/PayR/AddBankSub/AddBankSub?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/PayR/AddBank/AddBank?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/compOrder/compOrder?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/compOrder/DetailCustComp/DetailCustComp?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/compOrder/DetailEmplFeed/DetailEmplFeed?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/compOrder/ChoseDealPeople/ChoseDealPeople?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/complain?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/ChoseCompDepart/ChoseCompDepart?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
 }

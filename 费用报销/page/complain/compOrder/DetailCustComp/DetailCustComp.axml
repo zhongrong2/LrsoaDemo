@@ -1,0 +1,32 @@
+<view class="page">
+  <!-- 头部信息开始 -->
+  <view class="top">
+    <view class="top-left">
+      <view class="Info-station">十八里店加油站</view>
+      <view class="Info-time">2019-6-12  19:59</view>
+    </view>
+    <view class="top-state">已处理</view>
+  </view>
+  <!-- 头部信息结束 -->
+  <!-- 问题描述开始 -->
+  <view class="middle">
+    <view class="middle-top">
+      <view class="middle-title">问题描述</view>
+      <view class="Info-comPer">投诉人员：<view></view> </view>
+    </view>
+    <view class="middle-content">
+      <view class="Info-des">我今天加油，加油员让我另交费，我明明有余额的！</view>
+      <view class="Info-imgs"></view>
+    </view>
+  </view>
+  <!-- 问题描述结束 -->
+  <!-- 处理结果开始 -->
+  <view class="bottom">
+    <view class="bottom-title">处理结果</view>
+    <view class="bottom-content">
+      <view class="Info-time">处理时间：2019-6-12  19:59</view>
+      <view class="Info-result">我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！…我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！…我今天加油，加油员让我另交费，我明明有余额的！…刚想起来</view>
+    </view>
+  </view>
+  <!-- 处理结果结束 -->
+</view>
