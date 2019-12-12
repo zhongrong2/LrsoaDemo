@@ -35,6 +35,7 @@ require('../../page/PayR/AccCredit/AccCredit?hash=32d7d2807ed4e666ef03b4b3fe8c38
 require('../../page/PayR/AddBankSub/AddBankSub?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/PayR/AddBank/AddBank?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/compOrder/compOrder?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/complain/screen/screen?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/compOrder/DetailCustComp/DetailCustComp?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/compOrder/DetailEmplFeed/DetailEmplFeed?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/compOrder/ChoseDealPeople/ChoseDealPeople?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');

@@ -1,10 +1,14 @@
 <import src="/component/nav/nav.axml"/>
 <view class="page">
   <!-- 导航栏开始 -->
-  <template is="nav" data="{{...navItem}}"></template>
+  <template a:if="{{ShowConsComp?true:false}}" is="nav" data="{{...navItem}}"></template>
   <!-- 导航栏结束 -->
   <!-- 数据列表开始 -->
-  <view class="DataList">
+  <view class="DataList {{ShowConsComp==false?'DataListAct':'false'}}">
+    <view class="DataList-icon {{ShowConsComp==false?'DataList-iconAct':''}}">
+      <view a:if="{{ShowConsComp?false:true}}" class="DataType">员工反馈</view>
+      <image class="screenIcon" mode="scaleToFill" src="/image/screenIcon.png" onTap="ChoseScreen"/>
+    </view>
     <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}">
       <view class="item-top">
         <view class="list-station">{{item.station}}</view>
@@ -22,7 +26,7 @@
   </view>
   <!-- 数据列表结束 -->
   <!-- 反馈按钮开始 -->
-  <view class="Btn" a:if="{{navItem.navIndex==1}}">
+  <view class="Btn" a:if="{{ShowConsComp?(navItem.navIndex==1?true:false):true}}">
     <view class="btn">我要反馈</view>
   </view>
   <!-- 反馈按钮结束 -->

@@ -2,6 +2,22 @@
 .page{
   background-color: white;
 }
+.DataList-icon{
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 5.33%;
+  background-color: #F6F6F6;
+}
+.DataList-iconAct{
+  justify-content: space-between;
+}
+.screenIcon{
+  width: 40rpx;
+  height: 40rpx;
+}
 /* 数据列表样式 */
 .DataList{
   width: 100%;
@@ -9,8 +25,11 @@
   flex-direction: column;
   margin: 100rpx 0 130rpx;
 }
+.DataListAct{
+  margin: 0rpx 0 130rpx;
+}
 .DataList-item{
-  border-top: 20rpx solid #F6F6F6;
+  border-bottom: 20rpx solid #F6F6F6;
   padding: 29rpx 4.13% 38rpx;
 }
 .item-top{

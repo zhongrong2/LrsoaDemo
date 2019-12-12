@@ -64,6 +64,11 @@ Page({
           title:'工资发放',
           path:''
         },
+        {
+          icon:'/image/index_Complain.png',
+          title:'投诉管理',
+          path:'/page/complain/compOrder/compOrder'
+        },
       ],
     },
   },

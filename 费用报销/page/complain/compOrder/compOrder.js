@@ -9,15 +9,12 @@ Page({
       ],
       navIndex:'0',
     },//nav
-    dataList:[
-      {station:'十八里店加油站',time:'2019-6-12  19:59',com:'加油站',state:'未处理',des:'我今天加油，加油员让我另交费，我明明有余额的！',comType:'投诉'},
-      {station:'十八里店加油站',time:'2019-6-12  19:59',com:'加油站',state:'已处理',des:'我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！',comType:'建议'},
-      {station:'十八里店加油站',time:'2019-6-12  19:59',com:'加油站',state:'已处理',des:'我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！',comType:'建议'},
-      {station:'十八里店加油站',time:'2019-6-12  19:59',com:'加油站',state:'已处理',des:'我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！',comType:'建议'},
-      {station:'十八里店加油站',time:'2019-6-12  19:59',com:'加油站',state:'未处理',des:'我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！…我今天加油，加油员让我另交费，我明明有余额的！…刚想起来！…我今天加油，加油员让我另交费，我明明有余额的！…刚想起来',comType:'投诉'},
-    ],//数据列表
+    dataList:[],//数据列表
+    ShowConsComp:'',//是否显示客户投诉
   },
-  onLoad() {},
+  onLoad() {
+    this.ShowConsumerComplain();
+  },
   // 选择状态导航栏
   NavTap(e){
     const that = this;
@@ -28,5 +25,45 @@ Page({
     //   dataList:[],
     // })
     console.log(Index,status,that.data.navItem.navIndex);
+  },
+  //选择筛选条件
+  ChoseScreen(){
+    dd.navigateTo({
+      url:'/page/complain/screen/screen'
+    })
+  },
+  //是否显示客户投诉
+  ShowConsumerComplain(){
+    var that = this;
+    var id = app.globalData.userInfo.id;
+    dd.httpRequest({
+      url:URL+'/complain/showConsumerComplain',
+      method:'POST',
+      data:{
+        uid:id,
+      },
+      dataType:'json',
+      success(res){
+        if(res.data.code==0){
+          that.setData({
+            // ShowConsComp:res.data.data.show,
+            ShowConsComp:true,
+          })
+        }
+        else{
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          })
+        }
+      },
+      fail(){
+        console.log(res);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        })
+      },
+    })
   },
 });

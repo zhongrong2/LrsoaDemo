@@ -105,7 +105,7 @@ Page({
       userInfo:app.globalData.userInfo
     });
     var id=that.data.id,uid=that.data.userInfo.id,role=that.data.userInfo.role,content=that.data.content,count=that.data.count,selectId2=that.data.selectId2;
-    console.log(id,uid,role,content,count,selectId2);
+    // console.log(id,uid,role,content,count,selectId2);
     var cc_uids;
     if(count=='null'){
       cc_uids = ''
@@ -113,7 +113,7 @@ Page({
     else{
       cc_uids = count.toString();
     }
-    console.log(cc_uids);
+    // console.log(cc_uids);
     dd.httpRequest({
       url:URL+'/payapply/pass',
       method:'POST',
@@ -132,8 +132,13 @@ Page({
             content:res.data.data,
             duration:3000,
           })
-          dd.switchTab({
-            url:'/page/appr/appr'
+          var page = getCurrentPages();// 获取当前页面栈
+          var beforePage = page[page.length - 3]; // 跳转页面的栈
+          dd.navigateBack({
+            delta: 3,
+            success: function () {
+              beforePage.onLoad(); // 执行前一个页面的onLoad方法
+            }
           })
         }
         else{

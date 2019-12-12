@@ -25,6 +25,8 @@ Page({
   onLoad() {
     const that=this,status=that.data.navItem.status;
     that.setData({
+      page:1,
+      List:[],
       hasOnshow:false,
     })
     this.GetAppr(that,status);

@@ -1,0 +1,46 @@
+.page{
+  background-color: white;
+}
+.screen-title{
+  padding: 10rpx 4.27%;
+  border-bottom: 1rpx solid #F6F6F6;
+  font-size: 32rpx;
+  color: #191F25;
+  line-height: 30rpx;
+}
+.screen-content{
+  padding: 30rpx 8%;
+  display: flex;
+  flex-direction: column;
+}
+.screen-items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.screen-item{
+  width: 40%;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #616366;
+  background-color: #F5F5F5;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 0 19.5% 30rpx 0rpx;
+  border-radius: 6rpx;
+}
+.screen-item:nth-child(2n){
+  margin: 0 0 30rpx 0rpx;
+}
+.screen-itemsSta{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.Act{
+  background-color: white;
+  border:1rpx solid #3296FA;
+}

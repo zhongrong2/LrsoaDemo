@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="screen">
+    <view class="screen-title">类型</view>
+    <view class="screen-content">
+      <view class="screen-item {{All == true?'Act':''}}" onTap="ChoseAll">全部</view>
+      <view class="screen-items">
+        <view class="screen-item {{All == true?'':(index == navIndex1 ? 'Act' : '')}}" a:for="{{list}}" key="{{index}}" data-index="{{index}}" onTap="Chose">{{item.title}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="screen">
+    <view class="screen-title">部门</view>
+    <view class="screen-content">
+      <view class="screen-itemsSta">
+        <view class="screen-item {{ShowNav2 == true?(index == navIndex2 ? 'Act' : ''):false}}" a:for="{{DepartmentList}}" key="{{index}}" data-index="{{index}}" onTap="Chose2">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

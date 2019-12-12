@@ -12,9 +12,7 @@ App({
             title: '提示',
             content:'请退出重新登录',
             buttonText: '知道了',
-            success: () => {
-              
-            },
+            success: () => {},
           })
           return;
         }
@@ -35,7 +33,6 @@ App({
     dd.getStorage({
       key:'uid',
       success: function(res) {
-        // console.log(res);
         KeyRes = res.data;
         // console.log(res.data);
         if(KeyRes!=null){
@@ -51,8 +48,9 @@ App({
               const data = res.data;
               // console.log(data);
               if(data.code == 0){
-                that.globalData.userInfo = data.data;
-                // console.log(that.globalData.userInfo);
+                // that.globalData.userInfo = data.data;
+                that.globalData.userInfo = data.data.user_info;
+                that.SaveSession(data.data.token);
               }
               else{
                 dd.showToast({
@@ -81,16 +79,17 @@ App({
               const data = res.data;
               // console.log(data);
               if(data.code == 0){
-                // console.log(data.data.id,'获取uid');
-                const Id = data.data.id;
+                // const Id = data.data.id;
+                const Id = data.data.user_info.id;
                 dd.setStorage({
                   key:'uid',
                   data:{
                     uid:Id,
                   }
                 });
-                that.globalData.userInfo = data.data;
-                // console.log(that.globalData.userInfo);
+                // that.globalData.userInfo = data.data;
+                that.globalData.userInfo = data.data.user_info;
+                that.SaveSession(data.data.token);
               }
               else{
                 dd.showToast({
@@ -117,6 +116,36 @@ App({
         })
       }
     });
+  },
+  //保存session
+  SaveSession(token){
+    var that = this;
+    dd.httpRequest({
+      url:that.globalData.http+'/ding/session',
+      method:'POST',
+      data:{
+        token:token,
+      },
+      dataType:'json',
+      success(res){
+        // console.log(res);
+        var data = res.data;
+        if(data.code==0){}
+        else{
+          dd.showToast({
+            content:'网络出错',
+            duration:3000,
+          })
+        }
+      },
+      fail: function(res){
+        console.log(res);
+        dd.showToast({
+          content:'网络出错',
+          duration:3000,
+        })
+      }
+    })
   },
   onShow(options) {
     // 从后台被scheme重新打开
