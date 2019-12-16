@@ -9,7 +9,7 @@
     </view>
     <view class="page-section">
       <view class="form-label">反馈类型</view>
-      <view class="form-content form-radio" onTap="ChoseDepart">
+      <view class="form-content form-radio">
         <view class="radio-item" a:for="{{radios}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseComptype">
           <image class="radioImg" mode="scaleToFill" src="{{item.ShowIcon?'/image/radio2.png':'/image/radio.png'}}"/>
           <view>{{item.title}}</view>
@@ -19,7 +19,7 @@
     <view class="page-section" a:if="{{ShowComp}}">
       <view class="form-label">投诉对象</view>
       <view class="form-content">
-        <input class="input" type="text" placeholder="请填写投诉对象" value="{{money}}" onBlur="GetMoneny"/>
+        <input class="input" type="text" placeholder="请填写投诉对象" value="{{payment}}" onBlur="GetPayment"/>
       </view>
     </view>
     <view class="page-des">
@@ -47,13 +47,13 @@
         <view class="page-sectionItem">
           <view class="form-label">投诉人姓名：</view>
           <view class="form-content">
-            <input class="input" type="text" placeholder="请填写投诉人姓名" value="{{money}}" onBlur="GetMoneny"/>
+            <input class="input" type="text" placeholder="请填写投诉人姓名" value="{{CompName}}" onBlur="GetName"/>
           </view>
         </view>
         <view class="page-sectionItem">
           <view class="form-label">投诉人电话：</view>
           <view class="form-content">
-            <input class="input" type="text" placeholder="请填写投诉人电话" value="{{money}}" onBlur="GetMoneny"/>
+            <input class="input" type="phone" placeholder="请填写投诉人电话" value="{{CompPhone}}" onBlur="GetPhone"/>
           </view>
         </view>
       </view>
@@ -63,13 +63,13 @@
       <view class="page-sectionItem">
         <view class="form-label">建议人姓名：</view>
         <view class="form-content">
-          <input class="input" type="text" placeholder="请填写建议人姓名" value="{{money}}" onBlur="GetMoneny"/>
+          <input class="input" type="text" placeholder="请填写建议人姓名" value="{{CompName}}" onBlur="GetName"/>
         </view>
       </view>
       <view class="page-sectionItem">
         <view class="form-label">建议人电话：</view>
         <view class="form-content">
-          <input class="input" type="text" placeholder="请填写建议人电话" value="{{money}}" onBlur="GetMoneny"/>
+          <input class="input" type="phone" placeholder="请填写建议人电话" value="{{CompPhone}}" onBlur="GetPhone"/>
         </view>
       </view>
     </view>

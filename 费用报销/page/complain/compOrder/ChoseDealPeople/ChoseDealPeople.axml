@@ -9,7 +9,7 @@
   <!-- 搜索框结束 -->
   <!-- 申请人列表开始 -->
   <view class="memList" a:if="{{member.length>0}}">
-    <view class="searchRes-title" onTap="GetAllPro">全部成员</view>
+    <view class="searchRes-title" onTap="GetAllUser">全部成员</view>
     <view class="member-list">
       <scroll-view scroll-y="true" onScrollToLower="ScrollList" style="height:1100rpx;">
         <view class="member-list-items">
@@ -28,7 +28,7 @@
   <!-- 未搜索到结果开始 -->
   <block a:if="{{member.length==0&&SearchNoRes}}">
     <view class="searchNoRes-body">
-      <view class="searchRes-title" onTap="GetAllPro">全部成员</view>
+      <view class="searchRes-title" onTap="GetAllUser">全部成员</view>
       <view class="searchNoRes-por">没有关于该成员的搜索结果</view>
     </view>
   </block>

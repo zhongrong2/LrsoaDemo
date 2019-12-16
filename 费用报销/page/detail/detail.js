@@ -26,5 +26,15 @@ Page({
         url:'/page/CC/DetailInfo/DetailInfo?id='+JSON.stringify(id)+'&type='+type
       })
     }
+    else if(type=="consumer_complain"){
+      dd.reLaunch({
+        url:'/page/complain/compOrder/DetailCustComp/DetailCustComp?ID='+id
+      })
+    }
+    else if(type=="employee_complain"){
+      dd.reLaunch({
+        url:'/page/complain/compOrder/DetailEmplFeed/DetailEmplFeed?ID='+id
+      })
+    }
   },
 });

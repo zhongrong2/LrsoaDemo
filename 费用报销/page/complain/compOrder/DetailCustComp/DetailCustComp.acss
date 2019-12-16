@@ -19,6 +19,7 @@
 .Info-station{
   font-size: 32rpx;
   color: #191F25;
+  line-height: 0.6rem;
 }
 .Info-time{
   font-size: 24rpx;
@@ -34,6 +35,9 @@
   text-align: center;
   line-height: 40rpx;
   border-radius: 4rpx;
+}
+.stateAct{
+  background-color: #F25643;
 }
 .middle{
   display: flex;
@@ -51,15 +55,39 @@
 }
 .Info-comPer{
   padding-left: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+.Info-comPer-Til{
+  color: #F25643;
 }
 .middle-content{
   padding: 28rpx 6.67%;
   font-size: 28rpx;
   color: #575B60;
   line-height: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.Info-des{
+  word-break: break-all;
 }
 .Info-imgs{
   padding: 20rpx 0rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.Info-img{
+  width: 90rpx;
+  height: 90rpx;
+  display: flex;
+  flex-direction: column;
+  margin-right: 40rpx;
+}
+.Info-IMG{
+  width: 90rpx;
+  height: 90rpx;
 }
 .bottom{
   display: flex;
@@ -88,4 +116,5 @@
   color: #575B60;
   line-height: 30rpx;
   padding-top: 10rpx;
+  word-break: break-all;
 }

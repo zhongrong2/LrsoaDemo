@@ -74,7 +74,7 @@ Page({
   },
   GridItem(e){
     var index = e.currentTarget.dataset.index;
-    if(index == "1"){
+    if(index == "1"||index == "5"){
       var URL = this.data.grid.arr[index].path;
       // console.log(URL);
       dd.navigateTo({

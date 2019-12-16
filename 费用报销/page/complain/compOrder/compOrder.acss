@@ -20,7 +20,6 @@
 }
 /* 数据列表样式 */
 .DataList{
-  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 100rpx 0 130rpx;
@@ -28,21 +27,35 @@
 .DataListAct{
   margin: 0rpx 0 130rpx;
 }
+.lists{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .DataList-item{
+  flex: 1;
   border-bottom: 20rpx solid #F6F6F6;
   padding: 29rpx 4.13% 38rpx;
+  display: flex;
+  flex-direction: column;
 }
 .item-top{
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: #7A7D81;
   font-size: 32rpx;
 }
+.list-station{
+  width: 58%;
+  word-break: break-all;
+}
 .list-time{
   font-size: 24rpx;
 }
 .item-middle{
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -76,11 +89,18 @@
   background-color: #15BC83;
 }
 .item-bottom{
-  padding: 0 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.list-des{
+  flex: 1;
   color: #7A7D81;
   font-size: 26rpx;
   line-height: 30rpx;
-}
+  padding-left:20rpx; 
+  word-break: break-all;
+} 
 .Btn{
   width: 100%;
   height: 130rpx;
@@ -101,4 +121,13 @@
   color: #FFFFFF;
   text-align: center;
   line-height: 90rpx;
+}
+.NoList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.NoList-logo{
+  width: 250rpx;
+  height: 250rpx;
 }

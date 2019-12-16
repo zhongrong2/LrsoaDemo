@@ -2,41 +2,57 @@
   <!-- 头部信息开始 -->
   <view class="top">
     <view class="top-left">
-      <view class="Info-station">十八里店加油站</view>
-      <view class="Info-time">2019-6-12  19:59</view>
+      <view class="Info-station">{{Info.department_name}}</view>
+      <view class="Info-time">{{Info.created_at}}</view>
     </view>
-    <view class="top-state">已处理</view>
+    <view class="top-state {{Info.type==1?'stateAct':''}}">{{Info.type_text}}</view>
   </view>
   <!-- 头部信息结束 -->
   <!-- 投诉对象开始 -->
-  <view class="compInfo">
-    <view class="compInfo-per">投诉对象：</view>
+  <view class="compInfo" a:if="{{Info.type==1?(Info.if_real==1?true:false):false}}">
+    <view class="compInfo-per">投诉对象：<view>{{Info.payment}}</view></view>
     <view class="compInfo-content">
       <view class="compInfo-top">
-        <view class="compInfo-pers">投诉人：</view>
+        <view class="compInfo-pers">投诉人：{{Info.complain_name}}</view>
         <view class="compInfo-type">实名投诉</view>
       </view>
-      <view class="compInfo-phone">投诉人电话：</view>
+      <view class="compInfo-phone">投诉人电话：{{Info.complain_phone}}</view>
     </view>
   </view>
   <!-- 投诉对象结束 -->
+  <!-- 建议对象开始 -->
+  <view class="compInfo" a:if="{{Info.type==2?true:false}}">
+    <view class="compInfo-per"></view>
+    <view class="compInfo-content">
+      <view class="compInfo-top">
+        <view class="compInfo-pers">建议人：{{Info.complain_name}}</view>
+        <!-- <view class="compInfo-type">实名投诉</view> -->
+      </view>
+      <view class="compInfo-phone">建议人电话：{{Info.complain_phone}}</view>
+    </view>
+  </view>
+  <!-- 建议对象结束 -->
   <!-- 问题描述开始 -->
   <view class="middle">
     <view class="middle-top">
       <view class="middle-title">问题描述</view>
     </view>
     <view class="middle-content">
-      <view class="Info-des">我今天加油，加油员让我另交费，我明明有余额的！</view>
-      <view class="Info-imgs"></view>
+      <view class="Info-des">{{Info.content}}</view>
+      <view class="Info-imgs">
+        <view a:for="{{Info.pic}}" class="Info-img">
+          <image class="Info-IMG" mode="scaleToFill" src="{{item}}"/>
+        </view>
+      </view>
     </view>
   </view>
   <!-- 问题描述结束 -->
   <!-- 指派处理人开始 -->
-  <view class="DealPeople" a:if="{{member.length==0?false:true}}">
+  <view class="DealPeople" a:if="{{Info.type==2?false:(Info.manage_users.length==0?false:true)}}">
     <view class="DealPeople-title">指派处理人</view>
     <view class="DealPeople-content">
       <view class="page-member">
-        <view class="page-member-item" a:for="{{member}}" key="{{index}}">
+        <view class="page-member-item" a:for="{{Info.manage_users}}" key="{{index}}">
           <view class="member-itemL">
             <image a:if="{{item.head_img==''?false:true}}" class="imgCC-all-img" mode="widthFix" src="{{item.head_img}}"/>
             <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
@@ -49,8 +65,8 @@
   </view>
   <!-- 指派处理人结束 -->
   <!-- 指派处理人按钮开始 -->
-  <view class="Btn">
-    <view class="btn">指派处理人</view>
+  <view class="Btn" a:if="{{Info.type==1?true:false}}">
+    <view class="btn" onTap="ChoseDealPeople">指派处理人</view>
   </view>
   <!-- 指派处理人按钮结束 -->
 </view>

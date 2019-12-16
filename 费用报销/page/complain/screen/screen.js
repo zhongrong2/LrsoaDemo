@@ -2,51 +2,75 @@ let app = getApp();
 let URL = app.globalData.http;
 Page({
   data: {
-    list:[{title:'已处理'},{title:'未处理'}],
+    list:[],//类型列表
     DepartmentList:[],//部门列表
     navIndex1:'',//类型
     navIndex2:'',//部门
-    All:true,//展示All
-    ShowNav2:false,//是否选中部门
+    status:'',//选择类型
+    departId:'',//选择部门ID
+    AllStatu:true,//展示类型All
+    AllDepart:true,//展示部门All
   },
-  onLoad() {
-    this.GetDepart();
+  onLoad(options) {
+    // console.log(options.type)
+    if(options.type==1){
+      this.setData({
+        list:[{title:'待处理',status:0},{title:'已处理',status:1}],
+      })
+    }
+    else if(options.type==2){
+      this.setData({
+        list:[{title:'投诉',status:1},{title:'建议',status:2}],
+      })
+    }
+    this.GetDepart(options.type);
   },
-  //选择所有
-  ChoseAll(){
+  //选择类型所有
+  ChoseStatuAll(){
     this.setData({
-      All:true,
+      AllStatu:true,
       navIndex1:'',//类型
+      status:'',
+    })
+  },
+  //选择部门所有
+  ChoseDepartAll(){
+    this.setData({
+      AllDepart:true,
       navIndex2:'',//部门
-      ShowNav2:false,//是否选中部门
+      departId:'',
     })
   },
   //选择类型
-  Chose(e){
+  ChoseStatu(e){
     var index = e.currentTarget.dataset.index;
+    var status = e.currentTarget.dataset.status;
     this.setData({
       navIndex1:index,
-      All:false,
+      status:status,
+      AllStatu:false,
     })
   },
   //选择部门
-  Chose2(e){
+  ChoseDepart(e){
     var index = e.currentTarget.dataset.index;
+    var id = e.currentTarget.dataset.id;
     this.setData({
       navIndex2:index,
-      ShowNav2:true,//是否选中部门
+      departId:id,
+      AllDepart:false,
     })
   },
   //获取部门列表
-  GetDepart(){
+  GetDepart(type){
     var that = this;
     var id = app.globalData.userInfo.id;
     dd.httpRequest({
       url:URL+'/complain/departmentList',
       method:'POST',
       data:{
-        "type": 1,
-        "uid": id,
+        type: type,
+        uid: id,
       },
       dataType:'json',
       success(res){
@@ -72,4 +96,21 @@ Page({
       },
     })
   },
+  //确定选择筛选条件
+  Sure(){
+    var status = this.data.status,departId = this.data.departId;
+    let pages = getCurrentPages();
+    let beforePage = pages[pages.length - 2];
+    beforePage.setData({
+      status:status,//筛选条件类型
+      departId:departId,//筛选条件部门
+      
+    })
+    dd.navigateBack({
+      delta:1,
+      success: function () {
+        beforePage.onLoad(); // 执行前一个页面的onLoad方法
+      }
+    });
+  }
 });

@@ -32,6 +32,7 @@
 }
 .compInfo-type{
   font-size: 28rpx;
+  font-weight: bold;
   color: #576A95;
 }
 .compInfo-phone{
@@ -77,4 +78,7 @@
   color: #FFFFFF;
   text-align: center;
   line-height: 90rpx;
+}
+.page-member-item:last-child .member-itemR{
+  display: none;
 }

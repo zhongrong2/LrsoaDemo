@@ -4,30 +4,40 @@
   <template a:if="{{ShowConsComp?true:false}}" is="nav" data="{{...navItem}}"></template>
   <!-- 导航栏结束 -->
   <!-- 数据列表开始 -->
-  <view class="DataList {{ShowConsComp==false?'DataListAct':'false'}}">
+  <view class="DataList {{ShowConsComp==false?'DataListAct':''}}">
     <view class="DataList-icon {{ShowConsComp==false?'DataList-iconAct':''}}">
       <view a:if="{{ShowConsComp?false:true}}" class="DataType">员工反馈</view>
       <image class="screenIcon" mode="scaleToFill" src="/image/screenIcon.png" onTap="ChoseScreen"/>
     </view>
-    <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}">
-      <view class="item-top">
-        <view class="list-station">{{item.station}}</view>
-        <view class="list-time">{{item.time}}</view>
+    <scroll-view onScrollToLower="onReachBottom" scroll-x="false" a:if="{{dataList.length==0?false:true}}">
+      <view class="lists">
+        <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" onTap="CheckInfo">
+          <view class="item-top">
+            <view class="list-station">{{item.department_name}}</view>
+            <view class="list-time">{{item.created_at}}</view>
+          </view>
+          <view class="item-middle">
+            <view class="list-complains" a:if="{{navItem.navIndex==0}}">投诉人员：{{item.complainants_name}}</view>
+            <view class="list-comType {{item.type_text=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1}}">{{item.type_text}}</view>
+            <view a:if="{{navItem.navIndex==0}}" class="list-state {{item.status_text=='已处理'?'list-stateacte':''}}">{{item.status_text}}</view>
+            <view a:if="{{navItem.navIndex==1}}" class="list-state {{item.read_text=='已读'?'list-stateacte':''}}">{{item.read_text}}</view>
+          </view>
+          <view class="item-bottom">
+            <view class="list-des">{{item.content}}</view>
+          </view>
+        </view>
       </view>
-      <view class="item-middle">
-        <view class="list-complains" a:if="{{navItem.navIndex==0}}">投诉人员：{{item.com}}</view>
-        <view class="list-comType {{item.comType=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1}}">{{item.comType}}</view>
-        <view class="list-state {{item.state=='已处理'?'list-stateacte':''}}">{{item.state}}</view>
-      </view>
-      <view class="item-bottom">
-        <view class="list-des">{{item.des}}</view>
-      </view>
-    </view>
+    </scroll-view>
   </view>
   <!-- 数据列表结束 -->
+  <!-- 没有数据列表开始 -->
+  <view class="NoList" a:if="{{dataList.length==0?true:false}}">
+    <image class="NoList-logo" mode="scaleToFill" src="/image/CompNoList.png"/>
+  </view>
+  <!-- 没有数据列表结束 -->
   <!-- 反馈按钮开始 -->
   <view class="Btn" a:if="{{ShowConsComp?(navItem.navIndex==1?true:false):true}}">
-    <view class="btn">我要反馈</view>
+    <view class="btn" onTap="ComplainSub">我要反馈</view>
   </view>
   <!-- 反馈按钮结束 -->
 </view>

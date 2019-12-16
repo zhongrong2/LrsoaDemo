@@ -21,14 +21,18 @@
 }
 .screen-item{
   width: 40%;
-  height: 80rpx;
+  min-height: 80rpx;
   font-size: 30rpx;
   color: #616366;
   background-color: #F5F5F5;
-  line-height: 80rpx;
+  line-height: 30rpx;
   text-align: center;
   margin: 0 19.5% 30rpx 0rpx;
   border-radius: 6rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .screen-item:nth-child(2n){
   margin: 0 0 30rpx 0rpx;
@@ -43,4 +47,25 @@
 .Act{
   background-color: white;
   border:1rpx solid #3296FA;
+}
+.Btn{
+  width: 100%;
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+.btn{
+  width: 86.67%;
+  height: 90rpx;
+  background-color: #399EFA;
+  border:1rpx solid #3F87D1;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 90rpx;
 }

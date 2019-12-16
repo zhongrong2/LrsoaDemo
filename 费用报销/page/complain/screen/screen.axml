@@ -2,18 +2,24 @@
   <view class="screen">
     <view class="screen-title">类型</view>
     <view class="screen-content">
-      <view class="screen-item {{All == true?'Act':''}}" onTap="ChoseAll">全部</view>
+      <view class="screen-item {{AllStatu == true?'Act':''}}" onTap="ChoseStatuAll">全部</view>
       <view class="screen-items">
-        <view class="screen-item {{All == true?'':(index == navIndex1 ? 'Act' : '')}}" a:for="{{list}}" key="{{index}}" data-index="{{index}}" onTap="Chose">{{item.title}}</view>
+        <view class="screen-item {{AllStatu == true?'':(index == navIndex1 ? 'Act' : '')}}" a:for="{{list}}" key="{{index}}" data-index="{{index}}" data-status="{{item.status}}" onTap="ChoseStatu">{{item.title}}</view>
       </view>
     </view>
   </view>
   <view class="screen">
     <view class="screen-title">部门</view>
     <view class="screen-content">
+      <view class="screen-item {{AllDepart == true?'Act':''}}" onTap="ChoseDepartAll">全部</view>
       <view class="screen-itemsSta">
-        <view class="screen-item {{ShowNav2 == true?(index == navIndex2 ? 'Act' : ''):false}}" a:for="{{DepartmentList}}" key="{{index}}" data-index="{{index}}" onTap="Chose2">{{item.name}}</view>
+        <view class="screen-item {{AllDepart == true?'':(index == navIndex2 ? 'Act' : '')}}" a:for="{{DepartmentList}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" onTap="ChoseDepart">{{item.name}}</view>
       </view>
     </view>
   </view>
+  <!-- 按钮开始 -->
+  <view class="Btn">
+    <view class="btn" onTap="Sure">确定</view>
+  </view>
+  <!-- 按钮结束 -->
 </view>
