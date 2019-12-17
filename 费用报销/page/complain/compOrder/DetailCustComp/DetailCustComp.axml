@@ -18,7 +18,7 @@
       <view class="Info-des">{{Info.describe}}</view>
       <view class="Info-imgs">
         <view a:for="{{Info.img}}" class="Info-img">
-          <image class="Info-IMG" mode="scaleToFill" src="{{item}}"/>
+          <image class="Info-IMG" mode="scaleToFill" src="{{item}}" data-index="{{index}}" onTap="previewImage"/>
         </view>
       </view>
     </view>

@@ -62,7 +62,6 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
         // console.log(res.data);
         if(res.data.code==0){
           that.setData({
@@ -105,7 +104,6 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
         // console.log(res.data);
         if(res.data.code==0){
           
@@ -125,5 +123,14 @@ Page({
         });
       }
     })
-  }
+  },
+  // 预览图片
+  previewImage(e){
+    const index = e.currentTarget.dataset.index;
+    const Imgs = this.data.Info.pic;
+    dd.previewImage({
+      current:index,
+      urls:Imgs,
+    })
+  },
 });

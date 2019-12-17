@@ -76,7 +76,6 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
         // console.log(res.data);
         if(res.data.code==0){
           if(res.data.data == '' && that.data.member != ''){
@@ -177,7 +176,6 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res.data);
-        dd.hideLoading();
         if(res.data.code==0){
           let pages = getCurrentPages();
           let beforePage = pages[pages.length - 2];

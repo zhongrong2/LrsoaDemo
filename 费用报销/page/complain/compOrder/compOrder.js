@@ -18,17 +18,23 @@ Page({
     hasOnshow:false,
   },
   onLoad() {
-    this.ShowConsumerComplain();//是否显示客户投诉
     //初始化
     this.setData({
       dataList:[],//数据列表
       page:1,//当前页
+      hasOnshow:false,
     })
+    this.ShowConsumerComplain();//是否显示客户投诉
     // console.log(this.data.navItem.navIndex);
   },
   onShow(){
     if(this.data.hasOnshow){
-     this.onLoad();
+      //初始化
+      this.setData({
+        dataList:[],//数据列表
+        page:1,//当前页
+      })
+      this.ShowConsumerComplain();//是否显示客户投诉
     }
     this.setData({
       hasOnshow:true,
@@ -72,19 +78,13 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
         if(res.data.code==0){
           that.setData({
             ShowConsComp:res.data.data.show,
           })
           // console.log(that.data.ShowConsComp);
           //判断获取数据列表类型
-          if(that.data.ShowConsComp){
-            that.setData({
-              'navItem.navIndex':0,
-            })
-          }
-          else{
+          if(!that.data.ShowConsComp){
             that.setData({
               'navItem.navIndex':1,
             })
@@ -128,7 +128,6 @@ Page({
       dataType:'json',
       success(res){
         // console.log(res.data);
-        dd.hideLoading();
         if(res.data.code==0){
           if(res.data.data == '' && that.data.dataList != ''){
             dd.showToast({
@@ -191,5 +190,57 @@ Page({
     dd.navigateTo({
       url:'/page/complain/complain'
     })
+  },
+  //删除订单
+  DelOrder(e){
+    var that=this;
+    var type=that.data.navItem.nav[that.data.navItem.navIndex].status;
+    var uid=app.globalData.userInfo.id,id = e.currentTarget.dataset.id;
+    // console.log(type,uid,id);
+    dd.showActionSheet({
+      title: '龙瑞森',
+      items: ['删除'],
+      cancelButtonText: '取消',
+      success: (res) => {
+        // console.log(res.index);
+        if(res.index==0){
+          dd.httpRequest({
+            url:URL+'/complain/delComplain',
+            method:'POST',
+            data:{
+              type:type,
+              uid:uid,
+              key:id,
+            },
+            dataType:'json',
+            success(res){
+              // console.log(res);
+              if(res.data.code==0){
+                dd.showToast({
+                  content:res.data.data,
+                  duration:800,
+                  success:()=>{
+                    that.onLoad();
+                  }
+                })
+              }
+              else{
+                dd.showToast({
+                  content:res.data.msg,
+                  duration:3000,
+                })
+              }
+            },
+            fail(err){
+              console.log(err);
+              dd.showLoading({
+                content: '加载中...',
+                delay: 1000,
+              });
+            }
+          })
+        }
+      },
+    });
   },
 });

@@ -23,7 +23,6 @@ Page({
       success(res){
         // console.log(res.data.data)
         if(res.data.code==0){
-          dd.hideLoading();
           that.setData({
             List:res.data.data
           })

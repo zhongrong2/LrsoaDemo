@@ -11,7 +11,7 @@
     </view>
     <scroll-view onScrollToLower="onReachBottom" scroll-x="false" a:if="{{dataList.length==0?false:true}}">
       <view class="lists">
-        <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" onTap="CheckInfo">
+        <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" onTap="CheckInfo" onLongTap="DelOrder">
           <view class="item-top">
             <view class="list-station">{{item.department_name}}</view>
             <view class="list-time">{{item.created_at}}</view>

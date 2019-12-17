@@ -41,7 +41,7 @@
       <view class="Info-des">{{Info.content}}</view>
       <view class="Info-imgs">
         <view a:for="{{Info.pic}}" class="Info-img">
-          <image class="Info-IMG" mode="scaleToFill" src="{{item}}"/>
+          <image class="Info-IMG" mode="scaleToFill" src="{{item}}" data-index="{{index}}" onTap="previewImage"/>
         </view>
       </view>
     </view>
@@ -65,7 +65,7 @@
   </view>
   <!-- 指派处理人结束 -->
   <!-- 指派处理人按钮开始 -->
-  <view class="Btn" a:if="{{Info.type==1?true:false}}">
+  <view class="Btn" a:if="{{Info.type==1?(Info.manage_users.length==0?true:false):false}}">
     <view class="btn" onTap="ChoseDealPeople">指派处理人</view>
   </view>
   <!-- 指派处理人按钮结束 -->

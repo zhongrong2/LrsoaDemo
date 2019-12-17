@@ -28,6 +28,7 @@ Page({
     var id=e.currentTarget.dataset.id;
     this.setData({
       radios:[{id:'1',title:'投诉',ShowIcon:false},{id:'2',title:'建议',ShowIcon:false}],//反馈类型初始化
+      radioImg:'/image/radio.png',//显示投诉人信息按钮
       ShowCompInfo:false,//投诉人信息
       CompName:'',//投诉人姓名
       CompPhone:'',//投诉人电话
@@ -174,8 +175,6 @@ Page({
       },
       dataType:'json',
       success(res){
-        dd.hideLoading();
-        // console.log(res);
         if(res.data.code==0){
           let pages = getCurrentPages();
           let beforePage = pages[pages.length - 2];
@@ -187,10 +186,11 @@ Page({
           });
         }
         else{
+          // console.log(res.data.msg);
           dd.showToast({
             content:res.data.msg,
             duration:3000,
-          })
+          });
         }
       },
       fail(err){
