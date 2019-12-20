@@ -24,11 +24,6 @@ Page({
         status:options.status,
         uid:that.data.userInfo.id,
       })
-      // var id=that.data.id,uid=this.data.uid;
-      // dd.alert({
-      //   content: id+','+uid,
-      // });
-      // console.log(that.data.id,this.data.uid);
       that.GetInfo();
     }
     else{

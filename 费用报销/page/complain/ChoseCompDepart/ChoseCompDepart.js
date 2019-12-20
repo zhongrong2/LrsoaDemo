@@ -51,7 +51,7 @@ Page({
   // 选择部门
   ChoseDepart(e){
     const index = e.currentTarget.dataset.index,title = e.currentTarget.dataset.title;
-    console.log(index,title);
+    // console.log(index,title);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({

@@ -12,17 +12,22 @@ Page({
     AllDepart:true,//展示部门All
   },
   onLoad(options) {
-    // console.log(options.type)
+    // console.log(options);
+    var that=this;
     if(options.type==1){
       this.setData({
-        list:[{title:'待处理',status:0},{title:'已处理',status:1}],
+        list:[{title:'待处理',status:'0'},{title:'已处理',status:'1'}],
       })
     }
     else if(options.type==2){
       this.setData({
-        list:[{title:'投诉',status:1},{title:'建议',status:2}],
+        list:[{title:'投诉',status:'1'},{title:'建议',status:'2'}],
       })
-    }
+    } 
+    this.setData({
+      status:options.status,
+      departId:options.departId,
+    });
     this.GetDepart(options.type);
   },
   //选择类型所有
@@ -78,7 +83,33 @@ Page({
         if(res.data.code==0){
           that.setData({
             DepartmentList:res.data.data,
-          })
+          });
+          //判断所选中的类型
+          var arrList=that.data.list;
+          var status=that.data.status;
+          var indexSta = arrList.findIndex(function(item) {
+              return item.status === status;
+          });
+          // console.log(status,indexSta);
+          if(indexSta>=0){
+            that.setData({
+              navIndex1:indexSta,//类型
+              AllStatu:false,//展示类型All
+            })
+          }
+          //判断所选中的部门
+          var arr=that.data.DepartmentList;
+          var departId=that.data.departId;
+          var index = arr.findIndex(function(item) {
+              return item.id == departId;
+          });
+          if(index>=0){
+            that.setData({
+              navIndex2:index,
+              AllDepart:false,//展示部门All
+            })
+          }
+          // console.log(index,that.data.navIndex2);
         }
         else{
           dd.showToast({
@@ -112,5 +143,5 @@ Page({
         beforePage.onLoad(); // 执行前一个页面的onLoad方法
       }
     });
-  }
+  },
 });

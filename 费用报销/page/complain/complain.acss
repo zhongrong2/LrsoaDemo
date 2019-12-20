@@ -43,3 +43,12 @@
   width: 36rpx;
   height: 36rpx;
 }
+.content-des-textaarea{
+  min-height: 180rpx;
+}
+.textarea-des{
+  min-height: 170rpx;
+}
+.addImages{
+  margin: 0rpx 5.33% 0rpx 0rpx;
+}

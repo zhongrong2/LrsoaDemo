@@ -15,7 +15,9 @@ Page({
     CompPhone:'',//投诉人电话
     images:[],//图片
   },
-  onLoad() {},
+  onLoad() {
+    this.GetDepart();
+  },
   //选择部门
   ChoseDepart(){
     dd.navigateTo({
@@ -158,7 +160,7 @@ Page({
         return false;
       }
     }
-    console.log(uid,DepartId,DepartVal,type,payment,content,if_real,CompName,CompPhone,pic);
+    // console.log(uid,DepartId,DepartVal,type,payment,content,if_real,CompName,CompPhone,pic);
     dd.httpRequest({
       url:URL+'/complain/submit',
       method:'POST',
@@ -272,4 +274,38 @@ Page({
       }
     })
   },
+  //获取默认部门
+  GetDepart(){
+    var that=this;
+    var uid=app.globalData.userInfo.id
+    dd.httpRequest({
+      url:URL+'/complain/defaultDepartment',
+      method:'POST',
+      data:{
+        uid:uid,
+      },
+      dataType:'json',
+      success(res){
+        if(res.data.code==0){
+          that.setData({
+            DepartId:res.data.data.id,//选择部门id
+            DepartVal:res.data.data.name,//选择部门
+          })
+        }
+        else{
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          });
+        }
+      },
+      fail(err){
+        console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
+      }
+    })
+  }
 });

@@ -52,6 +52,7 @@ Page({
       status:'',//筛选条件类型
       departId:'',//筛选条件部门
       page:1,//当前页
+      // hasOnshow:false,
     })
     var status=this.data.status,departId=this.data.departId;
     // console.log(this.data.navItem.navIndex,type,status,departId);
@@ -60,10 +61,10 @@ Page({
   //选择筛选条件
   ChoseScreen(){
     var navIndex = this.data.navItem.navIndex;
-    var type = this.data.navItem.nav[navIndex].status;
-    // console.log(navIndex,type);
+    var type = this.data.navItem.nav[navIndex].status,status = this.data.status,departId = this.data.departId;
+    // console.log(type,status,departId);
     dd.navigateTo({
-      url:'/page/complain/screen/screen?type='+type
+      url:'/page/complain/screen/screen?type='+type+'&status='+status+'&departId='+departId
     })
   },
   //是否显示客户投诉

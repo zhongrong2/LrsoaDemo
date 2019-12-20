@@ -8,7 +8,7 @@
       </view>
     </view>
   </view>
-  <view class="screen">
+  <view class="screen screenDep">
     <view class="screen-title">部门</view>
     <view class="screen-content">
       <view class="screen-item {{AllDepart == true?'Act':''}}" onTap="ChoseDepartAll">全部</view>

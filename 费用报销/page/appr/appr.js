@@ -89,6 +89,7 @@ Page({
       'navItem.status':status,
     })
     // console.log(Index,status);
+    this.GetCount();
     that.GetAppr(that,status);
   },
   //下拉加载数据

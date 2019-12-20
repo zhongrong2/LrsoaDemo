@@ -1,6 +1,9 @@
 .page{
   background-color: white;
 }
+.screenDep{
+  padding-bottom: 1.3rem;
+}
 .screen-title{
   padding: 10rpx 4.27%;
   border-bottom: 1rpx solid #F6F6F6;
@@ -20,7 +23,7 @@
   justify-content: space-between;
 }
 .screen-item{
-  width: 40%;
+  width: 39%;
   min-height: 80rpx;
   font-size: 30rpx;
   color: #616366;

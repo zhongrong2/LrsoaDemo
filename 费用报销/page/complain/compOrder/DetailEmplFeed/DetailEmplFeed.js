@@ -5,6 +5,7 @@ Page({
     Id:'',//订单id
     Info:'',//订单详情
     uid:'',//用户id
+    result:'',//处理结果
   },
   onLoad(options) {
     // console.log(options);
@@ -131,6 +132,60 @@ Page({
     dd.previewImage({
       current:index,
       urls:Imgs,
+    })
+  },
+  //获取处理结果
+  GetResult(e){
+    this.setData({
+      result:e.detail.value,
+    })
+  },
+  //提交处理结果
+  Handle(){
+    var that=this;
+    var uid = app.globalData.userInfo.id;
+    var id=that.data.Id,result=that.data.result;
+    if(result==''||result==undefined){
+      dd.showToast({
+        content:'请填写处理结果',
+        duration:3000,
+      });
+      return false;
+    }
+    dd.httpRequest({
+      url:URL+'/complain/handle',
+      method:'POST',
+      data:{
+        complain_id:id,
+        uid:uid,
+        result:result,
+      },
+      dataType:'json',
+      success(res){
+        console.log(res);
+        if(res.data.code==0){
+          dd.showToast({
+            content:res.data.data,
+            duration:800,
+            success(){
+              that.onLoad();
+            }
+          });
+        }
+        else{
+          dd.showToast({
+            content:res.data.msg,
+            duration:3000,
+          });
+        }
+      },
+      fail(err){
+        console.log(err);
+        dd.showLoading({
+          content: '加载中...',
+          delay: 1000,
+        });
+      }
     })
   },
 });

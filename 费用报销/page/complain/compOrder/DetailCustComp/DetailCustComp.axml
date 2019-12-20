@@ -3,7 +3,7 @@
   <view class="top">
     <view class="top-left">
       <view class="Info-station">{{Info.department_name}}</view>
-      <view class="Info-time">{{item.create_time}}</view>
+      <view class="Info-time">{{Info.create_time}}</view>
     </view>
     <view class="top-state {{Info.status=='0'?'stateAct':''}}">{{Info.status_text}}</view>
   </view>
@@ -11,8 +11,11 @@
   <!-- 问题描述开始 -->
   <view class="middle">
     <view class="middle-top">
-      <view class="middle-title">问题描述</view>
       <view class="Info-comPer">投诉人员：<view class="Info-comPer-Til">{{Info.complainants_name}}</view> </view>
+      <!-- <view class="Info-time">{{Info.create_time}}</view> -->
+    </view>
+    <view class="middle-desTile">
+      <view class="middle-title">问题描述</view>
     </view>
     <view class="middle-content">
       <view class="Info-des">{{Info.describe}}</view>

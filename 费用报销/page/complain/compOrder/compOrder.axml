@@ -13,18 +13,24 @@
       <view class="lists">
         <view class="DataList-item" a:for="{{dataList}}" key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" onTap="CheckInfo" onLongTap="DelOrder">
           <view class="item-top">
-            <view class="list-station">{{item.department_name}}</view>
+            <view class="list-station">{{item.department_name}}
+              <view a:if="{{navItem.navIndex==1?(item.user_type==2?true:false):false}}" class="list-type">(指派处理)</view>
+            </view>
             <view class="list-time">{{item.created_at}}</view>
           </view>
           <view class="item-middle">
+            <!-- 客户投诉 -->
             <view class="list-complains" a:if="{{navItem.navIndex==0}}">投诉人员：{{item.complainants_name}}</view>
-            <view class="list-comType {{item.type_text=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1}}">{{item.type_text}}</view>
             <view a:if="{{navItem.navIndex==0}}" class="list-state {{item.status_text=='已处理'?'list-stateacte':''}}">{{item.status_text}}</view>
-            <view a:if="{{navItem.navIndex==1}}" class="list-state {{item.read_text=='已读'?'list-stateacte':''}}">{{item.read_text}}</view>
+            <!-- 员工反馈 -->
+            <view class="list-comType {{item.type_text=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1?(item.type_text=='建议'?true:false):false}}">{{item.type_text}}</view>
+            <view class="list-complains" a:if="{{navItem.navIndex==1?(item.type_text=='投诉'?true:false):false}}">投诉人员：{{item.payment}}</view>
+            <view a:if="{{navItem.navIndex==1?(item.if_read==3?false:true):false}}" class="list-state {{item.read_text=='已读'?'list-stateacte':''}}">{{item.read_text}}</view>
           </view>
           <view class="item-bottom">
             <view class="list-des">{{item.content}}</view>
           </view>
+          <view class="item-check">查看详情</view>
         </view>
       </view>
     </scroll-view>

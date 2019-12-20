@@ -10,6 +10,7 @@
   width: 100%;
   position: fixed;
   background-color: #FFFFFF;
+  z-index: 5;
 }
 .nav-item{
   flex-grow: 1;

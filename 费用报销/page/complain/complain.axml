@@ -25,7 +25,7 @@
     <view class="page-des">
       <view class="form-title">内容描述</view>
       <view class="form-content content-des-textaarea">
-        <textarea class="textarea-des" placeholder="请输入描述信息" maxlength="200" value="{{content}}" onBlur="GetContent"></textarea>
+        <textarea class="textarea-des" placeholder="请输入描述信息" maxlength="500" value="{{content}}" onBlur="GetContent"></textarea>
       </view>
       <view class="form-content-img">
         <view class="addImages" a:for="{{images}}" key="{{index}}">

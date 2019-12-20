@@ -22,7 +22,8 @@
 .DataList{
   display: flex;
   flex-direction: column;
-  margin: 100rpx 0 130rpx;
+  margin: 0rpx 0 130rpx;
+  padding-top: 100rpx;
 }
 .DataListAct{
   margin: 0rpx 0 130rpx;
@@ -38,6 +39,7 @@
   padding: 29rpx 4.13% 38rpx;
   display: flex;
   flex-direction: column;
+  min-height: 160rpx;
 }
 .item-top{
   width: 100%;
@@ -49,6 +51,9 @@
 }
 .list-station{
   width: 58%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   word-break: break-all;
 }
 .list-time{
@@ -64,9 +69,6 @@
   color: #191F25;
   font-size: 28rpx;
 }
-.list-complains,.list-comType{
-  padding-left: 20rpx;
-}
 .list-comType{
   color: #F25643;
   font-weight: bold;
@@ -78,15 +80,17 @@
 .list-state{
   width: 80rpx;
   height: 40rpx;
-  font-size: 20rpx;
-  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #F25643;
   text-align: center;
   line-height: 40rpx;
-  background-color: #F25643;
+  /* background-color: #F25643; */
   border-radius: 4rpx;
 }
 .list-stateacte{
-  background-color: #15BC83;
+  /* background-color: #15BC83; */
+  color: #15BC83;
 }
 .item-bottom{
   width: 100%;
@@ -94,11 +98,12 @@
   flex-direction: column;
 }
 .list-des{
+  min-height: 100rpx;
   flex: 1;
-  color: #7A7D81;
+  color: #191F25;
   font-size: 26rpx;
   line-height: 30rpx;
-  padding-left:20rpx; 
+  /* padding-left:20rpx;  */
   word-break: break-all;
 } 
 .Btn{
@@ -130,4 +135,14 @@
 .NoList-logo{
   width: 250rpx;
   height: 250rpx;
+}
+.item-check{
+  width: 100%;
+  font-size: 30rpx;
+  text-align: right;
+  color: #999999;
+}
+.list-type{
+  font-size: 24rpx;
+  color: #F25643;
 }

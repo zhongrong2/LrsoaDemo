@@ -9,12 +9,12 @@
   </view>
   <!-- 头部信息结束 -->
   <!-- 投诉对象开始 -->
-  <view class="compInfo" a:if="{{Info.type==1?(Info.if_real==1?true:false):false}}">
+  <view class="compInfo" a:if="{{Info.type==1?true:false}}">
     <view class="compInfo-per">投诉对象：<view>{{Info.payment}}</view></view>
     <view class="compInfo-content">
       <view class="compInfo-top">
         <view class="compInfo-pers">投诉人：{{Info.complain_name}}</view>
-        <view class="compInfo-type">实名投诉</view>
+        <view class="compInfo-type">{{Info.real_text}}</view>
       </view>
       <view class="compInfo-phone">投诉人电话：{{Info.complain_phone}}</view>
     </view>
@@ -22,7 +22,7 @@
   <!-- 投诉对象结束 -->
   <!-- 建议对象开始 -->
   <view class="compInfo" a:if="{{Info.type==2?true:false}}">
-    <view class="compInfo-per"></view>
+    <!-- <view class="compInfo-per"></view> -->
     <view class="compInfo-content">
       <view class="compInfo-top">
         <view class="compInfo-pers">建议人：{{Info.complain_name}}</view>
@@ -36,6 +36,7 @@
   <view class="middle">
     <view class="middle-top">
       <view class="middle-title">问题描述</view>
+      <view class="middle-type" a:if="{{Info.user_type==2?true:false}}">指派处理</view>
     </view>
     <view class="middle-content">
       <view class="Info-des">{{Info.content}}</view>
@@ -47,26 +48,60 @@
     </view>
   </view>
   <!-- 问题描述结束 -->
-  <!-- 指派处理人开始 -->
-  <view class="DealPeople" a:if="{{Info.type==2?false:(Info.manage_users.length==0?false:true)}}">
-    <view class="DealPeople-title">指派处理人</view>
-    <view class="DealPeople-content">
-      <view class="page-member">
-        <view class="page-member-item" a:for="{{Info.manage_users}}" key="{{index}}">
-          <view class="member-itemL">
-            <image a:if="{{item.head_img==''?false:true}}" class="imgCC-all-img" mode="widthFix" src="{{item.head_img}}"/>
-            <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
-            <view class="imgCC-all-title">{{item.name}}</view>
+  <view a:if="{{Info.user_type==3?false:true}}">
+    <!-- 填写处理结果开始 -->
+    <view class="InputResult" a:if="{{Info.display_handle==true?true:false}}">
+      <view class="InputResult-title">处理结果</view>
+      <view class="InputResult-text">
+        <textarea class="InputResult-textarea" placeholder="请填写处理结果" maxlength="500" value="{{result}}" onBlur="GetResult"></textarea>
+      </view>
+    </view>
+    <!-- 填写处理结果结束 -->
+    <!-- 提交处理结果按钮开始 -->
+    <view class="Btn" a:if="{{Info.display_handle==true?true:false}}">
+      <view class="btn" onTap="Handle">确定</view>
+    </view>
+    <!-- 提交处理结果按钮结束 -->
+    <!-- 处理结果回显开始 -->
+    <view class="InputResult" a:if="{{Info.display_handle==false?(Info.user_type==1?false:true):false}}">
+      <view class="InputResult-title">处理结果</view>
+      <view class="InputResult-content">
+        <view class="InputResult-time">{{Info.handle_time}}</view>
+        <view class="InputResult-txt">{{Info.processing_result}}</view>
+      </view>
+    </view>
+    <!-- 处理结果回显结束 -->
+    <!-- 指派处理人开始 -->
+    <view class="DealPeople" a:if="{{Info.user_type==1?(Info.display_assign==false?true:false):false}}">
+      <view class="DealPeople-title">指派处理人</view>
+      <view class="DealPeople-content">
+        <view class="page-member">
+          <view class="apprExam-item" a:for="{{Info.manage_users}}" key="{{index}}">
+            <view class="apprExam-item-Info">
+              <image a:if="{{item.head_img==''?false:true}}" class="apprExam-item-head" mode="scaleToFill" src="{{item.head_img}}"/>
+              <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.name}}</view>
+              <view class="apprExam-item-pers">
+                <view class="item-per-post">指派时间
+                  <view class="item-time">{{item.assign_time}}</view>
+                </view>
+                <view class="item-per-post" a:if="{{item.processing_result==''?false:true}}">处理时间
+                  <view class="item-time">{{item.handle_time}}</view>
+                </view>
+                <view class="item-per-name" a:if="{{item.processing_result==''?false:true}}">处理结果：
+                  <view class="perCop">{{item.processing_result}}</view>
+                </view>
+              </view>
+              
+            </view>
           </view>
-          <view class="member-itemR">+</view>
         </view>
       </view>
     </view>
-  </view>
-  <!-- 指派处理人结束 -->
-  <!-- 指派处理人按钮开始 -->
-  <view class="Btn" a:if="{{Info.type==1?(Info.manage_users.length==0?true:false):false}}">
-    <view class="btn" onTap="ChoseDealPeople">指派处理人</view>
-  </view>
-  <!-- 指派处理人按钮结束 -->
+    <!-- 指派处理人结束 -->
+    <!-- 指派处理人按钮开始 -->
+    <view class="Btn" a:if="{{Info.user_type==1?(Info.display_assign==true?(Info.type==2?false:true):false):false}}">
+      <view class="btn" onTap="ChoseDealPeople">指派处理人</view>
+    </view>
+    <!-- 指派处理人按钮结束 -->
+  </view> 
 </view>

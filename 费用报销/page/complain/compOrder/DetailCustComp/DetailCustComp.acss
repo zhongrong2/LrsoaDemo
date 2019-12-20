@@ -7,7 +7,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 4.13%;
+  padding: 14rpx 4.13%;
 }
 .top-left{
   flex: 1;
@@ -29,15 +29,17 @@
 .top-state{
   width: 80rpx;
   height: 40rpx;
-  background-color: #15BC83;
+  /* background-color: #15BC83; */
   font-size: 20rpx;
-  color: #FFFFFF;
+  font-weight: bold;
+  color: #15BC83;
   text-align: center;
   line-height: 40rpx;
   border-radius: 4rpx;
 }
 .stateAct{
-  background-color: #F25643;
+  /* background-color: #F25643; */
+  color: #F25643;
 }
 .middle{
   display: flex;
@@ -47,14 +49,23 @@
   height: 60rpx;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   background-color: #F6F6F6;
   font-size: 28rpx;
   color: #7A7D81;
   padding: 0 4.4%;
 }
+.middle-desTile{
+  height: 60rpx;
+  background-color: #F6F6F6;
+  font-size: 28rpx;
+  color: #7A7D81;
+  line-height: 60rpx;
+  padding: 0 4.4%;
+}
 .Info-comPer{
-  padding-left: 10rpx;
+  /* padding-left: 10rpx; */
   display: flex;
   flex-direction: row;
 }
@@ -70,6 +81,7 @@
   flex-direction: column;
 }
 .Info-des{
+  min-height: 80rpx;
   word-break: break-all;
 }
 .Info-imgs{

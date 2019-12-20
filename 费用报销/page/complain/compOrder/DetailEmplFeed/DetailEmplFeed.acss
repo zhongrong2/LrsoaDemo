@@ -1,5 +1,5 @@
 @import "/page/complain/compOrder/DetailCustComp/DetailCustComp.acss";
-@import "/page/PayR/Copiers/Copiers.acss";
+@import "/component/dataInfo/apprExam/apprExam.acss";
 .compInfo{
   width: 100%;
   display: flex;
@@ -14,6 +14,9 @@
   color: #7A7D81;
   align-items: center;
   background-color: #F6F6F6;
+}
+.compInfo-perAct{
+  border-bottom: 20rpx solid white;
 }
 .compInfo-content{
   padding: 20rpx 4.13%;
@@ -44,6 +47,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 130rpx;
 }
 .DealPeople-title{
   height: 60rpx;
@@ -54,7 +58,7 @@
   line-height: 60rpx;
 }
 .DealPeople-content{
-  padding: 0 4.27%;
+  padding: 30rpx 4.27% 0rpx;
   display: flex;
   flex-direction: column;
 }
@@ -68,6 +72,7 @@
   position: fixed;
   bottom: 0;
   background-color: white;
+  z-index: 10;
 }
 .btn{
   width: 86.67%;
@@ -79,6 +84,63 @@
   text-align: center;
   line-height: 90rpx;
 }
-.page-member-item:last-child .member-itemR{
-  display: none;
+.topAct{
+  border-bottom: 1rpx solid #7A7D81;
+}
+.InputResult{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.InputResult-title{
+  height: 60rpx;
+  background-color:rgb(246, 246, 246);
+  font-size:28rpx;
+  color:rgb(122, 125, 129);
+  line-height: 60rpx;
+  padding:0px 4.4%;
+}
+.InputResult-text{
+  min-height: 160rpx;
+  padding: 28rpx 4.4%;
+}
+.InputResult-textarea{
+  min-height: 140rpx;
+  text-align: left;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgb(87, 91, 96);
+  line-height: 30rpx;
+}
+.InputResult-content{
+  display: flex;
+  flex-direction: column;
+  padding: 28rpx 6.67%;
+}
+.InputResult-time{
+  font-size: 28rpx;
+  line-height: 30rpx;
+  padding-bottom: 20rpx;
+}
+.InputResult-txt{
+  min-height: 80rpx;
+  font-size: 28rpx;
+  line-height: 30rpx;
+}
+.apprExam-item{
+  margin-bottom: 50rpx;
+}
+.apprExam-item-pers{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+.item-per-post{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+.middle-type{
+  color: #F25643;
 }

@@ -62,7 +62,6 @@ Page({
       success(res){
         if(res.data.code==0){
           // console.log(res.data);
-          dd.hideLoading();
           if(res.data.data == '' && that.data.Account != ''){
             dd.showToast({
               content:'没有更多数据！',
@@ -83,7 +82,7 @@ Page({
         }
         else if(res.data.code==1){
           dd.showLoading({
-            content: '加载中...',
+            content: res.data.msg,
             delay: 1000,
           });
         }
