@@ -110,7 +110,7 @@
   font-size: 28rpx;
   font-weight: 500;
   color: rgb(87, 91, 96);
-  line-height: 30rpx;
+  line-height: 34rpx;
 }
 .InputResult-content{
   display: flex;

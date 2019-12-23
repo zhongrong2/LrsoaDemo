@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 29rpx 4% 0% 2.53%;
+}
+.form-title{
+  padding-left: 8rpx;
 }
 .add{
   margin-bottom: 30rpx;

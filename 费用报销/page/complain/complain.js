@@ -102,7 +102,7 @@ Page({
     if(DepartVal==''||DepartVal==undefined){
       dd.showToast({
         content:'请选择反馈部门',
-        duration:3000,
+        duration:1000,
       });
       return false;
     }
@@ -110,7 +110,7 @@ Page({
       if(payment==''||payment==undefined){
         dd.showToast({
           content:'请填写投诉对象',
-          duration:3000,
+          duration:1000,
         });
         return false;
       }
@@ -118,7 +118,7 @@ Page({
     if(content==''||content==undefined){
       dd.showToast({
           content:'请填写内容描述',
-          duration:3000,
+          duration:1000,
         });
       return false;
     }
@@ -128,14 +128,14 @@ Page({
         if(CompName==''||CompName==undefined){
           dd.showToast({
             content:'请填写投诉人姓名',
-            duration:3000,
+            duration:1000,
           });
           return false;
         }
         if(CompPhone==''||CompPhone==undefined){
           dd.showToast({
             content:'请填写投诉人电话',
-            duration:3000,
+            duration:1000,
           });
           return false;
         }
@@ -148,14 +148,14 @@ Page({
       if(CompName==''||CompName==undefined){
         dd.showToast({
           content:'请填写建议人姓名',
-          duration:3000,
+          duration:1000,
         });
         return false;
       }
       if(CompPhone==''||CompPhone==undefined){
         dd.showToast({
           content:'请填写建议人电话',
-          duration:3000,
+          duration:1000,
         });
         return false;
       }
@@ -191,7 +191,7 @@ Page({
           // console.log(res.data.msg);
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           });
         }
       },
@@ -295,7 +295,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           });
         }
       },

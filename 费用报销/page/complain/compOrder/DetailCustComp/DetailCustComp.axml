@@ -12,7 +12,7 @@
   <view class="middle">
     <view class="middle-top">
       <view class="Info-comPer">投诉人员：<view class="Info-comPer-Til">{{Info.complainants_name}}</view> </view>
-      <!-- <view class="Info-time">{{Info.create_time}}</view> -->
+      <view class="Info-phone">客户电话：{{Info.phone}}</view>
     </view>
     <view class="middle-desTile">
       <view class="middle-title">问题描述</view>
@@ -27,6 +27,19 @@
     </view>
   </view>
   <!-- 问题描述结束 -->
+  <!-- 填写处理结果开始 -->
+  <view a:if="{{Info.status=='0'?true:false}}">
+    <view class="InputResult">
+      <view class="InputResult-title">处理结果</view>
+      <view class="InputResult-text">
+        <textarea class="InputResult-textarea" placeholder="请填写处理结果" maxlength="500" value="{{result}}" onBlur="GetResult"></textarea>
+      </view>
+    </view>
+    <view class="Btn">
+      <view class="btn" onTap="Handle">确定</view>
+    </view>
+  </view>
+  <!-- 填写处理结果结束 -->
   <!-- 处理结果开始 -->
   <view class="bottom" a:if="{{Info.status=='1'?true:false}}">
     <view class="bottom-title">处理结果</view>

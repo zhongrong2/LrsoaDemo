@@ -46,28 +46,29 @@
   flex-direction: column;
 }
 .middle-top{
-  height: 60rpx;
+  /* height: 60rpx; */
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: #F6F6F6;
   font-size: 28rpx;
   color: #7A7D81;
   padding: 0 4.4%;
 }
 .middle-desTile{
-  height: 60rpx;
+  height: 50rpx;
   background-color: #F6F6F6;
   font-size: 28rpx;
   color: #7A7D81;
-  line-height: 60rpx;
+  line-height: 44rpx;
   padding: 0 4.4%;
 }
-.Info-comPer{
+.Info-comPer,.Info-phone{
   /* padding-left: 10rpx; */
   display: flex;
   flex-direction: row;
+  line-height: 50rpx;
 }
 .Info-comPer-Til{
   color: #F25643;
@@ -129,4 +130,51 @@
   line-height: 30rpx;
   padding-top: 10rpx;
   word-break: break-all;
+}
+.InputResult{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.InputResult-title{
+  height: 60rpx;
+  background-color:rgb(246, 246, 246);
+  font-size:28rpx;
+  color:rgb(122, 125, 129);
+  line-height: 60rpx;
+  padding:0px 4.4%;
+}
+.InputResult-text{
+  min-height: 160rpx;
+  padding: 28rpx 4.4%;
+}
+.InputResult-textarea{
+  min-height: 140rpx;
+  text-align: left;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgb(87, 91, 96);
+  line-height: 34rpx;
+}
+.Btn{
+  width: 100%;
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+}
+.btn{
+  width: 86.67%;
+  height: 90rpx;
+  background-color: #399EFA;
+  border:1rpx solid #3F87D1;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 90rpx;
 }

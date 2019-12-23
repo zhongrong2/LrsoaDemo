@@ -114,15 +114,15 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           })
         }
       },
       fail(err){
         console.log(err);
         dd.showToast({
-          content:res.data.msg,
-          duration:3000,
+          content:'加载中...',
+          duration:1000,
         })
       },
     })

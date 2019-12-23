@@ -42,7 +42,7 @@ Page({
         fail(err){
           dd.showToast({
             content:'网络出错',
-            duration:3000,
+            duration:1000,
           })
         }
       })
@@ -72,7 +72,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           })
         }
       },
@@ -112,7 +112,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           })
         }
       },
@@ -148,7 +148,7 @@ Page({
     if(result==''||result==undefined){
       dd.showToast({
         content:'请填写处理结果',
-        duration:3000,
+        duration:1000,
       });
       return false;
     }
@@ -162,7 +162,7 @@ Page({
       },
       dataType:'json',
       success(res){
-        console.log(res);
+        // console.log(res);
         if(res.data.code==0){
           dd.showToast({
             content:res.data.data,
@@ -175,7 +175,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           });
         }
       },

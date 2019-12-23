@@ -98,7 +98,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           })
         }
       },
@@ -133,7 +133,7 @@ Page({
           if(res.data.data == '' && that.data.dataList != ''){
             dd.showToast({
               content:'没有更多数据！',
-              duration:3000,
+              duration:1000,
             })
           }
           var arr = that.data.dataList;
@@ -151,7 +151,7 @@ Page({
         else{
           dd.showToast({
             content:res.data.msg,
-            duration:3000,
+            duration:1000,
           })
         }
       },
@@ -228,7 +228,7 @@ Page({
               else{
                 dd.showToast({
                   content:res.data.msg,
-                  duration:3000,
+                  duration:1000,
                 })
               }
             },
