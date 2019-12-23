@@ -18,12 +18,14 @@ Page({
   //获取订单详情
   GetInfo(){
     var that = this;
+    var uid = app.globalData.userInfo.id;
     var Id=this.data.Id;
     // console.log(Id);
     dd.httpRequest({
       url:URL+'/complain/consumerComplainDetail',
       method:'POST',
       data:{
+        uid:uid,
         id:Id,
       },
       dataType:'json',

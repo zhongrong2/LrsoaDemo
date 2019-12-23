@@ -28,7 +28,7 @@
   </view>
   <!-- 问题描述结束 -->
   <!-- 填写处理结果开始 -->
-  <view a:if="{{Info.status=='0'?true:false}}">
+  <view a:if="{{Info.status=='0'?(Info.if_leader==true?true:false):false}}">
     <view class="InputResult">
       <view class="InputResult-title">处理结果</view>
       <view class="InputResult-text">
