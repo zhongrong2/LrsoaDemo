@@ -6,19 +6,32 @@ Page({
     Info:'',//订单详情
   },
   onLoad(options) {
+    var that=this,uid;
     if(options==undefined){
-      this.GetInfo();
+      uid = app.globalData.userInfo.id;
+      that.GetInfo(uid);
       return;
     }
-    this.setData({
-      Id:options.ID,
+    dd.getStorage({
+      key:'uid',
+      success(res){
+        uid = res.data.uid;
+        that.setData({
+          Id:options.ID,
+        })
+        that.GetInfo(uid);
+      },
+      fail(err){
+        dd.showToast({
+          content:'网络出错',
+          duration:1000,
+        })
+      }
     })
-    this.GetInfo();
   },
   //获取订单详情
-  GetInfo(){
+  GetInfo(uid){
     var that = this;
-    var uid = app.globalData.userInfo.id;
     var Id=this.data.Id;
     // console.log(Id);
     dd.httpRequest({

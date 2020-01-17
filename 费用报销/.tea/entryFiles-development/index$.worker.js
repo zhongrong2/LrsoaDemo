@@ -69,6 +69,7 @@ require('../../page/complain/compOrder/DetailEmplFeed/DetailEmplFeed?hash=32d7d2
 require('../../page/complain/compOrder/ChoseDealPeople/ChoseDealPeople?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/complain?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 require('../../page/complain/ChoseCompDepart/ChoseCompDepart?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../page/CC/DetailInfoRemark/DetailInfoRemark?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
 }

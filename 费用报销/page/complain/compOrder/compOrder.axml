@@ -25,10 +25,7 @@
             <!-- 员工反馈 -->
             <view class="list-comType {{item.type_text=='建议'?'list-comTypeAct':''}}" a:if="{{navItem.navIndex==1?(item.type_text=='建议'?true:false):false}}">{{item.type_text}}</view>
             <view class="list-complains" a:if="{{navItem.navIndex==1?(item.type_text=='投诉'?true:false):false}}">投诉人员：{{item.payment}}</view>
-            <view a:if="{{navItem.navIndex==1?(item.if_read==3?false:true):false}}" class="list-state {{item.read_text=='已读'?'list-stateacte':''}}">{{item.read_text}}</view>
-          </view>
-          <view class="item-info" a:if="{{navItem.navIndex==0}}">
-            <view class="info-phone">客户电话：{{item.phone}}</view>
+            <view a:if="{{navItem.navIndex==1?(item.user_type==3?false:true):false}}" class="list-state {{item.read_text=='已读'?'list-stateacte':''}}">{{item.read_text}}</view>
           </view>
           <view class="item-bottom">
             <view class="list-des">{{item.content.length<60?item.content:item.content.substring(0,60)+'......'}}</view>
@@ -45,7 +42,7 @@
   </view>
   <!-- 没有数据列表结束 -->
   <!-- 反馈按钮开始 -->
-  <view class="Btn" a:if="{{ShowConsComp?(navItem.navIndex==1?true:false):true}}">
+  <view class="Btn" a:if="{{ShowConsComp?(navItem.navIndex==1?(showboss==true?false:true):false):true}}">
     <view class="btn" onTap="ComplainSub">我要反馈</view>
   </view>
   <!-- 反馈按钮结束 -->

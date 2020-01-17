@@ -16,6 +16,7 @@ Page({
     page:1,//当前页
     limit:10,//每页条数
     hasOnshow:false,
+    showboss:'',//是否是管总
   },
   onLoad() {
     //初始化
@@ -130,6 +131,10 @@ Page({
       success(res){
         // console.log(res.data);
         if(res.data.code==0){
+          var showboss = res.data.if_boss;
+          that.setData({
+            showboss:showboss
+          });
           if(res.data.data == '' && that.data.dataList != ''){
             dd.showToast({
               content:'没有更多数据！',

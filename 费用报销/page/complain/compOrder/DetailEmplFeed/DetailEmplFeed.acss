@@ -111,6 +111,7 @@
   font-weight: 500;
   color: rgb(87, 91, 96);
   line-height: 34rpx;
+  border:1rpx solid #F6F6F6;
 }
 .InputResult-content{
   display: flex;
@@ -143,4 +144,11 @@
 }
 .middle-type{
   color: #F25643;
+}
+.middle-top{
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 60rpx;
 }

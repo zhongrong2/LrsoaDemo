@@ -22,7 +22,7 @@ App({
         console.log(err);
         dd.showToast({
           content:'网络出错',
-          duration:3000,
+          duration:1000,
         })
       }
     });
@@ -55,14 +55,14 @@ App({
               else{
                 dd.showToast({
                   content:res.data.msg,
-                  duration:3000,
+                  duration:1000,
                 })
               }
             },
             fail(err){
               dd.showToast({
                 content:'网络出错',
-                duration:3000,
+                duration:1000,
               })
             }
           })
@@ -94,7 +94,7 @@ App({
               else{
                 dd.showToast({
                   content:res.data.msg,
-                  duration:3000,
+                  duration:1000,
                 })
               }
                       
@@ -102,7 +102,7 @@ App({
             fail(err){
               dd.showToast({
                 content:'网络出错',
-                duration:3000,
+                duration:1000,
               })
             }
           })
@@ -112,7 +112,7 @@ App({
         console.log(res);
         dd.showToast({
           content:'网络出错',
-          duration:3000,
+          duration:1000,
         })
       }
     });
@@ -134,7 +134,7 @@ App({
         else{
           dd.showToast({
             content:'网络出错',
-            duration:3000,
+            duration:1000,
           })
         }
       },
@@ -142,7 +142,7 @@ App({
         console.log(res);
         dd.showToast({
           content:'网络出错',
-          duration:3000,
+          duration:1000,
         })
       }
     })
@@ -172,14 +172,14 @@ App({
         else{
           dd.showToast({
             content:'请稍等',
-            duration:3000,
+            duration:1000,
           })
         }
       },
       fail(err){
         dd.showToast({
           content:'网络出错',
-          duration:3000,
+          duration:1000,
         })
       }
     })

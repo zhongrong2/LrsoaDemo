@@ -41,7 +41,7 @@ Page({
         fail(err){
           dd.showToast({
             content:'网络出错',
-            duration:3000,
+            duration:1000,
           })
         }
       })
@@ -71,7 +71,6 @@ Page({
       success(res){
         // console.log(res.data.data);
         if(res.data.code==0){
-          dd.hideLoading();
           that.setData({
             Info:res.data.data,
             apprExam:res.data.data.run_log,
@@ -246,7 +245,7 @@ Page({
           uid:uid,
         },
         success(res){
-          console.log(res.data);
+          // console.log(res.data);
           dd.hideLoading();
           if(res.data.code==0){
             dd.showToast({
@@ -254,8 +253,13 @@ Page({
               duration:3000,
             })
             if(hasInform==undefined){
+              let pages = getCurrentPages();
+              let beforePage = pages[pages.length - 2];
               dd.navigateBack({
-                delta: 1
+                delta:1,
+                success: function () {
+                  beforePage.onLoad(); // 执行前一个页面的onLoad方法
+                }
               });
             }
             else{

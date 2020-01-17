@@ -1,15 +1,21 @@
 <template name="apprExam">
   <view class="apprExam">
-    <view class="apprExam-title">审批记录</view>
+    <view class="apprExam-top">
+      <view class="apprExam-title">审批记录</view>
+      <view class="apprExam-ramark" a:if="{{comment==true?true:false}}" onTap="ToRemark">
+        <image mode="scaleToFill" src="/image/apprexam-ramark.png"/>
+        批注
+      </view>
+    </view>
     <view class="apprExam-list">
       <view class="apprExam-item" a:for="{{apprExam}}" key="{{index}}">
         <view class="apprExam-item-Info">
           <image a:if="{{item.head_img==''?false:true}}" class="apprExam-item-head" mode="scaleToFill" src="{{item.head_img}}"/>
           <view a:if="{{item.head_img==''?true:false}}" class="headName">{{item.username}}</view>
           <view class="apprExam-item-pers">
-            <view class="item-per-post">{{item.title}}</view>
+            <view class="item-per-post" >{{item.title}}</view>
             <view class="item-per-name">{{item.username}}
-              <view class="perCop" a:if="{{item.audit_status==''?false:true}}">({{item.audit_status}}{{item.second_cc_uids}})</view>
+              <view class="perCop {{item.status==7?'perCop2':''}}" a:if="{{item.audit_status==''?false:true}}">({{item.audit_status}}{{item.second_cc_uids}})</view>
             </view>
           </view>
           <view class="apprExam-item-time">{{item.bl_time}}</view>

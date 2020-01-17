@@ -1,0 +1,8 @@
+<view class="pageBody">
+  <view class="remark">
+    <textarea class="remarkVal" placeholder="请输入批注信息" maxlength="300" value="{{content}}" onBlur="GetContent"></textarea>
+  </view>
+  <view class="btn-box">
+    <view class="btn" onTap="Sure">确认</view>
+  </view>
+</view>

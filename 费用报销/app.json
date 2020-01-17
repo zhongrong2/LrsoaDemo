@@ -39,7 +39,8 @@
     "page/complain/compOrder/DetailEmplFeed/DetailEmplFeed",
     "page/complain/compOrder/ChoseDealPeople/ChoseDealPeople",
     "page/complain/complain",
-    "page/complain/ChoseCompDepart/ChoseCompDepart"
+    "page/complain/ChoseCompDepart/ChoseCompDepart",
+    "page/CC/DetailInfoRemark/DetailInfoRemark"
   ],
   "window": {
     "enableWK": "YES",

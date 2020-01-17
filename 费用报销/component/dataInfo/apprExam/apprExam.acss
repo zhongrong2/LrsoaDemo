@@ -3,10 +3,27 @@
   font-family: PingFang-SC-Medium;
   font-weight: 500;
 }
+.apprExam-top{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40rpx;
+}
 .apprExam-title{
+  flex: 1;
   font-size: 30rpx;
   color: #191F25;
-  margin-bottom: 40rpx;
+}
+.apprExam-ramark{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  font-size: 28rpx;
+  color: #399EFA;
+}
+.apprExam-ramark image{
+  width: 36rpx;
+  height: 40rpx;
+  margin-right: 9rpx;
 }
 .apprExam-item{
   padding-left: 2.4%;
@@ -67,4 +84,7 @@
 }
 .perCop{
   flex: 1;
+}
+.perCop2{
+  color: red;
 }

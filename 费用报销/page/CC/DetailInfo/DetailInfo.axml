@@ -98,7 +98,7 @@
     </view>
     <!-- 付款账号结束 -->
     <!-- 审批记录开始 -->
-    <template is="apprExam" data="{{apprExam}}"></template>
+    <template is="apprExam" data="{{apprExam,comment}}"></template>
     <!-- 审批记录结束 -->
   </view>
 </view>

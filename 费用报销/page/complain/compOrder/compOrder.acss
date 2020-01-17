@@ -27,6 +27,7 @@
 }
 .DataListAct{
   margin: 0rpx 0 130rpx;
+  padding-top: 0rpx;
 }
 .lists{
   flex: 1;

@@ -7,6 +7,7 @@ Page({
     type:'copytome',
     Info:'',
     apprExam:[],
+    comment:'',//是否显示批注
   },
   onLoad(options) {
     var that=this,uId;
@@ -93,10 +94,10 @@ Page({
       success(res){
         // console.log(res);
         if(res.data.code==0){
-          dd.hideLoading();
           that.setData({
             Info:res.data.data,
             apprExam:res.data.data.run_log,
+            comment:res.data.data.bill_info.if_comment,//是否显示批注
           })
           //判断紧急程度显示样式
           var status=that.data.Info.bill_info.status,level=that.data.Info.bill_info.level;
@@ -140,4 +141,11 @@ Page({
       urls:srcs,
     })
   },
+  //跳转批注页
+  ToRemark(){
+    var id = this.data.id;
+    dd.navigateTo({
+      url:'/page/CC/DetailInfoRemark/DetailInfoRemark?Id='+id
+    })
+  }
 });
