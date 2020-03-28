@@ -21,6 +21,7 @@ Page({
       id:JSON.parse(option.id),
       count:option.count,
       CopMem:JSON.parse(option.CopMem),
+      type:option.type,
     })
     // console.log(that.data.id,that.data.count,that.data.CopMem);
     var uids = that.data.count;
@@ -175,9 +176,14 @@ Page({
     that.setData({
       showSelect:false,
     })
+    var type = that.data.type;
+    console.log(type);
     dd.httpRequest({
       url:URL+'/common/secondAuditUids',
       method:'POST',
+      data:{
+        type:type,
+      },
       dataType:'json',
       success(res){
         // console.log(res.data.data);
